@@ -1,0 +1,15 @@
+{% extends "_layouts/default" %}
+
+{% block content %}
+
+	{% set image = entry.leadImage.first() %}
+
+	{% include '_partials/picture' with {
+		'image' : image,
+		'baseTransform' : 'example',
+		'type' : 'fluid'
+	} %}
+
+	<p>test</p>
+
+{% endblock %}

@@ -1,11 +1,1 @@
-{% if entry is not defined %}
-    {% set entry = craft.entries.uri('404').first() %}
-{% endif %}
-
-{% extends "_layouts/default" %}
-{% set title = "404" %}
-{% set alternativeTracking %}ga('send', 'pageview', '/404/?url=' + document.location.pathname + document.location.search + '&ref=' + document.referrer);{% endset %}
-
-{% block content %}
-
-{% endblock %}
+{% include '_core/404' %}

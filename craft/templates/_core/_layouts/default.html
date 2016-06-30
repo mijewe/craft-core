@@ -1,0 +1,13 @@
+{% import '_macros/general' as macros %}
+{% import '_core/_macros/transforms' as transforms %}
+
+{% set isHomepage = (entry is defined ? entry.section.isHomepage() : false) %}
+
+{% include '_partials/header' %}
+
+<main>
+	{% block content %}
+	{% endblock %}
+</main>
+
+{% include '_partials/footer' %}

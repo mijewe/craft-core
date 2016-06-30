@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="{{ craft.config.locales[craft.locale].languageCode }}" class="no-webfonts">
+	<head>
+
+		{% include '_partials/meta' with {
+			'url' : entry.getUrl(),
+			'title' : entry.title,
+			'description' : (entry['description'] is defined ? entry.description : ''),
+			'image' : (entry['leadImage'] is defined and entry.leadImage is not empty ? entry.leadImage.first().getUrl() : false),
+			'type' : 'website'
+		} %}
+
+		{% include '_partials/favicons' ignore missing %}
+
+		<style id="js-critical-css">
+			svg { opacity: 0; }
+			{% include ['_partials/inline/' ~ (entry is defined ? entry.slug : 'critical') ~ '.css', '_partials/inline/critical.css'] ignore missing %}
+		</style>
+
+	</head>
+	<body>
+		{% include '_partials/grid-overlay' ignore missing %}
+
+		<header>
+			<h1>{{ siteName }}</h1>
+		</header>
