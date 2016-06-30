@@ -24,6 +24,13 @@ module.exports = function(grunt) {
 		// do nothing.
 	]);
 
+	grunt.registerTask('init', 'Install Craft.', [
+		'copy:craftone',
+		'copy:crafttwo',
+		'copy:craftthree',
+		'copy:craftfour'
+	]);
+
 	grunt.registerTask('styles', 'Do your styles.', [
 		'sass:dist',
 		'autoprefixer'
@@ -39,14 +46,21 @@ module.exports = function(grunt) {
 		'svgmin'
 	]);
 
-	grunt.registerTask('dev', 'Rebuild everything.', [
-		'sass:dev',
-		'concat',
-		'images'
+	grunt.registerTask('plugins', 'Install plugins.', [
+		'copy:pluginanchor',
+		'copy:plugincachey',
+		'copy:pluginemailwrap',
+		'copy:pluginrefreshstring',
+		'copy:plugintypogrify',
+		'copy:plugincontactform',
+		'copy:pluginredirectmanager',
+		'copy:pluginsproutfields',
+		'copy:pluginjsontransforms'
 	]);
 
 	grunt.registerTask('build', 'Rebuild everything.', [
-		'copy',
+		'plugins',
+		'copy:fonts',
 		'grunticon',
 		'styles',
 		'scripts',

@@ -1,6 +1,39 @@
 module.exports = function(grunt) {
 
 	grunt.config('copy', {
+		craftone: {
+			files: [{
+				expand: true,
+				cwd: 'bower_components/craft/craft/app/',
+				src: ['*'],
+				dest: 'craft/app/',
+				flatten: false
+			}]
+		},
+		crafttwo: {
+			files: [{
+				expand: true,
+				cwd: 'bower_components/craft/craft/storage/',
+				src: ['*'],
+				dest: 'craft/storage/',
+				flatten: false
+			}]
+		},
+		craftthree: {
+			files: [{
+				expand: true,
+				cwd: 'bower_components/craft/public/',
+				src: ['index.php'],
+				dest: 'public/',
+				flatten: false
+			}]
+		},
+		craftfour: {
+			files: [{
+				src: 'example-db.php',
+				dest: 'craft/config/db.php'
+			}]
+		},
 		fonts: {
 			files: [{
 				expand: true,
