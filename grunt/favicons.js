@@ -3,7 +3,7 @@ module.exports = function(grunt) {
 	grunt.config('favicons', {
 		favicons: {
 			options: {
-				html : 'craft/templates/_partials/favicons.html',
+				html : 'craft/templates/_partials/snippets/favicons.html',
 				HTMLPrefix : '{{ craft.config.rootUrl }}/assets/img/favicons/'
 			},
 			src: 'src/assets/img/favicon.png',
