@@ -5,7 +5,7 @@ module.exports = function(grunt) {
 			files: [{
 				expand: true,
 				cwd: 'bower_components/craft/craft/app/',
-				src: ['*'],
+				src: ['**'],
 				dest: 'craft/app/',
 				flatten: false
 			}]
@@ -14,7 +14,7 @@ module.exports = function(grunt) {
 			files: [{
 				expand: true,
 				cwd: 'bower_components/craft/craft/storage/',
-				src: ['*'],
+				src: ['**'],
 				dest: 'craft/storage/',
 				flatten: false
 			}]

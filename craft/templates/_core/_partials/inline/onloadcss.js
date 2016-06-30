@@ -1,1 +1,0 @@
-function onloadCSS(a,b){a.onload=function(){a.onload=null,b&&b.call(a)},"isApplicationInstalled"in navigator&&"onloadcssdefined"in a&&a.onloadcssdefined(b)}

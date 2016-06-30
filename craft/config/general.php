@@ -34,12 +34,12 @@ return array(
     ),
 
     // Settings when developing locally.
-    'example.dev' => array(
+    'core.dev' => array(
         'devMode' => true,
         'siteUrl' => array(
-            'en_gb' => 'http://example.dev/'
+            'en_gb' => 'http://core.dev/'
         ),
-        'rootUrl' => 'http://example.dev',
+        'rootUrl' => 'http://core.dev',
         'trackUsers' => false,
         'omitScriptNameInUrls' => false,
         'defaultCookieDomain' => ''

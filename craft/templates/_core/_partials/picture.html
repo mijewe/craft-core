@@ -2,15 +2,7 @@
 {% set srcAttr = lazyLoad ? 'data-srcset' : 'srcset' %}
 {% set alt = alt ?? image.title ?? '' %}
 {% set image = image ?? null %}
-
 {% set type = type ?? null %}
-{% if fixedHeight is defined %}
-	{% if fixedHeight == true %}
-		{% set type = 'fixed' %}
-	{% else %}
-		{% set type = 'fluid' %}
-	{% endif %}
-{% endif %}
 
 {% if image and type %}
 	<picture class="image-container{% if type == 'fixed' %} image-container--fixed-height{% elseif type == 'fluid' %} image-container--fluid-height{% elseif type == 'centred' %} image-container--centred{% endif %}">

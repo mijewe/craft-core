@@ -1,7 +1,0 @@
-{% macro getTransform(image, baseTransform, size) %}{% spaceless %}
-
-	{% set thisTransform = craft.JsonTransforms.getTransform(baseTransform, size) %}
-
-	{{ image.getUrl(thisTransform) }}
-
-{% endspaceless %}{% endmacro %}

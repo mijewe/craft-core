@@ -1,15 +1,12 @@
-{% extends "_layouts/default" %}
+{% embed "_layouts/default" %}
 
-{% block content %}
+	{% block content %}
 
-	{% set image = entry.leadImage.first() %}
+		<p>This is the core index.</p>
 
-	{% include '_partials/picture' with {
-		'image' : image,
-		'baseTransform' : 'example',
-		'type' : 'fluid'
-	} %}
+		{{ core.formatDate() }}
+		{{ macros.getTheme() }}
 
-	<p>test</p>
+	{% endblock %}
 
-{% endblock %}
+{% endembed %}

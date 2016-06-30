@@ -10,7 +10,7 @@ The dateFormat setting is in config/general.php
 	{% endif %}
 
 	{{ date|date(format) }}
-	
+
 {% endspaceless %}{% endmacro %}
 
 
@@ -22,22 +22,15 @@ The dateFormat setting is in config/general.php
 
 
 {#
-getTheme.
-Pass in a slug, and if there's a theme associated with it it'll return the theme name.
-Usually used in class names, so class="theme--[[ getTheme(slug) ]]", then those
-elements will be styled from _theme.scss.
+getTransform.
+Given an image, baseTransform and size, you'll get in return the URL of that
+image resized to the correct transform. The transforms are defined in
+transforms.json.
 #}
-{% macro getTheme(slug) %}{% spaceless %}
+{% macro getTransform(image, baseTransform, size) %}{% spaceless %}
 
-	{% switch slug %}
+	{% set thisTransform = craft.JsonTransforms.getTransform(baseTransform, size) %}
 
-		{% case 'example-one' %}
-			blue
-		{% case 'example-two' %}
-			green
-		{% default %}
-			blue
-
-	{% endswitch %}
+	{{ image.getUrl(thisTransform) }}
 
 {% endspaceless %}{% endmacro %}
