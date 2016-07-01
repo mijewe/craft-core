@@ -11,6 +11,7 @@
 
 {% set isHomepage = (entry is defined ? entry.section.isHomepage() : false) %}
 
+{% include '_partials/structure/header' %}
 {% include '_partials/header' %}
 
 <main>
@@ -19,3 +20,4 @@
 </main>
 
 {% include '_partials/footer' %}
+{% include '_partials/structure/footer' %}
