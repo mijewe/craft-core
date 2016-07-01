@@ -1,24 +1,27 @@
-# Craft Boilerplate
+# Craft Core
 A starting point for creating new Craft projects.
 
-## Getting Started
-To create a new Craft project based on this repo, create your new repo. Let's call it Feast.
+## What is this?
+Craft Core is a sort of boilerplate for new Craft projects. Unlike the old Craft Boilerplate, here the core templates and styles are separate from the rest of the templates and styles. This should reduce the amount of horrible conflicts you've got to deal with when pulling the latest changes from Craft Core into your project.
 
-In Feast, add this boilerplate repo as a remote,
+## What's in the box?
+
+## Getting Started
+To create a new Craft project based on this Core, create your repo and add Craft Core as a remote,
 ```
-git remote add boilerplate https://github.com/mijewe/craft-boilerplate.git
+git remote add core https://github.com/mijewe/craft-core.git
 ```
 pull in the contents,
 ```
-git pull boilerplate master
+git pull core master
 ```
-and then make sure you can't push up to the boilerplate, as that may well break everything.
+and then make sure you can't push up to the core, as that may well break everything.
 ```
-git remote set-url --push boilerplate no_push
+git remote set-url --push core no_push
 ```
 
 ### Setting Up
-Feast is built with [Craft](http://craftcms.com), but the Craft source files are not included with this repo. That would be ridiculous. Don't worry about installing Craft though, as that's done for you with the ```grunt init``` task.
+Your site is built with [Craft](http://craftcms.com), but the Craft source files are not included with this repo. That would be ridiculous. Don't worry about installing Craft though, as that's done for you with the ```grunt init``` task.
 
 We compile all our assets using Grunt. So first run ```npm i``` to install the node modules, ```bower update``` to install the bower components, ```grunt init``` to install Craft, and then ```grunt build``` to generate all the assets.
 
