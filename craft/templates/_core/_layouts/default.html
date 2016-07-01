@@ -10,14 +10,26 @@
 } %}
 
 {% set isHomepage = (entry is defined ? entry.section.isHomepage() : false) %}
+{% set thisPage = (entry is defined ? craft.entries.section('navigation').slug(entry.slug).first() : false) %}
 
-{% include '_partials/structure/header' %}
-{% include '_partials/header' %}
+{% if not craft.request.isAjax %}
 
-<main>
-	{% block content %}
-	{% endblock %}
-</main>
+	{% include '_partials/structure/header' %}
+	{% include '_partials/header' %}
 
-{% include '_partials/footer' %}
-{% include '_partials/structure/footer' %}
+    <section class="page-wrapper js-page-wrapper">
+	       <main>
+
+{% endif %}
+
+{% block content %}
+{% endblock %}
+
+{% if not craft.request.isAjax %}
+
+        	</main>
+		{% include '_partials/footer' %}
+		{% include '_partials/structure/footer' %}
+    </section>
+
+{% endif %}
