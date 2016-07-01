@@ -1,6 +1,14 @@
 {% import '_core/_macros/general' as core %}
 {% import '_macros/general' as macros %}
 
+{% set defaultBreakpoints = {
+	"bear" : "1041px",
+	"wolf" : "801px",
+	"fox" : "601px",
+	"rabbit" : "481px",
+	"mouse" : 0
+} %}
+
 {% set isHomepage = (entry is defined ? entry.section.isHomepage() : false) %}
 
 {% include '_partials/header' %}

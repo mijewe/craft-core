@@ -4,16 +4,18 @@
 {% set image = image ?? null %}
 {% set type = type ?? null %}
 
+{% set breakpoints = breakpoints ?? defaultBreakpoints %}
+
 {% if image and type %}
 	<picture class="image-container{% if type == 'fixed' %} image-container--fixed-height{% elseif type == 'fluid' %} image-container--fluid-height{% elseif type == 'centred' %} image-container--centred{% endif %}">
 		<!--[if IE 9]><video style="display: none;"><![endif]-->
-		<source {{ srcAttr }}="{{ transforms.getTransform(image, baseTransform, 'bear') }}" media="(min-width: 1041px)">
-		<source {{ srcAttr }}="{{ transforms.getTransform(image, baseTransform, 'wolf') }}" media="(min-width: 801px)">
-		<source {{ srcAttr }}="{{ transforms.getTransform(image, baseTransform, 'fox') }}" media="(min-width: 601px)">
-		<source {{ srcAttr }}="{{ transforms.getTransform(image, baseTransform, 'rabbit') }}" media="(min-width: 481px)">
-		<source {{ srcAttr }}="{{ transforms.getTransform(image, baseTransform, 'mouse') }}">
+
+		{% for key,value in breakpoints %}
+			<source {{ srcAttr }}="{{ core.getTransform(image, baseTransform, key) }}" media="(min-width: {{ value }})">
+		{% endfor %}
+
 		<!--[if IE 9]></video><![endif]-->
-		<img {{ srcAttr }}="{{ transforms.getTransform(image, baseTransform, 'mouse') }}" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="{{ alt }}" class="image__image{% if lazyLoad %} js-lazyLoad{% endif %}">
+		<img {{ srcAttr }}="{{ core.getTransform(image, baseTransform, 'mouse') }}" src="" alt="{{ alt }}" class="image__image{% if lazyLoad %} js-lazyLoad{% endif %}">
 	</picture>
 	{% if lazyLoad %}<span class="visuallyhidden" href="{{ image.getUrl() }}"></span>{% endif %}
 {% endif %}

@@ -4,9 +4,22 @@
 
 		<p>This is the custom index, not the core index. That's good, because why would you ever want to use the core index? It's your homepage!</p>
 		<p>It extends the custom layout, but by default that extends the Core layout, so this is probably the Core layout you're inside.</p>
+
+
 		<h2>Core Layout</h2>
+
 		<h3>Macros</h3>
 		<p>The Core layout imports core and custom macros, so you can call <code>core.formatDate()</code> and get <strong>{{ core.formatDate() }}</strong>, and you can call <code>macros.getTheme()</code> and get <strong>{{ macros.getTheme() }}</strong>.</p>
+
+
+		<h2>Pictures</h2>
+		{% set image = entry.leadImage.first() %}
+
+		{% include '_partials/picture' with {
+			'image' : image,
+			'baseTransform' : 'example',
+			'type' : 'fluid'
+		} %}
 
 	{% endblock %}
 
