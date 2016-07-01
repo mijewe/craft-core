@@ -12,9 +12,9 @@
 			{% include '_partials/snippets/loadcss.js' %}
 			{% include '_partials/snippets/onloadcss.js' %}
 
-			// loadCSS("/assets/css/icons.css");
-			// var fontStyles = loadCSS("/assets/css/fonts.css");
-			var mainStyles = loadCSS("/assets/css/main.css");
+			{% for stylevar,stylepath in stylesheets %}
+				var {{ stylevar }} = loadCSS("{{ stylepath }}");
+			{% endfor %}
 
 			onloadCSS(mainStyles, function() {
 
@@ -33,21 +33,19 @@
 				}, 100);
 			});
 
-			{#
 			// load in the fonts once fonts.css is in.
 			onloadCSS(fontStyles, function() {
 
-				var observer1 = new FontFaceObserver("font-one");
-				var observer2 = new FontFaceObserver("font-two");
-				var observer3 = new FontFaceObserver("font-three");
-				var observer4 = new FontFaceObserver("font-four");
+				{% for font in fonts %}
+					var observer{{ loop.index }} = new FontFaceObserver("{{ font }}");
+				{% endfor %}
 
-				Promise.all([observer1.check(), observer2.check(), observer3.check(), observer4.check()]).then(function () {
+				Promise.all([{% for i in 1..fonts|length %}observer{{ i }}.check(){% if not loop.last %}, {% endif %}{% endfor %}]).then(function () {
 					document.documentElement.className = document.documentElement.className.replace( /(?:^|\s)no-webfonts(?!\S)/g , '' );
 					document.documentElement.className += " webfonts-loaded";
 				});
+
 			});
-			#}
 		</script>
 
 		{#
