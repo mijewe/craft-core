@@ -11,40 +11,9 @@
  *	[June 2016]
  *
  */
-
-/*
- *	3rd party libraries, etc.
- */
-@import "../../../bower_components/normalize-scss/_normalize.scss";
-@import "../../../bower_components/susy/sass/susy";
-
-// 3rd party library config
-@import 'lib-config';
-
-/*
- *	Base
- *	variables, fonts, mixins, helpers... common styles used across the entire site
- */
+@import '_core/core';
 @import 'base/__base';
-
-
-/*
- *	Components
- *	reusable/framework components
- */
 @import 'components/__components';
-
-
-/*
- *	Specifics
- *	more specific declarations, may be built on a per page basis
- */
 @import 'specifics/__specifics';
-
-/*
- *	The nasty stuff
- *	This should only exist for a short while
- */
 @import 'inbox';
 @import 'hacks';
-@import 'debug';

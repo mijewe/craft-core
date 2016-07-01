@@ -6,7 +6,15 @@
 Structure
 */
 $width-page: 1440px;
-$magic-number: 50px;
+$magic-number: 40px;
+
+
+
+
+
+
+
+
 
 /*
 Breakpoints
@@ -16,6 +24,14 @@ $breakpoint-wolf: 1040px;
 $breakpoint-fox: 800px;
 $breakpoint-rabbit: 600px;
 $breakpoint-mouse: 480px;
+
+
+
+
+
+
+
+
 
 /*
 Susy Configs
@@ -44,12 +60,28 @@ $susy-mouse: (
     gutters: 45/195
 );
 
+
+
+
+
+
+
+
+
 /*
 Fonts.
 Here's where you declare font families, weights etc.
 */
 $font-sans: sans-serif;
 $font-serif: serif;
+
+
+
+
+
+
+
+
 
 /*
 Colours.
@@ -58,10 +90,26 @@ the Colours In Context variables; they shouldn't be used to colour elements them
 */
 $color-black: #000;
 
+
+
+
+
+
+
+
+
 /*
 Colours in context
 */
 $color-text-dark: $color-black;
+
+
+
+
+
+
+
+
 
 /*
 Misc

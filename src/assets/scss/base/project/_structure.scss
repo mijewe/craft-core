@@ -2,14 +2,6 @@
 	Structure
 */
 
-html {
-	box-sizing: border-box;
-}
-*, *:before, *:after {
-	box-sizing: inherit;
-}
-
 .container {
 	@include container($width-page);
-	position: relative;
 }

@@ -8,44 +8,42 @@
 
 /*
 An object of type properties, for use with the type() mixin.
-Note the use of variables eg $font-sans; these are defined in _variables.scss
-*/
+Here you can define a key for each font style, and a map of css properties such
+as letter-spacing. Remember to define these in relative units so they scale with
+the font size.
+
+eg.
 $type-styles: (
     serif: (
         font-family: $font-serif,
-        letter-spacing: 0.0095em,
-        line-height: 1.55
-    ),
-    sans: (
-        font-family: $font-sans,
-        letter-spacing: 0.024em,
+        letter-spacing: 0.07em,
         line-height: 1.5
-    ),
-    serifUppercase: (
-        font-family: $font-serif,
-        text-transform: uppercase,
-        letter-spacing: 0.175em,
-        line-height: 1.3
-    ),
-    sansUppercase: (
-        font-family: $font-sans,
-        text-transform: uppercase,
-        letter-spacing: 0.19em,
-        line-height: 1
     )
 );
+*/
+$type-styles: ();
 
 /*
 An object of fallback type styles, for use with the type() mixin.
 Here you can define different properies like letter-spacing to have the fallback
 fonts look as similar to the real fonts as possible, to avoid a massive reflow
-when the fonts are loaded.
+when the real fonts are loaded.
+
+eg.
+$fallback-type-styles: (
+    serif: (
+        letter-spacing: -0.03em
+    )
+);
 */
 $fallback-type-styles: ();
 
 /*
 An object of type sizes, for use with the type() mixin.
-*/
+Here you can define a key for each size, and an array of sizes according to how
+they change at each breakpoint.
+
+eg.
 $type-sizes: (
     redwood: (36, 36, 32, 32, 32),
     scotspine: (32, 32, 28, 28, 28),
@@ -55,6 +53,8 @@ $type-sizes: (
     bonzai: (16, 16, 16, 16, 16),
     seedling: (12, 12, 12, 12, 12)
 );
+*/
+$type-sizes: ();
 
 
 
@@ -70,7 +70,6 @@ h1, h2, h3 {
 }
 
 body {
-    @extend %type-body;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -82,106 +81,3 @@ a {
 li {
     margin-bottom: 0.7em;
 }
-
-
-
-
-
-
-
-
-
-/*
-Dead Basic Font Styles.
-This is where abstracted font declarations are defined. Here you can set
-type attributes like letter-spacing and line-height, so whenever these styles
-are extended, they've all got consistent properties.
-*/
-%type-serif {
-    @include type(serif);
-}
-
-%type-sans {
-    @include type(sans);
-}
-
-%type-serifUppercase {
-    @include type(serifUppercase);
-}
-
-%type-sansUppercase {
-    @include type(sansUppercase);
-}
-
-
-
-
-
-
-
-
-
-/*
-Type Sizes.
-You might be lucky enough for the designer to have chosen consistenly responsive
-font sizes. If so, you can define them here and extend from them.
-
-Redwood, Scotspine, Smallpine, Oak, Cactus, Bonzai, Seedling.
-*/
-%type-size-redwood {
-    @include type(none, redwood);
-}
-
-%type-size-scotspine {
-    @include type(none, scotspine);
-}
-
-%type-size-smallpine {
-    @include type(none, smallpine);
-}
-
-%type-size-oak {
-    @include type(none, oak);
-}
-
-%type-size-cactus {
-    @include type(none, cactus);
-}
-
-%type-size-bonzai {
-    @include type(none, bonzai);
-}
-
-%type-size-seedling {
-    @include type(none, seedling);
-}
-
-
-
-
-
-
-
-
-
-/*
-Common Type Styles.
-Styles that are fairly generic and used widely throughout the site.
-*/
-%type-body {
-    @extend %type-sans;
-    // @extend %type-size-bonzai;
-}
-
-
-
-
-
-
-
-
-
-/*
-Non-abstrated misc type styles.
-Sometimes styles just don't seem to fit anywhere else.
-*/
