@@ -7,6 +7,18 @@ Craft Core is a sort of boilerplate for new Craft projects. Unlike the old Craft
 ## What's in the box?
 
 ## Getting Started
+
+### Things you need to have.
+This Core uses NPM, Bower, Grunt, and SASS. So make sure you have them
+```
+brew install node
+npm install -g bower
+npm install -g grunt-cli
+sudo gem install sass
+```
+
+### Using this Core
+
 To create a new Craft project based on this Core, create your repo and add Craft Core as a remote,
 ```
 git remote add core https://github.com/mijewe/craft-core.git
