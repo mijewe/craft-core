@@ -1,0 +1,58 @@
+{% set pages = craft.entries.section('navigation').level(1) %}
+{% if pages is not empty %}
+    <input type="checkbox" id="nav-trigger" class="nav-trigger navigation__open">
+    <label class="navigation__trigger" for="nav-trigger"><span class="navigation__trigger-icon icon icon--menu"><span class="visuallyhidden">Menu</span></span></label>
+    <div class="container navigation-container">
+        <nav class="navigation container js-nav">
+
+            <a href="{{ siteUrl }}" class="navigation__logo nav-logo inline-svg js-nav-logo{% if isHomepage %} nav-logo--hide{% endif %}">{% include '_partials/inline/svg/mono-logo.svg' %}</a>
+
+            <ul class="navigation__list list js-nav-inner">
+
+                {% for page in pages %}
+                    {% set pageTitle = page.title %}
+                    {% set pageUrl = page.page.first().getUrl() %}
+                    {% set pageSlug = page.page.first().uri|trim('__') %}
+                    {% set subpages = page.getChildren() %}
+
+                    {% set isActive = false %}
+
+                    {% if (entry is defined) and (thispage is defined) and (thispage is not null) %}
+
+                        {% if (entry.slug == pageSlug) or ((thispage.parent) and (thispage.parent.slug == pageSlug)) %}
+                            {% set isActive = true %}
+                        {% endif %}
+                    {% endif %}
+
+                    <li class="navigation__item navigation__item--{{ pageSlug }}{% if isActive %} navigation__item--active{% endif %}{% if subpages is not empty %} navigation__item--has-children{% endif %} navigation-item">
+                        <a class="navigation-item__link" href="{{ pageUrl }}"><span class="navigation__text">{{ pageTitle }}</span></a>
+
+                        {% if subpages is not empty %}
+                            <ul class="navigation__sublist list">
+                                {% for subpage in subpages %}
+                                    {% set pageTitle = subpage.title %}
+                                    {% set pageUrl = subpage.page.first().getUrl() %}
+                                    {% set pageSlug = subpage.page.first().slug %}
+
+                                    <li class="navigation__subitem{% if (entry is defined) and (entry.slug == pageSlug) %} navigation__subitem--active{% endif %} navigation-subitem"><a class="navigation-subitem__link" href="{{ pageUrl }}">{{ pageTitle }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </li>
+
+                {% endfor %}
+            </ul>
+
+            <div class="navigation__search search search--is-closed js-search">
+                <span class="search__trigger">
+                    <span class="search__icon icon icon--search--white js-search-trigger"></span>
+                </span>
+                <form method="get" action="/search" class="js-submit-trigger">
+                    <input class="search__input js-search-input" placeholder="Search {{ siteName }}..." type="search" value="" name="search" id="search" />
+                    <label for="search" class="visuallyhidden">Search</label>
+                    <input class="search__submit" type="submit" value="" />
+                </form>
+            </div>
+        </nav>
+    </div>
+{% endif %}

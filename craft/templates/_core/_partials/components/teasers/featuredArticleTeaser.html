@@ -1,0 +1,26 @@
+{% set image = article.leadImage is not empty ? article.leadImage.first() : false %}
+
+<div class="page__section page__section--full">
+	<a class="featured-article-teaser{% if theme %} theme--{{ macros.getTheme(theme) }}{% endif %}" href="{{ article.getUrl() }}">
+
+		{% if image %}
+			<div class="featured-article-teaser__background">
+				{% include '_partials/picture' with {
+					'fixedHeight' : true,
+					'image' : image,
+					'baseTransform' : 'pageLeadFull'
+				} %}
+			</div>
+		{% endif %}
+
+		<div class="featured-article-teaser__body">
+			<div class="featured-article-teaser__body-inner">
+				<span class="teaser__date">{{ macros.formatDate(article.postDate) }}</span>
+				<{{ headingSize }} class="teaser__title">{{ article.title }}</{{ headingSize }}>
+				<span class="teaser__summary">{{ article.teaserStatement }}</span>
+			</div>
+			<span class="featured-article-teaser__link-icon icon icon--link--black link-out-icon">{% include '_partials/inline/svg/link.svg' %}</span>
+		</div>
+
+	</a>
+</div>

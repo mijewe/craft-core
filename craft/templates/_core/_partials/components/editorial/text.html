@@ -1,0 +1,9 @@
+{% set text = text ?? null %}
+
+{% if text %}
+	<div class="page__section page__section--body">
+		<div class="editorial__copy wysiwyg-content">
+			{{ text|raw|typogrify }}
+		</div>
+	</div>
+{% endif %}

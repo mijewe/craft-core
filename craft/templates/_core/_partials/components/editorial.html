@@ -1,0 +1,21 @@
+{% for block in editorialContent %}
+
+	{% if block.type == 'heading' %}
+		{% include '_partials/editorial/heading' %}
+	{% elseif block.type == 'text' %}
+		{% include '_partials/editorial/text' %}
+	{% elseif block.type == 'statement' %}
+		{% include '_partials/editorial/statement' %}
+	{% elseif block.type == 'quote' %}
+		{% include '_partials/editorial/quote' %}
+	{% elseif block.type == 'image' %}
+		{% include '_partials/editorial/image' %}
+	{% elseif block.type == 'video' %}
+		{% include '_partials/editorial/video' %}
+	{% elseif block.type == 'partial' %}
+		{% include '_partials/specifics/' ~ block.partialName ignore missing with {
+			'midEditorial' : true
+		} %}
+	{% endif %}
+
+{% endfor %}

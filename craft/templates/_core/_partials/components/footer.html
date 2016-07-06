@@ -1,0 +1,41 @@
+		<div class="container">
+			<footer class="page__section page__section--full footer">
+				<h2 class="visuallyhidden">Footer</h2>
+				<div class="footer__main">
+
+					{% for list in footer.footerContent %}
+						<div class="footer__section">
+							<h3 class="footer__title">{{ list.listTitle }}</h3>
+							<ul class="footer__list list">
+								{% for item in list.pages %}
+									<li class="footer__item"><a class="footer__link" href="{{ item.getUrl() }}">{{ item.title }}</a></li>
+								{% endfor %}
+							</ul>
+						</div>
+					{% endfor %}
+
+					<div class="footer__section">
+						<h3 class="footer__title">{{ "Contact"|t }}</h3>
+						<address class="footer__item address">{{ contact.companyAddress|raw|nl2br }}</address>
+						{% if contact.companyPhone %}<a class="footer__item footer__link" href="tel:{{ contact.companyPhone|replace(' ', '') }}"><span class="visuallyhidden">Phone </span>{{ contact.companyPhone }}</a>{% endif %}
+						{% if contact.companyEmail %}<a class="footer__item footer__link" href="mailto:{{ contact.companyEmail }}">{{ contact.companyEmail|emailwrap|raw }}</a>{% endif %}
+					</div>
+
+				</div>
+
+				<div class="footer__branding">
+					<div class="footer__shape">{% include '_partials/inline/svg/shapes/footer-shape.svg' %}</div>
+					<div class="footer__logo">
+						{% set footerImage = footer.footerLogo.first() %}
+						{% if footerImage %}
+							{% include '_partials/picture' with {
+								'image' : footerImage,
+								'baseTransform' : 'footerLogo',
+								'fixedHeight' : false
+							} %}
+						{% endif %}
+					</div>
+				</div>
+
+			</footer>
+		</div>

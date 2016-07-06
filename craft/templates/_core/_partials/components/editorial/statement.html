@@ -1,0 +1,4 @@
+{% include '_partials/editorial/statements/' ~ (image ? 'withimage' : 'noimage') with {
+	'statement' : statement,
+	'image' : image
+} %}

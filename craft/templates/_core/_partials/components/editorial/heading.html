@@ -1,0 +1,14 @@
+{% set heading = heading ?? null %}
+{% set lede = lede ?? null %}
+
+{% if heading %}
+	<div class="page__section page__section--body">
+		<h2 class="editorial__section-title" id="{{ heading|anchor }}">{{ heading }}</h2>
+	</div>
+
+	{% if lede %}
+		<div class="page__section page__section--body">
+			<div class="editorial__lede">{{ lede }}</div>
+		</div>
+	{% endif %}
+{% endif %}

@@ -1,0 +1,30 @@
+<a href="{{ siteUrl }}{{ product.linkPath }}" class="teaser product-teaser theme--{{ macros.getTheme('dark') }}">
+
+	{% set image = product.productImage.first() %}
+
+	{% if image %}
+		<div class="teaser__background product-teaser__background">
+			{% include '_partials/picture' with {
+				'fixedHeight' : true,
+				'image' : image,
+				'baseTransform' : 'productTeaser'
+			} %}
+		</div>
+	{% endif %}
+
+	<div class="teaser__body product-teaser__body">
+		<div class="teaser__body-inner product-teaser__body-inner">
+			<div class="product-teaser__graphic">
+				{% include '_partials/picture' with {
+					'image' : product.productGraphic.first(),
+					'fixedHeight' : false,
+					'baseTransform' : 'productGraphic'
+				} %}
+			</div>
+    		<{{ headingSize }} class="teaser__title product-teaser__title">{{ product.productName }}</{{ headingSize }}>
+    		<span class="teaser__summary product-teaser__summary">{{ product.productDescription }}</span>
+		</div>
+	</div>
+
+	<span class="teaser__link-icon link-out-icon icon icon--link--black inline-svg">{% include '_partials/inline/svg/link.svg' %}</span>
+</a>

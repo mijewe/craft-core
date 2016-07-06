@@ -1,0 +1,6 @@
+<a href="{{ url }}" class="micro-teaser">
+	{% if date is defined %}<span class="micro-teaser__date teaser__date">{% if date != '' %}{{ macros.formatDate(date) }}{% endif %}</span>{% endif %}
+	{% if title is defined %}<span class="micro-teaser__title teaser__title">{{ title }}</span>{% endif %}
+	{% if summary is defined %}<span class="micro-teaser__summary teaser__summary">{{ summary }}</span>{% endif %}
+	{% if icon is defined %}<span class="micro-teaser__icon icon icon--{{ icon }}--white"></span>{% endif %}
+</a>

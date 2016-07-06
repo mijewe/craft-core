@@ -1,0 +1,17 @@
+{% set image = image ?? null %}
+{% set caption = caption ?? null %}
+
+{% if image %}
+	<div class="page__section page__section--full image">
+		<div class="editorial__image editorial__image--full">
+			{% include '_partials/picture' with {
+				'image' : image,
+				'baseTransform' : 'editorialFull',
+				'type' : fluid
+			} %}
+			{% include '_partials/components/editorial/image/caption' with {
+				'caption' : caption
+			} %}
+		</div>
+	</div>
+{% endif %}

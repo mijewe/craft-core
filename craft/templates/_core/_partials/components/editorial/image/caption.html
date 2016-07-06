@@ -1,0 +1,10 @@
+{% set caption = caption ?? null %}
+
+{% if caption %}
+	<div class="image__description-area">
+		<span class="image__description image-description">
+			<span class="image-description__icon icon icon--photo--black"></span>
+			<span class="image-description__text wysiwyg-content">{{ block.imageCaption|raw|nl2br }}</span>
+		</span>
+	</div>
+{% endif %}

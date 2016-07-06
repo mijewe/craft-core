@@ -1,0 +1,11 @@
+{% set statement = statement ?? null %}
+
+{% if statement %}
+	<div class="page__section page__section--full island raised">
+		<div class="editorial__statement statement statement--no-image">
+			<div class="statement__copy-area">
+				<span class="statement__copy">{{ statement.text }}</span>
+			</div>
+		</div>
+	</div>
+{% endif %}

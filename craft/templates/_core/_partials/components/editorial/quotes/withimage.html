@@ -1,0 +1,23 @@
+{% set quote = quote ?? null %}
+{% set image = image ?? null %}
+{% set citation = citation ?? null %}
+
+{% if quote and image %}
+	<div class="page__section page__section--body">
+		<div class="block-quote block-quote--has-image">
+			<div class="block-quote__image-area">
+				{% include '_partials/picture' with {
+					'image' : image ?? null,
+					'baseTransform' : 'quoteImage',
+					'type' : 'fixed'
+				} %}
+			</div>
+			<div class="block-quote__copy-area">
+				<div class="block-quote__copy">
+					<quote class="block-quote__quote"><span class="quote__open-quote">"</span>{{ quote|trim|typogrify }}"</quote>
+					{% if citation %}<span class="block-quote__cite wysiwyg-content wysiwyg-content--cite">{{ citation|raw|nl2br }}</span>{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endif %}

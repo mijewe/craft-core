@@ -1,0 +1,34 @@
+<form method="post" action="" accept-charset="UTF-8" class="js-contact-form">
+	{{ getCsrfInput() }}
+	<input type="hidden" name="action" value="contactForm/sendMessage">
+
+	<div class="field">
+		<label class="field__label" for="fromName">{{ "Name"|t }}</label>
+		<input class="field__input" id="fromName" type="text" name="fromName" value="" required>
+	</div>
+
+	<div class="field">
+		<label class="field__label" for="fromEmail">{{ "Email"|t }}</label>
+		<input class="field__input js-form-fromEmail" id="fromEmail" type="email" name="fromEmail" value="" required>
+	</div>
+
+	{# honeypot field #}
+	<div class="field field--subject">
+		<label class="field__label" for="subject">{{ "Subject"|t }}</label>
+		<input class="field__input" id="subject" type="text" name="subject" value="" tabindex="-1">
+	</div>
+	{# END honeypot field #}
+
+	<div class="field">
+		<label class="field__label" for="message">{{ "Message"|t }}</label>
+		<textarea class="field__input js-form-message" id="message" name="message" rows="10" required></textarea>
+	</div>
+
+	<div class="field field--button">
+		<input class="field__input field__button" type="submit" value="{{ "Send"|t }}">
+	</div>
+</form>
+
+<div class="contact-form__feedback-box js-form-success">
+	<span class="contact-form__feedback">{{ globals.formSuccessMessage }}</span>
+</div>

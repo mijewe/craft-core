@@ -1,0 +1,20 @@
+{% set headingSize = headingSize ?? 'h2' %}
+
+<div class="person-teaser-container">
+	<a class="teaser person-teaser" href="{{ person.getUrl() }}">
+
+		<div class="person-teaser__photo">
+			{% include '_partials/picture' with {
+				'image' : person.photo[0] ?? false,
+				'baseTransform' : 'personTeaser',
+				'fixedHeight' : false
+			} %}
+		</div>
+
+		<div class="person-teaser__body">
+			<{{ headingSize }} class="teaser__title person-teaser__name">{{ person.title }}</{{ headingSize }}>
+			<span class="person-teaser__role">{{ person.jobTitle }}</span>
+		</div>
+
+	</a>
+</div>

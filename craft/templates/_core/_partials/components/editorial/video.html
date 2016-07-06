@@ -1,0 +1,39 @@
+{% if (block['quote'] is defined) and (block['quote'] != '') %}
+
+	<div class="page__section page__section--block">
+		<div class="media-block video-block">
+			<div class="media-block__copy-area video-block__copy-area">
+				<div class="media-block__copy video-block__copy">
+					<quote class="block-quote__quote">{{ block.quote }}</quote>
+					<span class="block-quote__cite">{{ block.citation|raw|nl2br }}</span>
+				</div>
+			</div>
+
+			<div class="media-block__media-area">
+				{% include '_partials/editorial/subsections/video' with {
+					'videoHost' : block.videoHost,
+					'videoId' : block.videoId,
+					'videoPoster' : block.videoPoster.first(),
+					'videoTitle' : block.videoTitle,
+					'baseTransform' : 'editorialHalf'
+				} %}
+			</div>
+
+		</div>
+	</div>
+
+{% else %}
+
+	<div class="page__section page__section--body">
+		<div class="editorial__video-block video-block video-block--inline">
+			{% include '_partials/editorial/subsections/video' with {
+				'videoHost' : block.videoHost,
+				'videoId' : block.videoId,
+				'videoPoster' : block.videoPoster.first(),
+				'videoTitle' : block.videoTitle,
+				'baseTransform' : 'editorialMid'
+			} %}
+		</div>
+	</div>
+
+{% endif %}

@@ -1,0 +1,19 @@
+{% set statement = statement ?? null %}
+{% set image = image ?? null %}
+
+{% if statement and image %}
+	<div class="page__section page__section--body">
+		<div class="editorial__statement statement statement--has-image">
+			<div class="statement__image-area">
+				{% include '_partials/picture' with {
+					'image' : image,
+					'baseTransform' : 'statementImage',
+					'type' : 'fixed'
+				} %}
+			</div>
+			<div class="statement__copy-area">
+				<span class="statement__copy">{{ statement }}</span>
+			</div>
+		</div>
+	</div>
+{% endif %}

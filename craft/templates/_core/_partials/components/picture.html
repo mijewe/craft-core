@@ -1,0 +1,21 @@
+{% set lazyLoad = lazyLoad ?? true %}
+{% set srcAttr = lazyLoad ? 'data-srcset' : 'srcset' %}
+{% set alt = alt ?? image.title ?? '' %}
+{% set image = image ?? null %}
+{% set type = type ?? null %}
+
+{% set breakpoints = breakpoints ?? defaultBreakpoints %}
+
+{% if image and type %}
+	<picture class="image-container{% if type == 'fixed' %} image-container--fixed-height{% elseif type == 'fluid' %} image-container--fluid-height{% elseif type == 'centred' %} image-container--centred{% endif %}">
+		<!--[if IE 9]><video style="display: none;"><![endif]-->
+
+		{% for key,value in breakpoints %}
+			<source {{ srcAttr }}="{{ core.getTransform(image, baseTransform, key) }}" media="(min-width: {{ value }})">
+		{% endfor %}
+
+		<!--[if IE 9]></video><![endif]-->
+		<img {{ srcAttr }}="{{ core.getTransform(image, baseTransform, 'mouse') }}" src="" alt="{{ alt }}" class="image__image{% if lazyLoad %} js-lazyLoad{% endif %}">
+	</picture>
+	{% if lazyLoad %}<span class="visuallyhidden" href="{{ image.getUrl() }}"></span>{% endif %}
+{% endif %}

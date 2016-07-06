@@ -1,0 +1,28 @@
+{% if infoSide is not defined %}
+	{% set infoSide = 'left' %}
+{% endif %}
+
+<div class="block {{ teaserSize }}-block teaser--{{ teaserType }}{% if theme %} theme--{{ macros.getTheme(theme) }}{% endif %}">
+	<a href="{{ article.getUrl() }}" class="teaser teaser--{% if showImage and image %}has-image{% else %}no-image{% endif %}{% if infoSide %} teaser--info-on-{{ infoSide }}{% endif %}">
+
+		{% if (showImage and image) %}
+			<div class="teaser__background">
+				{% include '_partials/picture' with {
+					'fixedHeight' : true,
+					'image' : image,
+					'baseTransform' : (teaserSize == 'full' ? 'articleTeaserFull' : 'articleTeaserHalf')
+				} %}
+			</div>
+		{% endif %}
+
+		<div class="teaser__body">
+			<div class="teaser__body-inner">
+				{% if showDate %}<span class="teaser__date">{{ macros.formatDate(article.postDate) }}</span>{% endif %}
+	    		<{{ headingSize }} class="teaser__title">{{ article.title }}</{{ headingSize }}>
+	    		<span class="teaser__summary">{{ article.teaserStatement }}</span>
+			</div>
+		</div>
+
+		<span class="teaser__link-icon link-out-icon icon icon--link--black">{% include '_partials/inline/svg/link.svg' %}</span>
+	</a>
+</div>

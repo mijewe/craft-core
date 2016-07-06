@@ -1,0 +1,84 @@
+{% extends "_layouts/default" %}
+
+{% set query = craft.request.getParam('search') %}
+
+{% set alternativeTracking %}ga('send', 'pageview', '/search/?search=' + query);{% endset %}
+
+{% block content %}
+
+	<div class="container">
+
+		{% include '_partials/pageHeader' with {
+			'title' : "Search results for '" ~ query ~ "'",
+			'pageLede' : false
+		} %}
+
+		{% if query %}
+
+			{% set newsSearch = craft.entries.section("articles").search(query) %}
+			{% if newsSearch is not empty %}
+
+				<div class="page__section page__section--body">
+					<h2 class="editorial__section-title search-results__title">{{ newsSearch|length }} articles found</h2>
+				</div>
+				<div class="page__section page__section--body">
+					{% for result in newsSearch %}
+						<div class="search-result">
+							{% include '_partials/teasers/microTeaser' with {
+								'url' : result.url,
+								'date' : result.postDate,
+								'title' : result.title,
+								'summary' : result.teaserStatement,
+								'icon' : 'link'
+							} %}
+						</div>
+					{% endfor %}
+				</div>
+			{% endif %}
+
+			{% set jobsSearch = craft.entries.section("jobs").search(query) %}
+			{% if jobsSearch is not empty %}
+
+				<div class="page__section page__section--body">
+					<h2 class="editorial__section-title search-results__title">{{ jobsSearch|length }} careers found</h2>
+				</div>
+				<div class="page__section page__section--body">
+					{% for result in jobsSearch %}
+						<div class="search-result">
+							{% include '_partials/teasers/microTeaser' with {
+								'url' : result.url,
+								'date' : result.postDate,
+								'title' : result.title,
+								'summary' : result.teaserStatement,
+								'icon' : 'link'
+							} %}
+						</div>
+					{% endfor %}
+				</div>
+			{% endif %}
+
+			{% set peopleSearch = craft.entries.section("people").search(query) %}
+			{% if peopleSearch is not empty %}
+
+				<div class="page__section page__section--body">
+					<h2 class="editorial__section-title search-results__title">{{ peopleSearch|length }} people found</h2>
+				</div>
+				<div class="page__section page__section--body">
+					{% for result in peopleSearch %}
+						<div class="search-result">
+							{% include '_partials/teasers/microTeaser' with {
+								'url' : result.url,
+								'title' : result.title,
+								'summary' : result.jobTitle,
+								'icon' : 'link'
+							} %}
+						</div>
+					{% endfor %}
+				</div>
+			{% endif %}
+		{% endif %}
+
+	</div>
+
+
+{% endblock %}

@@ -1,0 +1,22 @@
+<div class="inline-video video js-video" data-host="{% if videoHost == 'youtube' %}youtube{% elseif videoHost == 'vimeo' %}vimeo{% endif %}">
+	{% if videoHost == 'youtube' %}
+		<iframe class="video__screen js-video-iframe" width="100%" height="430" data-src="https://www.youtube.com/embed/{{ videoId }}?autohide=1&modestbranding=1&rel=0&autoplay=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+	{% elseif videoHost == 'vimeo' %}
+		<iframe class="video__screen js-video-iframe" width="100%" height="430" data-src="https://player.vimeo.com/video/{{ videoId }}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+	{% endif %}
+
+	<a href="#" class="video__poster js-video-play">
+		{% set image = videoPoster %}
+		{% if image %}
+			{% include '_partials/picture' with {
+				'image' : image,
+				'baseTransform' : baseTransform,
+				'fixedHeight' : true
+			} %}
+		{% endif %}
+		<span class="video__play-button icon icon--play-button"><span class="visuallyhidden">Play the video "{{ videoTitle }}"</span></span>
+	</a>
+
+	<span class="video__title image__description">{{ videoTitle }}</span>
+
+</div>

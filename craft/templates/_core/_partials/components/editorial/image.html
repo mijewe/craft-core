@@ -1,0 +1,10 @@
+{% set image = image ?? null %}
+{% set inline = inline ?? true %}
+{% set caption = caption ?? null %}
+
+{% if image %}
+	{% include '_partials/editorial/image/' ~ (inline ? 'inline' : 'full') with {
+		'image' : image,
+		'caption' : caption
+	} %}
+{% endif %}

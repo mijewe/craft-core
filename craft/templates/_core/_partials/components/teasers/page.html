@@ -1,0 +1,28 @@
+{% set image = (page.leadImage is not empty ? page.leadImage.first() : false) %}
+
+<div class="page__section page__section--full page__section-title-area">
+	<h2 class="page__section-title">{{ page.title }}</h2>
+</div>
+<a class="page__section page__section--full teaser--horizontal" href="{{ page.getUrl() }}">
+	<div class="teaser page-teaser no-cement teaser--info-on-left teaser--has-image">
+
+		{% if image %}
+			<div class="teaser__background page-teaser__background block">
+				{% include '_partials/picture' with {
+					'fixedHeight' : true,
+					'image' : image,
+					'baseTransform' : 'articleTeaserFull'
+				} %}
+			</div>
+		{% endif %}
+
+		<div class="teaser__body page-teaser__body">
+			<div class="teaser__body-inner page-teaser__body-inner">
+				<{{ headingSize }} class="teaser__title page-teaser__title">{{ page.title }}</{{ headingSize }}>
+				<span class="teaser__summary">{{ page.teaserStatement }}</span>
+			</div>
+			<span class="page-teaser__link-icon link-out-icon icon icon--link--black"></span>
+		</div>
+
+	</div>
+</a>

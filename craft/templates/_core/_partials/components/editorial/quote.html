@@ -1,0 +1,9 @@
+{% set quote = quote ?? null %}
+{% set image = image ?? null %}
+{% set citation = citation ?? null %}
+
+{% include '_partials/editorial/quotes/' ~ (image ? 'withimage' : 'noimage') with {
+	'quote' : quote,
+	'citation' : citation,
+	'image' : image
+} %}

@@ -1,0 +1,11 @@
+{% extends "_layouts/default" %}
+
+{% block content %}
+    <div class="container">
+
+        {% include '_partials/components/editorial' with {
+            'editorialContent' : entry.editorialContent
+        } %}
+
+    </div>
+{% endblock %}

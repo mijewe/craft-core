@@ -1,0 +1,13 @@
+{% set quote = quote ?? null %}
+{% set citation = citation ?? null %}
+
+{% if quote %}
+	<div class="page__section page__section--body">
+		<div class="editorial__block-quote block-quote block-quote--no-image">
+			<div class="block-quote__inner">
+				<quote class="block-quote__quote">"{{ quote|trim|typogrify }}"</quote>
+				{% if citation %}<span class="block-quote__cite wysiwyg-content wysiwyg-content--cite">{{ citation|raw|nl2br }}</span>{% endif %}
+			</div>
+		</div>
+	</div>
+{% endif %}
