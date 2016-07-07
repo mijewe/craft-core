@@ -6,32 +6,67 @@
 Type.
 Grabs properties from the $map to create type styles and sizes.
 */
-@mixin type($family, $size: none, $style-map: $type-styles, $size-map: $type-sizes, $fallback-map: $fallback-type-styles) {
+@mixin type($family: none, $size: none, $variant: none, $style-map: $type-styles, $size-map: $type-sizes, $fallback-map: $fallback-type-styles) {
 
     // font styles.
-    @if map-has-key($style-map, $family) {
-        $type-style: map-get($style-map, $family);
-
-        @each $key, $value in $type-style {
-            #{$key}: $value
-        }
-    }
+	@include explodeStyles($family, $style-map, $variant);
 
 	// fallback font styles.
-	@if map-has-key($fallback-map, $family) {
-        $type-style: map-get($fallback-map, $family);
-		.no-webfonts & {
-	        @each $key, $value in $type-style {
-	            #{$key}: $value
-	        }
-		}
-    }
+	.no-webfonts & {
+		@include explodeStyles($family, $fallback-map, $variant);
+	}
 
     // sizes.
     @if map-has-key($size-map, $size) {
         $type-size: map-get($size-map, $size);
         @include font-sizes($type-size...);
     }
+}
+
+
+
+
+/*
+Explode Styles.
+A helper for the type() mixin. Explodes out all the styles in the $map, replacing
+anything with overriding styles defined in the _variants key in the $map that match
+$variant.
+*/
+@mixin explodeStyles($key, $map, $variant) {
+
+	$variants-map: ();
+	$variant-map: ();
+
+	@if map-has-key($map, $key) {
+        $these-styles: map-get($map, $key);
+
+		@if map-has-key($these-styles, '_variants') {
+			$variants-map: map-get($these-styles, '_variants');
+
+			@if map-has-key($variants-map, $variant) {
+				$variant-map: map-get($variants-map, $variant);
+			}
+		}
+
+        @each $key, $value in $these-styles {
+			@if ($key != '_variants') {
+
+				@if map-has-key($variant-map, $key) {
+					$value: map-get($variant-map, $key);
+				}
+
+				#{$key}: $value;
+			}
+        }
+
+		@each $key, $value in $variant-map {
+			@if not map-has-key($these-styles, $key) {
+				#{$key}: $value;
+			}
+		}
+
+    }
+
 }
 
 
