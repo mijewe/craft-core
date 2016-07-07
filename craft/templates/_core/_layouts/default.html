@@ -9,6 +9,13 @@
 	"mouse" : 0
 } %}
 
+{% set defaultFontStylesheet = '//fast.fonts.net/cssapi/179e93ca-85f2-4a1c-ae75-9ea81061c629.css' %}
+{% set defaultFonts = ['Beton W01', 'ITC Franklin Gothic W01'] %}
+{% set defaultStylesheets = {
+	'mainStyles' : '/assets/css/main.css',
+	'fontStyles' : defaultFontStylesheet
+} %}
+
 {% set isHomepage = (entry is defined ? entry.section.isHomepage() : false) %}
 {% set thisPage = (entry is defined ? craft.entries.section('navigation').slug(entry.slug).first() : false) %}
 

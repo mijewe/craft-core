@@ -8,6 +8,7 @@
 			{% include '_partials/snippets/loadcss.js' %}
 			{% include '_partials/snippets/onloadcss.js' %}
 
+			{% set stylesheets = stylesheets ?? defaultStylesheets %}
 			{% for stylevar,stylepath in stylesheets %}
 				var {{ stylevar }} = loadCSS("{{ stylepath }}");
 			{% endfor %}
@@ -32,6 +33,7 @@
 			// load in the fonts once fonts.css is in.
 			onloadCSS(fontStyles, function() {
 
+				{% set fonts = fonts ?? defaultFonts %}
 				{% for font in fonts %}
 					var observer{{ loop.index }} = new FontFaceObserver("{{ font }}");
 				{% endfor %}
