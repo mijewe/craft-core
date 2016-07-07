@@ -10,7 +10,8 @@
 An object of type properties, for use with the type() mixin.
 Here you can define a key for each font style, and a map of css properties such
 as letter-spacing. Remember to define these in relative units so they scale with
-the font size.
+the font size. You can also define variations of the font style, like bold,
+which might have different properties.
 
 eg.
 $type-styles: (
@@ -18,6 +19,11 @@ $type-styles: (
         font-family: $font-serif,
         letter-spacing: 0.07em,
         line-height: 1.5
+		_variants: (
+			bold: (
+				letter-spacing: 0.1em
+			)
+		)
     )
 );
 */
@@ -27,12 +33,15 @@ $type-styles: ();
 An object of fallback type styles, for use with the type() mixin.
 Here you can define different properies like letter-spacing to have the fallback
 fonts look as similar to the real fonts as possible, to avoid a massive reflow
-when the real fonts are loaded.
+when the real fonts are loaded. As above, you can define variants here as well.
 
 eg.
 $fallback-type-styles: (
     serif: (
-        letter-spacing: -0.03em
+        letter-spacing: -0.03em,
+		_variants: (
+			letter-spacing: 0
+		)
     )
 );
 */
