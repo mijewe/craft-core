@@ -70,7 +70,7 @@
 				})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
 				ga('create', '{{ craft.config.gaCode }}', 'auto');
-				{% if fourohfour is defined %}{{ fourohfour }}{% else %}ga('send', 'pageview');{% endif %}
+				{% if alternativeTracking is defined %}{{ alternativeTracking }}{% else %}ga('send', 'pageview');{% endif %}
 			</script>
 		{% endif %}
 
