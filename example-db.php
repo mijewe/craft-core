@@ -13,7 +13,7 @@
  	'*' => array(
  		'server' => 'localhost',
  		'user' => 'root',
- 		'password' => 'root',
+ 		'password' => '',
  		'database' => '',
 		'tablePrefix' => 'craft'
  	),
