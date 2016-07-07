@@ -8,10 +8,10 @@
 	<a href="#" class="video__poster js-video-play">
 		{% set image = videoPoster %}
 		{% if image %}
-			{% include '_partials/picture' with {
+			{% include '_partials/components/picture' with {
 				'image' : image,
 				'baseTransform' : baseTransform,
-				'fixedHeight' : true
+				'type' : 'fixed'
 			} %}
 		{% endif %}
 		<span class="video__play-button icon icon--play-button"><span class="visuallyhidden">Play the video "{{ videoTitle }}"</span></span>

@@ -4,8 +4,8 @@
 
 	{% if image %}
 		<div class="teaser__background product-teaser__background">
-			{% include '_partials/picture' with {
-				'fixedHeight' : true,
+			{% include '_partials/components/picture' with {
+				'type' : 'fixed',
 				'image' : image,
 				'baseTransform' : 'productTeaser'
 			} %}
@@ -15,9 +15,9 @@
 	<div class="teaser__body product-teaser__body">
 		<div class="teaser__body-inner product-teaser__body-inner">
 			<div class="product-teaser__graphic">
-				{% include '_partials/picture' with {
+				{% include '_partials/components/picture' with {
 					'image' : product.productGraphic.first(),
-					'fixedHeight' : false,
+					'type' : 'fluid',
 					'baseTransform' : 'productGraphic'
 				} %}
 			</div>

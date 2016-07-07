@@ -4,10 +4,10 @@
 	<a class="teaser person-teaser" href="{{ person.getUrl() }}">
 
 		<div class="person-teaser__photo">
-			{% include '_partials/picture' with {
+			{% include '_partials/components/picture' with {
 				'image' : person.photo[0] ?? false,
 				'baseTransform' : 'personTeaser',
-				'fixedHeight' : false
+				'type' : 'fluid'
 			} %}
 		</div>
 

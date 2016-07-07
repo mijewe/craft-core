@@ -8,8 +8,8 @@
 
 		{% if image %}
 			<div class="teaser__background page-teaser__background block">
-				{% include '_partials/picture' with {
-					'fixedHeight' : true,
+				{% include '_partials/components/picture' with {
+					'type' : 'fixed',
 					'image' : image,
 					'baseTransform' : 'articleTeaserFull'
 				} %}

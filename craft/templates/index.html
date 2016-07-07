@@ -15,7 +15,7 @@
 		<h2>Pictures</h2>
 		{% set image = entry.leadImage.first() %}
 
-		{% include '_partials/picture' with {
+		{% include '_partials/components/picture' with {
 			'image' : image,
 			'baseTransform' : 'example',
 			'type' : 'fluid'

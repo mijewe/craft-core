@@ -5,8 +5,8 @@
 
 		{% if image %}
 			<div class="featured-article-teaser__background">
-				{% include '_partials/picture' with {
-					'fixedHeight' : true,
+				{% include '_partials/components/picture' with {
+					'type' : 'fixed',
 					'image' : image,
 					'baseTransform' : 'pageLeadFull'
 				} %}
