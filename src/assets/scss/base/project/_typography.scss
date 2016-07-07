@@ -11,50 +11,88 @@ An object of type properties, for use with the type() mixin.
 Here you can define a key for each font style, and a map of css properties such
 as letter-spacing. Remember to define these in relative units so they scale with
 the font size.
-
-eg.
-$type-styles: (
-    serif: (
-        font-family: $font-serif,
-        letter-spacing: 0.07em,
-        line-height: 1.5
-    )
-);
 */
-$type-styles: ();
+$type-styles: (
+	sans: (
+		font-family: $font-sans,
+		letter-spacing: 0,
+		line-height: 1.25,
+		font-weight: 300,
+		_variants: (
+			uppercase: (
+				text-transform: uppercase,
+				letter-spacing: 0.094em,
+				line-height: 1.125
+			),
+			bold: (
+				letter-spacing: 0.03em,
+				font-weight: bold
+			),
+			bold-uppercase: (
+				text-transform: uppercase,
+				letter-spacing: 0.094em,
+				line-height: 1.4,
+				font-weight: bold
+			)
+		)
+	),
+	serif: (
+		font-family: $font-serif,
+		letter-spacing: 0.012em,
+		line-height: 1.1,
+		_variants: (
+			bold: (
+				font-weight: bold
+			)
+		)
+	)
+);
 
 /*
 An object of fallback type styles, for use with the type() mixin.
 Here you can define different properies like letter-spacing to have the fallback
 fonts look as similar to the real fonts as possible, to avoid a massive reflow
 when the real fonts are loaded.
-
-eg.
-$fallback-type-styles: (
-    serif: (
-        letter-spacing: -0.03em
-    )
-);
 */
-$fallback-type-styles: ();
+$fallback-type-styles: (
+	sans: (
+		letter-spacing: -0.005em,
+		_variants: (
+			uppercase: (
+				letter-spacing: 0.035em
+			),
+			bold: (
+				letter-spacing: -0.02em
+			),
+			bold-uppercase: (
+				letter-spacing: 0.01em
+			)
+		)
+	),
+	serif: (
+		letter-spacing: 0.045em,
+		_variants: (
+			bold: (
+				letter-spacing: 0.05em
+			)
+		)
+	)
+);
 
 /*
 An object of type sizes, for use with the type() mixin.
 Here you can define a key for each size, and an array of sizes according to how
 they change at each breakpoint.
-
-eg.
-$type-sizes: (
-    redwood: (36, 36, 32, 32, 32),
-    scotspine: (32, 32, 28, 28, 28),
-    smallpine: (28, 28, 24, 24, 24),
-    oak: (24, 24, 20, 20, 20),
-    cactus: (20, 20, 18, 18, 18),
-    bonzai: (16, 16, 16, 16, 16),
-    seedling: (12, 12, 12, 12, 12)
-);
 */
-$type-sizes: ();
+$type-sizes: (
+	scotspine: (40, 36, 36, 30, 30),
+	smallpine: (36, 36, 30, 30, 30),
+	oak: (24, 24, 24, 20, 20),
+	cactus: (20, 20, 18, 16, 16),
+	bonzai: (16, 16, 16, 16, 16),
+	seedling: (14, 14, 14, 14, 14),
+	seed: (12, 12, 12, 12, 12)
+);
 
 
 

@@ -6,31 +6,15 @@
 Type.
 Grabs properties from the $map to create type styles and sizes.
 */
-@mixin type($family: none, $size: none, $variant: none, $style-map: $type-styles, $size-map: $type-sizes, $fallback-map: $fallback-type-styles) {
+@mixin type($family, $size: none, $style-map: $type-styles, $size-map: $type-sizes, $fallback-map: $fallback-type-styles) {
 
     // font styles.
     @if map-has-key($style-map, $family) {
         $type-style: map-get($style-map, $family);
-		$variants-map: map-get($type-style, '_variants');
-		$variant-map: map-get($variants-map, $variant);
 
         @each $key, $value in $type-style {
-			@if ($key != '_variants') {
-
-				@if map-has-key($variant-map, $key) {
-					$value: map-get($variant-map, $key);
-				}
-
-				#{$key}: $value;
-			}
+            #{$key}: $value
         }
-
-		@each $key, $value in $variant-map {
-			@if not map-has-key($type-style, $key) {
-				#{$key}: $value;
-			}
-		}
-
     }
 
 	// fallback font styles.
