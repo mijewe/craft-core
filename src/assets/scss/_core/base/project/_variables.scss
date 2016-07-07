@@ -1,0 +1,118 @@
+/*
+    Variables
+*/
+
+/*
+Structure
+*/
+$width-page: 1440px;
+$magic-number: 40px;
+
+
+
+
+
+
+
+
+
+/*
+Breakpoints
+*/
+$breakpoint-bear: $width-page;
+$breakpoint-wolf: 1040px;
+$breakpoint-fox: 800px;
+$breakpoint-rabbit: 600px;
+$breakpoint-mouse: 480px;
+
+
+
+
+
+
+
+
+
+/*
+Susy Configs
+*/
+$susy: (
+    columns: 12,
+    gutters: 30/60,
+    gutter-position: inside,
+    global-box-sizing: border-box
+);
+
+$susy-wolf: $susy;
+
+$susy-fox: (
+    columns: 6,
+    gutters: 40/90
+);
+
+$susy-rabbit: (
+    columns: 6,
+    gutters: 40/60
+);
+
+$susy-mouse: (
+    columns: 1,
+    gutters: 45/195
+);
+
+
+
+
+
+
+
+
+
+/*
+Fonts.
+Here's where you declare font families, weights etc.
+*/
+$font-sans: "ITC Franklin Gothic W01", Arial, "Helvetica Neue", Helvetica, sans-serif;
+$font-serif: "Beton W01", "Arial Narrow", Arial, sans-serif;
+
+
+
+
+
+
+
+
+
+/*
+Colours.
+All colours used in the project go here. These variables are only used to define
+the Colours In Context variables; they shouldn't be used to colour elements themselves.
+*/
+$color-black: #000;
+
+
+
+
+
+
+
+
+
+/*
+Colours in context
+*/
+$color-text-dark: $color-black;
+
+
+
+
+
+
+
+
+
+/*
+Misc
+*/
+$transition-duration: 0.4s;
+$transition-easing: ease-in-out;
