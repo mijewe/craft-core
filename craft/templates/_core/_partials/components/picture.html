@@ -10,7 +10,26 @@
 	<picture class="image-container{% if type == 'fixed' %} image-container--fixed-height{% elseif type == 'fluid' %} image-container--fluid-height{% elseif type == 'centred' %} image-container--centred{% endif %}">
 		<!--[if IE 9]><video style="display: none;"><![endif]-->
 
+		{# loop through the image's alternativeImages field, if it exists, and
+		create a map of {breakpoint:image}. This is how you specify art-directed
+		images for different breakpoints. #}
+		{% set imageMap = [] %}
+		{% set currentImage = image %}
+		{% set altImages = image['alternativeImages'] %}
 		{% for key,value in breakpoints %}
+			{% for altImage in altImages %}
+				{% if altImage.context.value == key %}
+					{% set currentImage = altImage.image.first() ?? currentImage %}
+				{% endif %}
+			{% endfor %}
+			{% set map = {(''~key) : currentImage} %}
+			{% set imageMap = imageMap|merge(map) %}
+		{% endfor %}
+
+		{# loop through the breakpoints and use the correct image as defined
+		above in the imageMap #}
+		{% for key,value in breakpoints %}
+			{% set image = imageMap[key] ?? image %}
 			<source {{ srcAttr }}="{{ core.getTransform(image, baseTransform, key) }}" media="(min-width: {{ value }})">
 		{% endfor %}
 
