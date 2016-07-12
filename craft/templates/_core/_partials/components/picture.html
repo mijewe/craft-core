@@ -15,7 +15,7 @@
 		images for different breakpoints. #}
 		{% set imageMap = [] %}
 		{% set currentImage = image %}
-		{% set altImages = image['alternativeImages'] %}
+		{% set altImages = image['alternativeImages'] ?? [] %}
 		{% for key,value in breakpoints %}
 			{% for altImage in altImages %}
 				{% if altImage.context.value == key %}
