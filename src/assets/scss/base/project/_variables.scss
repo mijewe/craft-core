@@ -19,11 +19,11 @@ $magic-number: 40px;
 /*
 Breakpoints
 */
-$breakpoint-bear: $width-page;
-$breakpoint-wolf: 1040px;
-$breakpoint-fox: 800px;
-$breakpoint-rabbit: 600px;
-$breakpoint-mouse: 480px;
+$breakpoint-bear: $width-page / 16px * 1em;
+$breakpoint-wolf: 1040px / 16px * 1em;
+$breakpoint-fox: 800px / 16px * 1em;
+$breakpoint-rabbit: 600px / 16px * 1em;
+$breakpoint-mouse: 480px / 16px * 1em;
 
 
 
@@ -43,7 +43,9 @@ $susy: (
     global-box-sizing: border-box
 );
 
-$susy-wolf: $susy;
+$susy-bear: $susy;
+
+$susy-wolf: $susy-bear;
 
 $susy-fox: (
     columns: 6,
