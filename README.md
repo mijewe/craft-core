@@ -47,6 +47,7 @@ We don't include plugin files in the repo. That would also be ridiculous. So her
 * [Cachey](https://github.com/dustcollective/craft-cachey), by Dust
 * [Contact Form](https://github.com/pixelandtonic/ContactForm), by Pixel & Tonic
 * [Email Wrap](https://github.com/mijewe/craft-emailwrap)
+* [JSON Reader](https://github.com/mijewe/craft-jsonreader)
 * [JSON Transforms](https://github.com/mijewe/craft-jsontransforms)
 * [Redirect Manager](https://github.com/rkingon/Craft-Plugin--Redirect-Manager), by Roi Kingon
 * [Refresh String](https://github.com/mijewe/craft-refreshstring.git)
