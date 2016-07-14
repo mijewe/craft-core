@@ -43,7 +43,9 @@ $susy: (
     global-box-sizing: border-box
 );
 
-$susy-wolf: $susy;
+$susy-bear: $susy;
+
+$susy-wolf: $susy-bear;
 
 $susy-fox: (
     columns: 6,
