@@ -123,6 +123,15 @@ module.exports = function(grunt) {
 				dest: 'craft/plugins/jsontransforms/',
 				flatten: false
 			}]
+		},
+		pluginjsonreader: {
+			files: [{
+				expand: true,
+				cwd: 'bower_components/craft-jsonreader/jsonreader/',
+				src: ['**'],
+				dest: 'craft/plugins/jsonreader/',
+				flatten: false
+			}]
 		}
 	});
 
