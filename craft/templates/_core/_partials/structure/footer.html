@@ -29,19 +29,31 @@
 				}, 100);
 			});
 
+			function onFontsLoaded() {
+				if (document.documentElement.classList.contains('webfonts-loaded')) {
+					document.documentElement.className = document.documentElement.className.replace( /(?:^|\s)no-webfonts(?!\S)/g , '' );
+					document.documentElement.className += " webfonts-loaded";
+					sessionStorage.foutFontsLoaded = true;
+				}
+			}
+
 			// load in the fonts once fonts.css is in.
+			if (sessionStorage.foutFontsLoaded) {
+				onFontsLoaded();
+			}
+
 			onloadCSS(fontStyles, function() {
 
 				{% for font in fonts %}
-					var observer{{ loop.index }} = new FontFaceObserver("{{ font }}");
+				var observer{{ loop.index }} = new FontFaceObserver("{{ font }}");
 				{% endfor %}
 
 				Promise.all([{% for i in 1..fonts|length %}observer{{ i }}.check(){% if not loop.last %}, {% endif %}{% endfor %}]).then(function () {
-					document.documentElement.className = document.documentElement.className.replace( /(?:^|\s)no-webfonts(?!\S)/g , '' );
-					document.documentElement.className += " webfonts-loaded";
+					onFontsLoaded();
 				});
 
 			});
+
 		</script>
 
 		{#
