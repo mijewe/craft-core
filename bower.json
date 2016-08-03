@@ -12,10 +12,10 @@
   ],
   "dependencies": {
 	  "craft" : "http://craftcms.com/latest.zip?accept_license=yes",
-    "loadcss": "^0.2.4",
+    "loadcss": "^1.2.0",
     "lazysizes": "^1.4.0",
     "picturefill": "^3.0.2",
-    "fontfaceobserver": "^1.6.5",
+    "fontfaceobserver": "^2.0.1",
 	"craft-anchor": "https://github.com/mijewe/craft-anchor.git",
 	"craft-cachey" : "https://github.com/dustcollective/craft-cachey.git",
 	"craft-emailwrap" : "https://github.com/mijewe/craft-emailwrap.git",
