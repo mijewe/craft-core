@@ -132,6 +132,15 @@ module.exports = function(grunt) {
 				dest: 'craft/plugins/jsonreader/',
 				flatten: false
 			}]
+		},
+		pluginfieldmanager: {
+			files: [{
+				expand: true,
+				cwd: 'bower_components/fieldmanager/fieldmanager/',
+				src: ['**'],
+				dest: 'craft/plugins/fieldmanager/',
+				flatten: false
+			}]
 		}
 	});
 
