@@ -31,7 +31,12 @@ module.exports = function(grunt) {
 		craftfour: {
 			files: [{
 				src: 'example-db.php',
-				dest: 'craft/config/db.php'
+				dest: 'craft/config/db.php',
+				filter: function (filepath) {
+					var path = require('path');
+					var dest = 'craft/config/db.php';
+					return !(grunt.file.exists(dest));
+				}
 			}]
 		},
 		fonts: {
