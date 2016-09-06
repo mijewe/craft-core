@@ -3,64 +3,60 @@
 		css is loaded to avoid conflicts.
 		#}
 		<span class="visuallyhidden loadcss-check js-loadcss-check">main.css loaded.</span>
-
 		<script>
 			{% include '_partials/snippets/fontfaceobserver.js' %}
 			{% include '_partials/snippets/loadcss.js' %}
+			{% include '_partials/snippets/onloadcss.js' %}
+
+			{% set stylesheets = stylesheets ?? defaultStylesheets %}
+			{% for stylevar,stylepath in stylesheets %}
+				var {{ stylevar }} = loadCSS("{{ stylepath }}");
+			{% endfor %}
+
+			onloadCSS(mainStyles, function() {
+
+				// once the styles are loaded, check that they've actually been
+				// applied before removing the critical. This avoids a flash.
+				var elem = document.getElementsByClassName('js-loadcss-check')[0];
+				var loadcsstimer = setInterval(function() {
+
+					if ( window.getComputedStyle(elem)['backgroundColor'] == 'rgb(255, 192, 203)' ) {
+						var element = document.getElementById("js-critical-css");
+						element.parentNode.removeChild(element);
+						elem.parentNode.removeChild(elem);
+						window.clearInterval(loadcsstimer);
+					}
+
+				}, 100);
+			});
 
 			function onFontsLoaded() {
-				if (!document.documentElement.classList.contains('webfonts-loaded')) {
+				if (document.documentElement.classList.contains('webfonts-loaded')) {
 					document.documentElement.className = document.documentElement.className.replace( /(?:^|\s)no-webfonts(?!\S)/g , '' );
 					document.documentElement.className += " webfonts-loaded";
 					sessionStorage.foutFontsLoaded = true;
 				}
 			}
 
-			function onStylesLoaded(stylevar) {
-
-				if (stylevar == 'mainStyles') {
-
-					// once the styles are loaded, check that they've actually been
-					// applied before removing the critical. This avoids a flash.
-					var elem = document.getElementsByClassName('js-loadcss-check')[0];
-					var loadcsstimer = setInterval(function() {
-
-						if ( window.getComputedStyle(elem)['backgroundColor'] == 'rgb(255, 192, 203)' ) {
-							var element = document.getElementById("js-critical-css");
-							element.parentNode.removeChild(element);
-							elem.parentNode.removeChild(elem);
-							window.clearInterval(loadcsstimer);
-						}
-
-					}, 100);
-
-				} else if (stylevar == 'fontStyles') {
-
-					// load in the fonts once fonts.css is in.
-					if (sessionStorage.foutFontsLoaded) {
-						onFontsLoaded();
-					}
-
-					{% set fonts = fonts ?? defaultFonts %}
-					{% for font in fonts %}
-					var observer{{ loop.index }} = new FontFaceObserver("{{ font }}");
-					{% endfor %}
-
-					Promise.all([{% for i in 1..fonts|length %}observer{{ i }}.load(){% if not loop.last %}, {% endif %}{% endfor %}]).then(function () {
-						onFontsLoaded();
-					});
-
-				}
+			// load in the fonts once fonts.css is in.
+			if (sessionStorage.foutFontsLoaded) {
+				onFontsLoaded();
 			}
-		</script>
 
-		{% set stylesheets = stylesheets ?? defaultStylesheets %}
-		{% for stylevar,stylepath in stylesheets %}
-			{% if stylepath %}
-				<link rel="preload" href="{{ stylepath }}" as="style" crossorigin onload="this.rel='stylesheet'; this.onload=''; onStylesLoaded('{{ stylevar }}'); ">
-				<noscript><link rel="stylesheet" href="{{ stylepath }}"></noscript>
-			{% endif %}
-		{% endfor %}
+			onloadCSS(fontStyles, function() {
+
+				{% set fonts = fonts ?? defaultFonts %}
+				{% for font in fonts %}
+				var observer{{ loop.index }} = new FontFaceObserver("{{ font }}");
+				{% endfor %}
+
+				Promise.all([{% for i in 1..fonts|length %}observer{{ i }}.check(){% if not loop.last %}, {% endif %}{% endfor %}]).then(function () {
+					onFontsLoaded();
+				});
+
+			});
+
+		</script>
 
 		{#
 		Non-blocking, order-preserving method of loading Javascript files, from
