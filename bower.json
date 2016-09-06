@@ -25,7 +25,8 @@
 	"redirectmanager": "https://github.com/rkingon/Craft-Plugin--Redirect-Manager.git",
 	"sproutfields": "http://sprout.barrelstrengthdesign.com/craft-plugins/fields/download",
 	"craft-jsontransforms": "https://github.com/mijewe/craft-jsontransforms.git",
-	"craft-jsonreader": "https://github.com/mijewe/craft-jsonreader.git"
+	"craft-jsonreader": "https://github.com/mijewe/craft-jsonreader.git",
+	"fieldmanager": "https://github.com/engram-design/FieldManager.git"
   },
   "devDependencies": {
     "normalize-scss": "~3.0.3",

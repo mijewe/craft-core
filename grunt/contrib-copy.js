@@ -31,7 +31,12 @@ module.exports = function(grunt) {
 		craftfour: {
 			files: [{
 				src: 'example-db.php',
-				dest: 'craft/config/db.php'
+				dest: 'craft/config/db.php',
+				filter: function (filepath) {
+					var path = require('path');
+					var dest = 'craft/config/db.php';
+					return !(grunt.file.exists(dest));
+				}
 			}]
 		},
 		fonts: {
@@ -130,6 +135,15 @@ module.exports = function(grunt) {
 				cwd: 'bower_components/craft-jsonreader/jsonreader/',
 				src: ['**'],
 				dest: 'craft/plugins/jsonreader/',
+				flatten: false
+			}]
+		},
+		pluginfieldmanager: {
+			files: [{
+				expand: true,
+				cwd: 'bower_components/fieldmanager/fieldmanager/',
+				src: ['**'],
+				dest: 'craft/plugins/fieldmanager/',
 				flatten: false
 			}]
 		}

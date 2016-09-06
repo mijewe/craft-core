@@ -56,7 +56,8 @@ module.exports = function(grunt) {
 		'copy:pluginredirectmanager',
 		'copy:pluginsproutfields',
 		'copy:pluginjsontransforms',
-		'copy:pluginjsonreader'
+		'copy:pluginjsonreader',
+		'copy:pluginfieldmanager'
 	]);
 
 	grunt.registerTask('build', 'Rebuild everything.', [
