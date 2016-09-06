@@ -9,7 +9,7 @@
 			{% include '_partials/snippets/onloadcss.js' %}
 
 			{% for stylevar,stylepath in stylesheets %}
-				var {{ stylevar }} = loadCSS("{{ stylepath }}");
+				var {{ stylevar }} = loadCSS("{{ stylepath|refreshString }}");
 			{% endfor %}
 
 			onloadCSS(mainStyles, function() {
