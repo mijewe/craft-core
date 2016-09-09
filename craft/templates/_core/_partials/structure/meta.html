@@ -1,3 +1,9 @@
+{% set description = description ?? '' %}
+{% set url = url ?? siteUrl %}
+{% set title = title ?? siteName %}
+{% set image = image ?? null %}
+{% set type = type ?? 'website' %}
+
 <meta charset="utf-8" />
 <title>{% if (title is defined) and (not isHomepage) %}{{ title }} - {% endif %}{{ siteName }}</title>
 <meta name="description" content="{{ description }}" />

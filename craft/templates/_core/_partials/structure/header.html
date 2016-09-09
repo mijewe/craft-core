@@ -2,13 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="{{ craft.config.locales[craft.locale].languageCode }}" class="no-webfonts">
 	<head>
 
-		{% include '_partials/structure/meta' with {
-			'url' : entry.getUrl(),
-			'title' : entry.title,
-			'description' : (entry['description'] is defined ? entry.description : ''),
-			'image' : (entry['leadImage'] is defined and entry.leadImage is not empty ? entry.leadImage.first().getUrl() : false),
-			'type' : 'website'
-		} %}
+		{% if entry is defined %}
+			{% include '_partials/structure/meta' with {
+				'url' : entry.getUrl(),
+				'title' : entry.title,
+				'description' : (entry['description'] is defined ? entry.description : ''),
+				'image' : (entry['leadImage'] is defined and entry.leadImage is not empty ? entry.leadImage.first().getUrl() : false),
+				'type' : 'website'
+			} %}
+		{% else %}
+			{% include '_partials/structure/meta' %}
+		{% endif %}
 
 		{% include '_partials/snippets/favicons' ignore missing %}
 
