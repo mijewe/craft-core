@@ -1,3 +1,5 @@
 {
-	"buttons": ["bold","italic", "orderedlist", "unorderedlist", "link"]
+	"buttons": ["bold", "italic", "orderedlist", "unorderedlist", "link", "format", "file"],
+	"formatting": ["h2", "h3", "p"],
+	"plugins": ["table"]
 }
