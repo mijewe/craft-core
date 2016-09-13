@@ -30,7 +30,7 @@
 			});
 
 			function onFontsLoaded() {
-				if (document.documentElement.classList.contains('webfonts-loaded')) {
+				if (!document.documentElement.classList.contains('webfonts-loaded')) {
 					document.documentElement.className = document.documentElement.className.replace( /(?:^|\s)no-webfonts(?!\S)/g , '' );
 					document.documentElement.className += " webfonts-loaded";
 					sessionStorage.foutFontsLoaded = true;
