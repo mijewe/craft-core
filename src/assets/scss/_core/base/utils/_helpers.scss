@@ -5,7 +5,8 @@
 /*
 Clearfix
 */
-%clearfix {
+%clearfix,
+.clearfix {
 	&:before, &:after {
 		content: "";
 		display: table;

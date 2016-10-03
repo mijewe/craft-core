@@ -87,3 +87,19 @@ Text Colour Picker
 	}
 
 }
+
+
+
+
+
+
+
+
+
+/*
+Get Color
+Returns a specific theme colour from the map $theme.
+*/
+@function get-color($id, $theme) {
+	@return map-get(map-get($color-schemes, $id), $theme);
+}
