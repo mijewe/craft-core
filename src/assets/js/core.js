@@ -51,6 +51,25 @@ function whichBreakpoint() {
 
 
 /*
+A vanilla alternative to $(document).ready(fn)
+*/
+function ready(fn) {
+	if (document.readyState != 'loading'){
+		fn();
+	} else {
+		document.addEventListener('DOMContentLoaded', fn);
+	}
+}
+
+
+
+
+
+
+
+
+
+/*
 LazySizes config, for lazy loading in images.
 */
 window.lazySizesConfig = window.lazySizesConfig || {};

@@ -28,7 +28,8 @@ Clearfix
 List reset
 The common task of zeroing out a list
 */
-%list-reset {
+%list-reset,
+.list-reset {
 	list-style: none;
 	margin: 0;
 	padding: 0;
