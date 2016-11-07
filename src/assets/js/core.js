@@ -2,13 +2,13 @@
 An easy way to check if an array contains x.
 */
 Array.prototype.contains = function(obj) {
-    var i = this.length;
-    while (i--) {
-        if (this[i] == obj) {
-            return true;
-        }
-    }
-    return false;
+	var i = this.length;
+	while (i--) {
+		if (this[i] == obj) {
+			return true;
+		}
+	}
+	return false;
 }
 
 
@@ -58,6 +58,22 @@ function ready(fn) {
 		fn();
 	} else {
 		document.addEventListener('DOMContentLoaded', fn);
+	}
+}
+
+function addClass(el, cl) {
+	if (el.classList) {
+		el.classList.add(cl);
+	} else {
+		el.className += ' ' + cl;
+	}
+}
+
+function removeClass(el, cl) {
+	if (el.classList) {
+		el.classList.remove(cl);
+	} else {
+		el.className = el.className.replace(new RegExp('(^|\\b)' + cl.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
 	}
 }
 
