@@ -122,7 +122,7 @@ http://guyroutledge.co.uk/blog/simplify-font-size-with-rems/
 Font Sizes.
 Generates all the font sizes for the different breakpoints.
 */
-@mixin font-sizes($bear, $wolf, $fox, $rabbit, $mouse) {
+@mixin font-sizes($bear, $wolf:$bear, $fox:$wolf, $rabbit:$fox, $mouse:$rabbit) {
 
 	@include font-size($bear);
 
