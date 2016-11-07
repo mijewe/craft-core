@@ -7,7 +7,7 @@ module.exports = function(grunt) {
 				filename: 'public/assets/css/main.css',
 				width: 1040,
 				height: 900,
-				outputfile: 'craft/templates/_partials/inline/critical.css'
+				outputfile: 'craft/templates/_partials/snippets/critical.css'
 			}
 		}
 	});
