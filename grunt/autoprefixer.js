@@ -2,7 +2,7 @@ module.exports = function(grunt) {
 
 	grunt.config('autoprefixer', {
 		options: {
-			browsers: ['last 2 version', 'ie 8', 'ie 9']
+			browsers: ['last 4 version']
 		},
 		multiple_files: {
 			expand: true,
