@@ -83,8 +83,7 @@ body {
 }
 
 a {
-    @include transition(color, 'lion');
-    color: $color-text-dark;
+    @include transition(color, 'hover');
 }
 
 li {
