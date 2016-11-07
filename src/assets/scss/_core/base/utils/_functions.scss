@@ -1,5 +1,5 @@
 /*
-	Functions
+Functions
 */
 
 /*
@@ -29,11 +29,11 @@ Tint and Shade.
 Alternative to lighten and darken.
 */
 @function tint($color, $percent) {
-  @return mix(white, $color, $percent);
+	@return mix(white, $color, $percent);
 }
 
 @function shade($color, $percent) {
-  @return mix(black, $color, $percent);
+	@return mix(black, $color, $percent);
 }
 
 
@@ -102,4 +102,24 @@ Returns a specific theme colour from the map $theme.
 */
 @function get-color($id, $theme) {
 	@return map-get(map-get($color-schemes, $id), $theme);
+}
+
+
+
+
+
+
+
+
+
+/*
+First and last in list.
+http://hugogiraudel.com/2013/08/08/advanced-sass-list-functions/
+*/
+@function first($list) {
+	@return nth($list, 1);
+}
+
+@function last($list) {
+	@return nth($list, length($list));
 }

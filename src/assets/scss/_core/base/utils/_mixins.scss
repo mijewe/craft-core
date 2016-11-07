@@ -164,14 +164,28 @@ Generates all the font sizes for the different breakpoints.
 Transition.
 Just makes sure we use consistent speeds and easing.
 */
-@mixin transition($property, $speed: 'normal') {
+@mixin transition($properties, $speed: 'normal') {
 
 	$multiplier: 1;
 	@if ($speed == 'hover') {
  		$multiplier: 0.25;
 	}
 
-	transition: $property ($transition-duration * $multiplier) $transition-easing;
+	$value: unquote('');
+
+ 	@if length($properties) > 1 {
+ 		@each $prop in $properties {
+ 			$value: $value + $prop ($transition-duration * $multiplier) $transition-easing;
+
+ 			@if ($prop != last($properties)) {
+ 				$value: $value + unquote(', ');
+ 			}
+ 		}
+ 	} @else {
+ 		$value: $properties ($transition-duration * $multiplier) $transition-easing;
+ 	}
+
+ 	transition: $value;
 }
 
 
