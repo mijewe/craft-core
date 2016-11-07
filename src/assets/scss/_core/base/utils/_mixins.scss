@@ -167,14 +167,8 @@ Just makes sure we use consistent speeds and easing.
 @mixin transition($property, $speed: 'normal') {
 
 	$multiplier: 1;
-	@if ($speed == 'cat') {
-		$multiplier: 4;
-	} @elseif ($speed == 'hyena') {
-		$multiplier: 2;
-	} @elseif ($speed == 'lion') {
-		$multiplier: 0.25;
-	} @elseif ($speed == 'cheetah') {
-		$multiplier: 0.1;
+	@if ($speed == 'hover') {
+ 		$multiplier: 0.25;
 	}
 
 	transition: $property ($transition-duration * $multiplier) $transition-easing;
