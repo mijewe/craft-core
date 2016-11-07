@@ -5,8 +5,7 @@
 /*
 Clearfix
 */
-%clearfix,
-.clearfix {
+.u_clearfix {
 	&:before, &:after {
 		content: "";
 		display: table;
@@ -28,8 +27,7 @@ Clearfix
 List reset
 The common task of zeroing out a list
 */
-%list-reset,
-.list-reset {
+.u_list-reset {
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -47,8 +45,7 @@ The common task of zeroing out a list
 Visibility hidden
 Accessiblity-friendlier way to hide text from h5b
 */
-.visuallyhidden,
-%visuallyhidden {
+.u_visuallyhidden {
 	border: 0;
 	clip: rect(0 0 0 0);
 	height: 1px;
@@ -59,7 +56,7 @@ Accessiblity-friendlier way to hide text from h5b
 	width: 1px;
 }
 
-%cover-object {
+.u_cover-object {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -67,22 +64,40 @@ Accessiblity-friendlier way to hide text from h5b
 	height: 100%;
 }
 
-%v-centred {
-	position: absolute;
+.u_v-centred {
 	top: 50%;
 	transform: translateY(-50%);
+
+	&--abs {
+		position: absolute;
+	}
+	&--rel {
+		position: relative;
+	}
 }
 
-%h-centred {
-	position: absolute;
+.u_h-centred {
 	left: 50%;
 	transform: translateX(-50%);
+
+	&--abs {
+		position: absolute;
+	}
+	&--rel {
+		position: relative;
+	}
 }
 
-%hv-centred {
-	position: absolute;
+.u_hv-centred {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	transform: translate3d(-50%, -50%, 0);
+
+	&--abs {
+		position: absolute;
+	}
+	&--rel {
+		position: relative;
+	}
 }
