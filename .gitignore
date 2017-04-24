@@ -53,6 +53,7 @@ npm-debug.log
 # ...and local development stuff.
 log/
 local.nginx.conf
+.env.php
 
 # oh, and the readme.
 README.md
