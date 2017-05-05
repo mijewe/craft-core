@@ -17,8 +17,8 @@
 	{% include '_partials/structure/header' %}
 	{% include '_partials/header' %}
 
-    <section class="page-wrapper js-page-wrapper">
-	       <main>
+	<section class="page-wrapper js-page-wrapper">
+		<main>
 
 {% endif %}
 
@@ -27,9 +27,9 @@
 
 {% if not craft.request.isAjax %}
 
-        	</main>
+		</main>
 		{% include '_partials/footer' %}
-		{% include '_partials/structure/footer' %}
-    </section>
+	</section>
+	{% include '_partials/structure/footer' %}
 
 {% endif %}
