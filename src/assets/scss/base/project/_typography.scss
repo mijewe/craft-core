@@ -73,6 +73,22 @@ $type-sizes: ();
 
 
 
+// Loop through font sizes to create font size classes.
+@each $key, $value in $type-sizes {
+  .fs_#{$key} {
+    @include type(null, $key);
+  }
+}
+
+
+
+
+
+
+
+
+
+
 h1, h2, h3 {
     margin: 0;
     font-weight: normal;
