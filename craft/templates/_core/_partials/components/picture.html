@@ -1,15 +1,17 @@
+{% set image = image ?? null %}
+{% set alt = alt ?? image.title ?? '' %}
 {% set lazyLoad = lazyLoad ?? true %}
 {% set srcAttr = lazyLoad ? 'data-srcset' : 'srcset' %}
-{% set alt = alt ?? image.title ?? '' %}
-{% set image = image ?? null %}
-{% set type = type ?? null %}
-{% set pictureClass = pictureClass ?? null %}
-{% set imgClass = imgClass ?? null %}
+{% set type = type ?? 'fluid' %}
 
 {% set breakpoints = breakpoints ?? defaultBreakpoints %}
 
-{% if image and type %}
-	<picture class="image-container{% if type == 'fixed' %} image-container--fixed-height{% elseif type == 'fluid' %} image-container--fluid-height{% elseif type == 'centred' %} image-container--centred{% endif %}{% if pictureClass %} {{ pictureClass }}{% endif %}">{% spaceless %}
+{% set pictureClass = pictureClass ?? '' %}
+{% set pictureClass = pictureClass ~ ' image--' ~ type %}
+{% set pictureClass = pictureClass|trim %}
+
+{% if image %}
+	<picture class="{{ pictureClass }}">{% spaceless %}
 		<!--[if IE 9]><video style="display: none;"><![endif]-->
 
 		{# loop through the image's alternativeImages field, if it exists, and
@@ -36,7 +38,7 @@
 		{% endfor %}
 
 		<!--[if IE 9]></video><![endif]-->
-		<img {{ srcAttr }}="{{ core.getTransform(image, baseTransform, 'mouse') }}" src="" alt="{{ alt }}" class="image__image{% if lazyLoad %} js-lazyLoad{% endif %}{% if imgClass %} {{ imgClass }}{% endif %}">
+		<img {{ srcAttr }}="{{ core.getTransform(image, baseTransform, 'mouse') }}" src="" alt="{{ alt }}" class="{% if lazyLoad %}js-lazyLoad{% endif %}{% if imgClass %} {{ imgClass }}{% endif %}">
 	{% endspaceless %}</picture>
-	{% if lazyLoad %}<span class="visuallyhidden" href="{{ image.getUrl() }}"></span>{% endif %}
+	{% if lazyLoad %}<span class="u_visuallyhidden" href="{{ image.getUrl() }}"></span>{% endif %}
 {% endif %}
