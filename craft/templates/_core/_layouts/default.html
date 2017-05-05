@@ -10,7 +10,6 @@
 } %}
 
 {% set isHomepage = (entry is defined ? entry.section.isHomepage() : false) %}
-{% set thisPage = (entry is defined ? craft.entries.section('navigation').slug(entry.slug).first() : false) %}
 
 {% if not craft.request.isAjax %}
 
