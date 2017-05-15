@@ -6,9 +6,13 @@ var autoprefixerOptions = {
   browsers: ['last 4 versions', 'ie >= 10']
 };
 
-gulp.task('sass', function () {
+gulp.task('styles', function () {
   return gulp.src('./src/assets/scss/main.scss')
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(autoprefixer(autoprefixerOptions))
     .pipe(gulp.dest('./public/assets/css'));
+});
+
+gulp.task('styles:watch', function () {
+  gulp.watch('./src/assets/scss/**/*.scss', ['styles']);
 });
