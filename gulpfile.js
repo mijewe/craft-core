@@ -10,3 +10,10 @@ gulp.task('default', [
   'scripts:watch',
   'images:watch'
 ]);
+
+gulp.task('build', [
+  'styles',
+  'scripts',
+  'images',
+  'favicons'
+]);
