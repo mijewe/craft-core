@@ -25,19 +25,19 @@ if (isset($_SERVER['HTTPS']) && (strcasecmp($_SERVER['HTTPS'], 'on') === 0 || $_
 // whatever you want here and access them via getenv() using the prefixed name
 $craftEnvVars = array(
     // The Craft environment we're running in ('local', 'staging', 'live', etc.).
-    'CRAFT_ENVIRONMENT' => 'REPLACE_ME',
+    'CRAFT_ENVIRONMENT' => 'local',
 
     // The database server name or IP address. Usually this is 'localhost' or '127.0.0.1'.
-    'DB_HOST' => 'REPLACE_ME',
+    'DB_HOST' => 'localhost',
 
     // The name of the database to select.
-    'DB_NAME' => 'REPLACE_ME',
+    'DB_NAME' => 'craft_',
 
     // The database username to connect with.
-    'DB_USER' => 'REPLACE_ME',
+    'DB_USER' => 'root',
 
     // The database password to connect with.
-    'DB_PASS' => 'REPLACE_ME',
+    'DB_PASS' => '',
 
     // The site url to use; it can be hard-coded as well
     'SITE_URL' => $protocol . $_SERVER['HTTP_HOST'] . '/',

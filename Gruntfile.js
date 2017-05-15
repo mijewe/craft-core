@@ -27,8 +27,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('init', 'Install Craft.', [
 		'copy:craftone',
 		'copy:crafttwo',
-		'copy:craftthree',
-		'copy:craftfour'
+		'copy:craftthree'
 	]);
 
 	grunt.registerTask('styles', 'Do your styles.', [

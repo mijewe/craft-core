@@ -21,11 +21,8 @@ module.exports = function(grunt) {
 		},
 		craftthree: {
 			files: [{
-				expand: true,
-				cwd: 'bower_components/craft/public/',
-				src: ['index.php'],
-				dest: 'public/',
-				flatten: false
+				src: ['example.env.php'],
+				dest: '.env.php'
 			}]
 		},
 		fonts: {
