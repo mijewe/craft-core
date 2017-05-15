@@ -49,7 +49,6 @@ node_modules/
 *.css.map
 .DS_Store
 npm-debug.log
-yarn.lock
 
 # ...and local development stuff.
 log/
