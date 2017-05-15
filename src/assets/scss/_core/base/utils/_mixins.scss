@@ -1,5 +1,5 @@
 /*
-	Mixins
+Mixins
 */
 
 /*
@@ -8,19 +8,19 @@ Grabs properties from the $map to create type styles and sizes.
 */
 @mixin type($family: none, $size: none, $variant: none, $style-map: $type-styles, $size-map: $type-sizes, $fallback-map: $fallback-type-styles) {
 
-    // font styles.
-	@include explodeStyles($family, $style-map, $variant);
+  // font styles.
+  @include explodeStyles($family, $style-map, $variant);
 
-	// fallback font styles.
-	.no-webfonts & {
-		@include explodeStyles($family, $fallback-map, $variant);
-	}
+  // fallback font styles.
+  .no-webfonts & {
+    @include explodeStyles($family, $fallback-map, $variant);
+  }
 
-    // sizes.
-    @if map-has-key($size-map, $size) {
-        $type-size: map-get($size-map, $size);
-        @include font-sizes($type-size...);
-    }
+  // sizes.
+  @if map-has-key($size-map, $size) {
+    $type-size: map-get($size-map, $size);
+    @include font-sizes($type-size...);
+  }
 }
 
 
@@ -34,38 +34,38 @@ $variant.
 */
 @mixin explodeStyles($key, $map, $variant) {
 
-	$variants-map: ();
-	$variant-map: ();
+  $variants-map: ();
+  $variant-map: ();
 
-	@if map-has-key($map, $key) {
-        $these-styles: map-get($map, $key);
+  @if map-has-key($map, $key) {
+    $these-styles: map-get($map, $key);
 
-		@if map-has-key($these-styles, '_variants') {
-			$variants-map: map-get($these-styles, '_variants');
+    @if map-has-key($these-styles, '_variants') {
+      $variants-map: map-get($these-styles, '_variants');
 
-			@if map-has-key($variants-map, $variant) {
-				$variant-map: map-get($variants-map, $variant);
-			}
-		}
+      @if map-has-key($variants-map, $variant) {
+        $variant-map: map-get($variants-map, $variant);
+      }
+    }
 
-        @each $key, $value in $these-styles {
-			@if ($key != '_variants') {
+    @each $key, $value in $these-styles {
+      @if ($key != '_variants') {
 
-				@if map-has-key($variant-map, $key) {
-					$value: map-get($variant-map, $key);
-				}
-
-				#{$key}: $value;
-			}
+        @if map-has-key($variant-map, $key) {
+          $value: map-get($variant-map, $key);
         }
 
-		@each $key, $value in $variant-map {
-			@if not map-has-key($these-styles, $key) {
-				#{$key}: $value;
-			}
-		}
-
+        #{$key}: $value;
+      }
     }
+
+    @each $key, $value in $variant-map {
+      @if not map-has-key($these-styles, $key) {
+        #{$key}: $value;
+      }
+    }
+
+  }
 
 }
 
@@ -83,13 +83,13 @@ Does the same as @extend %clearfix, but due to cascading issues sometimes you
 might need to @include clearfix() instead.
 */
 @mixin clearfix() {
-	&:before, &:after {
-		content: "";
-		display: table;
-	}
-	&:after {
-		clear: both;
-	}
+  &:before, &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
 }
 
 
@@ -106,8 +106,8 @@ Produces rem font sizes from px.
 http://guyroutledge.co.uk/blog/simplify-font-size-with-rems/
 */
 @mixin font-size($font-size) {
-	font-size: $font-size * 1px;
-	font-size: $font-size / 16 * 1rem;
+  font-size: $font-size * 1px;
+  font-size: $font-size / 16 * 1rem;
 }
 
 
@@ -124,31 +124,31 @@ Generates all the font sizes for the different breakpoints.
 */
 @mixin font-sizes($bear, $wolf:$bear, $fox:$wolf, $rabbit:$fox, $mouse:$rabbit) {
 
-	@include font-size($bear);
+  @include font-size($bear);
 
-	@if ($wolf != $bear) {
-		@include at-wolf {
-			@include font-size($wolf);
-		}
-	}
+  @if ($wolf != $bear) {
+    @include at-wolf {
+      @include font-size($wolf);
+    }
+  }
 
-	@if ($fox != $wolf) {
-		@include at-fox {
-			@include font-size($fox);
-		}
-	}
+  @if ($fox != $wolf) {
+    @include at-fox {
+      @include font-size($fox);
+    }
+  }
 
-	@if ($rabbit != $fox) {
-		@include at-rabbit {
-			@include font-size($rabbit);
-		}
-	}
+  @if ($rabbit != $fox) {
+    @include at-rabbit {
+      @include font-size($rabbit);
+    }
+  }
 
-	@if ($mouse != $rabbit) {
-		@include at-mouse {
-			@include font-size($mouse);
-		}
-	}
+  @if ($mouse != $rabbit) {
+    @include at-mouse {
+      @include font-size($mouse);
+    }
+  }
 
 }
 
@@ -166,26 +166,26 @@ Just makes sure we use consistent speeds and easing.
 */
 @mixin transition($properties, $speed: 'normal') {
 
-	$multiplier: 1;
-	@if ($speed == 'hover') {
- 		$multiplier: 0.25;
-	}
+  $multiplier: 1;
+  @if ($speed == 'hover') {
+    $multiplier: 0.25;
+  }
 
-	$value: unquote('');
+  $value: unquote('');
 
- 	@if length($properties) > 1 {
- 		@each $prop in $properties {
- 			$value: $value + $prop ($transition-duration * $multiplier) $transition-easing;
+  @if length($properties) > 1 {
+    @each $prop in $properties {
+      $value: $value + $prop ($transition-duration * $multiplier) $transition-easing;
 
- 			@if ($prop != last($properties)) {
- 				$value: $value + unquote(', ');
- 			}
- 		}
- 	} @else {
- 		$value: $properties ($transition-duration * $multiplier) $transition-easing;
- 	}
+      @if ($prop != last($properties)) {
+        $value: $value + unquote(', ');
+      }
+    }
+  } @else {
+    $value: $properties ($transition-duration * $multiplier) $transition-easing;
+  }
 
- 	transition: $value;
+  transition: $value;
 }
 
 
@@ -200,31 +200,31 @@ Just makes sure we use consistent speeds and easing.
 Breakpoints.
 */
 @mixin at-bear() {
-	@include susy-breakpoint(max-width $breakpoint-bear, $susy-bear) {
-		@content;
-	}
+  @include susy-breakpoint(max-width $breakpoint-bear, $susy-bear) {
+    @content;
+  }
 }
 
 @mixin at-wolf() {
-	@include susy-breakpoint(max-width $breakpoint-wolf, $susy-wolf) {
-		@content;
-	}
+  @include susy-breakpoint(max-width $breakpoint-wolf, $susy-wolf) {
+    @content;
+  }
 }
 
 @mixin at-fox() {
-	@include susy-breakpoint(max-width $breakpoint-fox, $susy-fox) {
-		@content;
-	}
+  @include susy-breakpoint(max-width $breakpoint-fox, $susy-fox) {
+    @content;
+  }
 }
 
 @mixin at-rabbit() {
-	@include susy-breakpoint(max-width $breakpoint-rabbit, $susy-rabbit) {
-		@content;
-	}
+  @include susy-breakpoint(max-width $breakpoint-rabbit, $susy-rabbit) {
+    @content;
+  }
 }
 
 @mixin at-mouse() {
-	@include susy-breakpoint(max-width $breakpoint-mouse, $susy-mouse) {
-		@content;
-	}
+  @include susy-breakpoint(max-width $breakpoint-mouse, $susy-mouse) {
+    @content;
+  }
 }

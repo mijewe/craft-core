@@ -1,9 +1,5 @@
 /*
     Typography.
-    This is where you define your abstracted type styles used within the project,
-	prefixed with %type-
-    You can then extend these classes from your styles, maintaining consistency
-    of type throughout the project.
 */
 
 /*
@@ -64,6 +60,42 @@ $type-sizes: (
 );
 */
 $type-sizes: ();
+
+
+
+
+
+
+
+
+
+// Loop through fonts to create font classes.
+@each $key, $style in $type-styles {
+  .f_#{$key} {
+    @include type($key);
+  }
+
+  @if map-has-key($style, '_variants') {
+    $variants: map-get($style, '_variants');
+
+    @each $v_key, $v_value in $variants {
+      .f_#{$key}--#{$v_key} {
+        @include type($key, null, $v_key);
+      }
+    }
+  }
+}
+
+
+
+
+// Loop through font sizes to create font size classes.
+@each $key, $value in $type-sizes {
+  .fs_#{$key} {
+    @include type(null, $key);
+  }
+}
+
 
 
 
