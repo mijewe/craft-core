@@ -5,6 +5,8 @@ var tasks = requireDir('./gulp');
 gulp.task('default', [
   'styles',
   'scripts',
+  'images',
   'styles:watch',
-  'scripts:watch'
+  'scripts:watch',
+  'images:watch'
 ]);
