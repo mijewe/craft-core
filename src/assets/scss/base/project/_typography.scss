@@ -3,6 +3,13 @@
 */
 
 /*
+Fonts.
+Here's where you declare font families, weights etc.
+*/
+$font-sans: sans-serif;
+$font-serif: serif;
+
+/*
 An object of type properties, for use with the type() mixin.
 Here you can define a key for each font style, and a map of css properties such
 as letter-spacing. Remember to define these in relative units so they scale with
