@@ -20,4 +20,4 @@ gulp.task("init:env", function () {
   .pipe(gulp.dest("."));
 });
 
-gulp.task('init', ['init:app', 'init:storage', 'init:env']);
+gulp.task('init', ['init:app', 'init:storage', 'init:env', 'plugins']);
