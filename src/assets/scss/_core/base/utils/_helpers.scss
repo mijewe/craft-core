@@ -56,6 +56,14 @@ Accessiblity-friendlier way to hide text from h5b
 	width: 1px;
 }
 
+
+
+
+
+
+
+
+
 .u_cover-object {
 	position: absolute;
 	top: 0;
@@ -100,4 +108,20 @@ Accessiblity-friendlier way to hide text from h5b
 	&--rel {
 		position: relative;
 	}
+}
+
+
+
+
+
+
+
+
+
+.u_block {
+	display: block;
+}
+
+.u_no-dec {
+	text-decoration: none;
 }
