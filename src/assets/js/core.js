@@ -77,6 +77,14 @@ function removeClass(el, cl) {
 	}
 }
 
+function hasClass(el, cl) {
+	if (el.classList) {
+		return (el.classList.contains(cl));
+	} else {
+		return new RegExp('(\\s|^)' + cl + '(\\s|$)').test(el.cl);
+	}
+}
+
 
 
 
