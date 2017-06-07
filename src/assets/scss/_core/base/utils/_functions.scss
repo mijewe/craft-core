@@ -123,3 +123,22 @@ http://hugogiraudel.com/2013/08/08/advanced-sass-list-functions/
 @function last($list) {
 	@return nth($list, length($list));
 }
+
+
+
+
+
+
+
+
+
+/*
+Converts pixels to relative units.
+*/
+@function px2em($pixels, $base: $base-font-size) {
+	@return ( $pixels / $base * 1em);
+}
+
+@function px2percent($pixels, $base) {
+	@return ( $pixels / $base * 100%);
+}
