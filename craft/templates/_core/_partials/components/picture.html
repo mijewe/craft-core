@@ -10,6 +10,8 @@
 {% set pictureClass = pictureClass ~ ' image--' ~ type %}
 {% set pictureClass = pictureClass|trim %}
 
+{% set imgClass = imgClass ?? null %}
+
 {% if image %}
 	<picture class="{{ pictureClass }}">{% spaceless %}
 		<!--[if IE 9]><video style="display: none;"><![endif]-->
