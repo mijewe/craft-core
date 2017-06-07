@@ -94,6 +94,36 @@ function hasClass(el, cl) {
 
 
 /*
+Does the ajaxing.
+*/
+function ajax(data, callback) {
+
+	var xhr = new XMLHttpRequest();
+
+	xhr.onreadystatechange = function() {
+
+		if (xhr.status == 200) {
+			if (xhr.readyState == 4) {
+				callback( JSON.parse( xhr.response ) );
+			}
+		}
+	}
+
+	xhr.open("POST", "/", true);
+	xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+	xhr.send(data);
+
+}
+
+
+
+
+
+
+
+
+
+/*
 LazySizes config, for lazy loading in images.
 */
 window.lazySizesConfig = window.lazySizesConfig || {};
