@@ -1,0 +1,20 @@
+/*
+Theme.
+*/
+
+$color-schemes: (
+  'brand': (
+    background: $c_red,
+    body: $c_white
+  )
+);
+
+@each $theme, $colors in $color-schemes {
+
+  $background: get-color($theme, 'background');
+  $body: get-color($theme, 'body');
+
+  .theme--#{$theme} {
+
+  }
+}
