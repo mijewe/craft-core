@@ -19,7 +19,7 @@ Grabs properties from the $map to create type styles and sizes.
   // sizes.
   @if map-has-key($size-map, $size) {
     $type-size: map-get($size-map, $size);
-    @include font-sizes($type-size...);
+    @include font-sizes($type-size);
   }
 }
 
@@ -122,34 +122,43 @@ http://guyroutledge.co.uk/blog/simplify-font-size-with-rems/
 Font Sizes.
 Generates all the font sizes for the different breakpoints.
 */
-@mixin font-sizes($bear, $wolf:$bear, $fox:$wolf, $rabbit:$fox, $mouse:$rabbit) {
+@mixin font-sizes($sizes) {
+  $breakpointKeys: map-keys($breakpoints);
 
-  @include font-size($bear);
+  // for each breakpoint...
+  @for $i from 1 through length($breakpointKeys) {
 
-  @if ($wolf != $bear) {
-    @include at(wolf) {
-      @include font-size($wolf);
+    // get the breakpoint. This must exist because we're looping through the breakpoints.
+    $thisBp: nth($breakpointKeys, $i);
+
+    // get the type size that corresponds to this breakpoint. This might not exist
+    // as we might have not specified one for each breakpoint.
+    $thisSize: null;
+    @if ( length($sizes) >= $i ) {
+      $thisSize: nth($sizes, $i);
+    }
+
+    // so, if the type size does exist...
+    @if ($thisSize != null) {
+
+      // get the previous type size (if this isn't the first one), to see if it's
+      // the same or not.
+      $prevSize: null;
+      @if ($i > 1) {
+        $prevSize: nth($sizes, $i - 1);
+      }
+
+      // if it's not the same (or it's the first one)...
+      @if ( ($prevSize == null) or ($thisSize != $prevSize) ) {
+
+        // ... then let's create a new rule!
+        @include at($thisBp) {
+          @include font-size($thisSize);
+        }
+
+      }
     }
   }
-
-  @if ($fox != $wolf) {
-    @include at(fox) {
-      @include font-size($fox);
-    }
-  }
-
-  @if ($rabbit != $fox) {
-    @include at(rabbit) {
-      @include font-size($rabbit);
-    }
-  }
-
-  @if ($mouse != $rabbit) {
-    @include at(mouse) {
-      @include font-size($mouse);
-    }
-  }
-
 }
 
 
