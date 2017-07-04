@@ -199,32 +199,14 @@ Just makes sure we use consistent speeds and easing.
 /*
 Breakpoints.
 */
-@mixin at-bear() {
-  @include susy-breakpoint(max-width $breakpoint-bear, $susy-bear) {
-    @content;
-  }
-}
+@mixin at($bp) {
 
-@mixin at-wolf() {
-  @include susy-breakpoint(max-width $breakpoint-wolf, $susy-wolf) {
-    @content;
-  }
-}
+  $thisBp: map-get($breakpoints, $bp);
 
-@mixin at-fox() {
-  @include susy-breakpoint(max-width $breakpoint-fox, $susy-fox) {
-    @content;
-  }
-}
+  $breakpoint: map-get($thisBp, 'breakpoint');
+  $susy: map-get($thisBp, 'susy');
 
-@mixin at-rabbit() {
-  @include susy-breakpoint(max-width $breakpoint-rabbit, $susy-rabbit) {
-    @content;
-  }
-}
-
-@mixin at-mouse() {
-  @include susy-breakpoint(max-width $breakpoint-mouse, $susy-mouse) {
+  @include susy-breakpoint(max-width $breakpoint, $susy) {
     @content;
   }
 }

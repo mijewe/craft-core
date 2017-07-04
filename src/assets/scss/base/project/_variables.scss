@@ -70,6 +70,37 @@ $susy-mouse: (
 
 
 
+$breakpoints: (
+  'bear': (
+    breakpoint: $breakpoint-bear,
+    susy: $susy-bear
+  ),
+  'wolf': (
+    breakpoint: $breakpoint-wolf,
+    susy: $susy-wolf
+  ),
+  'fox': (
+    breakpoint: $breakpoint-fox,
+    susy: $susy-fox
+  ),
+  'rabbit': (
+    breakpoint: $breakpoint-rabbit,
+    susy: $susy-rabbit
+  ),
+  'mouse': (
+    breakpoint: $breakpoint-mouse,
+    susy: $susy-mouse
+  )
+);
+
+
+
+
+
+
+
+
+
 /*
 Misc
 */
