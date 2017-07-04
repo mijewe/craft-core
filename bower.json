@@ -21,7 +21,7 @@
 	"craft-emailwrap" : "https://github.com/mijewe/craft-emailwrap.git",
 	"craft-refreshstring" : "https://github.com/mijewe/craft-refreshstring.git",
 	"typogrify" : "https://github.com/jamiepittock/craft-typogrify.git",
-	"contactform": "https://github.com/pixelandtonic/ContactForm.git",
+	"contactform": "https://github.com/pixelandtonic/ContactForm.git#v1",
 	"redirectmanager": "https://github.com/rkingon/Craft-Plugin--Redirect-Manager.git",
 	"sproutfields": "http://sprout.barrelstrengthdesign.com/craft-plugins/fields/download",
 	"craft-jsontransforms": "https://github.com/mijewe/craft-jsontransforms.git",
