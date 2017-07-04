@@ -127,25 +127,25 @@ Generates all the font sizes for the different breakpoints.
   @include font-size($bear);
 
   @if ($wolf != $bear) {
-    @include at-wolf {
+    @include at(wolf) {
       @include font-size($wolf);
     }
   }
 
   @if ($fox != $wolf) {
-    @include at-fox {
+    @include at(fox) {
       @include font-size($fox);
     }
   }
 
   @if ($rabbit != $fox) {
-    @include at-rabbit {
+    @include at(rabbit) {
       @include font-size($rabbit);
     }
   }
 
   @if ($mouse != $rabbit) {
-    @include at-mouse {
+    @include at(mouse) {
       @include font-size($mouse);
     }
   }
