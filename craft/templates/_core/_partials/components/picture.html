@@ -36,11 +36,11 @@
 		above in the imageMap #}
 		{% for key,value in breakpoints %}
 			{% set image = imageMap[key] ?? image %}
-			<source {{ srcAttr }}="{{ core.getTransform(image, baseTransform, key) }}" media="(min-width: {{ value }})">
+			<source {{ srcAttr }}="{{ core.getTransform(image, transform, key) }}" media="(min-width: {{ value }})">
 		{% endfor %}
 
 		<!--[if IE 9]></video><![endif]-->
-		<img {{ srcAttr }}="{{ core.getTransform(image, baseTransform, 'mouse') }}" src="" alt="{{ alt }}" class="{% if lazyLoad %}js-lazyLoad{% endif %}{% if imgClass %} {{ imgClass }}{% endif %}">
+		<img {{ srcAttr }}="{{ core.getTransform(image, transform, 'mouse') }}" src="" alt="{{ alt }}" class="{% if lazyLoad %}js-lazyLoad{% endif %}{% if imgClass %} {{ imgClass }}{% endif %}">
 	{% endspaceless %}</picture>
 	{% if lazyLoad %}<span class="u_visuallyhidden" href="{{ image.getUrl() }}"></span>{% endif %}
 {% endif %}

@@ -23,13 +23,13 @@ The dateFormat setting is in config/general.php
 
 {#
 getTransform.
-Given an image, baseTransform and size, you'll get in return the URL of that
+Given an image, transform and size, you'll get in return the URL of that
 image resized to the correct transform. The transforms are defined in
 transforms.json.
 #}
-{% macro getTransform(image, baseTransform, size) %}{% spaceless %}
+{% macro getTransform(image, transform, size) %}{% spaceless %}
 
-	{% set thisTransform = craft.JsonTransforms.getTransform(baseTransform, size) %}
+	{% set thisTransform = craft.JsonTransforms.getTransform(transform, size) %}
 
 	{{ image.getUrl(thisTransform) }}
 
