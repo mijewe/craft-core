@@ -122,6 +122,24 @@ function ajax(data, callback) {
 
 
 
+/*
+Cross browser way of getting a data- attribute from an element.
+*/
+function getData(el, data) {
+	if (el.dataset) {
+		return el.dataset[data];
+	} else {
+		return el.getAttribute("data-" + data);
+	}
+}
+
+
+
+
+
+
+
+
 
 /*
 LazySizes config, for lazy loading in images.
