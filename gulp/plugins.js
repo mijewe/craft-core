@@ -46,4 +46,9 @@ gulp.task("plugin:jsonreader", function () {
     .pipe(gulpCopy('./craft/plugins/', { prefix: 2 }))
 });
 
-gulp.task('plugins', ["plugin:anchor", "plugin:cachey", "plugin:emailwrap", "plugin:refreshstring", "plugin:typogrify", "plugin:contactform", "plugin:redirectmanager", "plugin:jsontransforms", "plugin:jsonreader"]);
+gulp.task("plugin:imager", function () {
+    return gulp.src("./bower_components/imager-craft/imager/**/*")
+    .pipe(gulpCopy('./craft/plugins/', { prefix: 2 }))
+});
+
+gulp.task('plugins', ["plugin:anchor", "plugin:cachey", "plugin:emailwrap", "plugin:refreshstring", "plugin:typogrify", "plugin:contactform", "plugin:redirectmanager", "plugin:jsontransforms", "plugin:jsonreader", "plugin:imager"]);

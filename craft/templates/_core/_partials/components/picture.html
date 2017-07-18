@@ -12,6 +12,8 @@
 
 {% set imgClass = imgClass ?? null %}
 
+{% set placeholderColor = placeholderColor ?? defaultPlaceholderColor %}
+
 {% if image %}
 	<picture class="{{ pictureClass }}">{% spaceless %}
 		<!--[if IE 9]><video style="display: none;"><![endif]-->
@@ -36,7 +38,15 @@
 		above in the imageMap #}
 		{% for key,value in breakpoints %}
 			{% set image = imageMap[key] ?? image %}
-			<source {{ srcAttr }}="{{ core.getTransform(image, transform, key) }}" media="(min-width: {{ value }})">
+
+			{% set thisTransform = craft.JsonTransforms.getTransform(transform, key) %}
+			{% set width = image.getWidth(thisTransform) %}
+			{% set height = image.getHeight(thisTransform) %}
+
+			<source
+			{{ srcAttr }}="{{ craft.imager.transformImage(image, thisTransform) }}"
+			{% if lazyLoad %}srcset="{{ craft.imager.base64Pixel(width, height, placeholderColor) }}"{% endif %}
+			media="(min-width: {{ value }})">
 		{% endfor %}
 
 		<!--[if IE 9]></video><![endif]-->

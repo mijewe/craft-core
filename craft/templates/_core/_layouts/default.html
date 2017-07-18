@@ -9,6 +9,8 @@
 	"mouse" : 0
 } %}
 
+{% set defaultPlaceholderColor = '#f1f1f1' %}
+
 {% set isHomepage = (entry is defined ? entry.section.isHomepage() : false) %}
 
 {% if not craft.request.isAjax %}

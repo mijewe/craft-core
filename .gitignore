@@ -31,11 +31,14 @@ public/*
 # ...and assets...
 !public/assets/
 
-# ...but do ignore assets generated from src.
+# ...but do ignore assets generated from src...
 public/assets/css/
 public/assets/js/
 public/assets/img/
 public/assets/fonts/
+
+# ...or uploaded.
+public/assets/uploads/
 
 # Ignore dev stuff.
 dev/
