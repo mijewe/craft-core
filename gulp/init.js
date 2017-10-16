@@ -28,7 +28,7 @@ gulp.task("init:env", function () {
 gulp.task("init:loadcss", function () {
   return gulp.src("bower_components/loadcss/loadCSS.js")
   .pipe(uglify())
-  .pipe(rename('loadCSS.js'))
+  .pipe(rename('loadcss.js'))
   .pipe(gulp.dest("craft/templates/_partials/snippets/"));
 });
 
