@@ -55,6 +55,7 @@ npm-debug.log
 
 # ...and local development stuff.
 log/
+nocommit/
 local.nginx.conf
 .env.php
 
