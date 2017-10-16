@@ -1,0 +1,11 @@
+// so JS can know which breakpoint we're at.
+// https://www.lullabot.com/articles/importing-css-breakpoints-into-javascript
+@each $bp, $v in $breakpoints {
+	@include at($bp) {
+		.which-breakpoint {
+			&:before {
+				content: $bp;
+			}
+		}
+	}
+}
