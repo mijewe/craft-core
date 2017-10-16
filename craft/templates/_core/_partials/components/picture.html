@@ -3,6 +3,8 @@
 {% set lazyLoad = lazyLoad ?? true %}
 {% set srcAttr = lazyLoad ? 'data-srcset' : 'srcset' %}
 {% set type = type ?? 'fluid' %}
+{% set retina = retina ?? false %}
+{% set pixelRatios = retina ? (pixelRatios ?? defaultPixelRatios) : [1] %}
 
 {% set breakpoints = breakpoints ?? defaultBreakpoints %}
 
@@ -44,7 +46,12 @@
 			{% set height = image.getHeight(thisTransform) %}
 
 			<source
-			{{ srcAttr }}="{{ craft.imager.transformImage(image, thisTransform) }}"
+			{{ srcAttr }}="{% spaceless %}
+				{% for pixelRatio in pixelRatios|sort|reverse %}
+					{% set thisPRTransform = craft.JsonTransforms.getTransform(transform, key, pixelRatio) %}
+					{{ craft.imager.transformImage(image, thisPRTransform) }}{% if pixelRatio != 1 %} {{ pixelRatio }}x{% endif %}{% if not loop.last %}, {% endif %}
+				{% endfor %}"{% endspaceless %}
+
 			{% if lazyLoad %}srcset="{{ craft.imager.base64Pixel(width, height, placeholderColor) }}"{% endif %}
 			media="(min-width: {{ value }})">
 		{% endfor %}

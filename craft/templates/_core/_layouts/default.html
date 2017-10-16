@@ -11,6 +11,8 @@
 
 {% set defaultPlaceholderColor = '#f1f1f1' %}
 
+{% set defaultPixelRatios = [1, 2] %}
+
 {% set isHomepage = (entry is defined ? entry.section.isHomepage() : false) %}
 
 {% if not craft.request.isAjax %}
