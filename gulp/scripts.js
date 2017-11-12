@@ -4,8 +4,8 @@ var uglify = require('gulp-uglify');
 
 gulp.task('scripts', function() {
   return gulp.src([
-      'bower_components/lazysizes/lazysizes.js',
-      'bower_components/picturefill/dist/picturefill.js',
+      'node_modules/lazysizes/lazysizes.js',
+      'node_modules/picturefill/dist/picturefill.js',
       './src/assets/js/core.js',
       './src/assets/js/main.js'
     ])

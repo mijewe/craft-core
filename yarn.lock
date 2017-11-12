@@ -2,6 +2,22 @@
 # yarn lockfile v1
 
 
+"ContactForm@https://github.com/pixelandtonic/ContactForm.git#v1":
+  version "0.0.0"
+  resolved "https://github.com/pixelandtonic/ContactForm.git#8672f1204ee2d3e58f75f29a1246b0e36f2abf8f"
+
+"Craft-Plugin--Redirect-Manager@https://github.com/rkingon/Craft-Plugin--Redirect-Manager.git":
+  version "0.0.0"
+  resolved "https://github.com/rkingon/Craft-Plugin--Redirect-Manager.git#33f1e7b48a6f69260b1519022b46085e8ed12043"
+
+"FieldManager@https://github.com/engram-design/FieldManager.git":
+  version "0.0.0"
+  resolved "https://github.com/engram-design/FieldManager.git#d3d13af80a945eaf4f955c4f9c94ce35152a61ed"
+
+"Imager-Craft@https://github.com/aelvan/Imager-Craft.git":
+  version "0.0.0"
+  resolved "https://github.com/aelvan/Imager-Craft.git#9827355470d3e587ff8799b45cb6b4f5f49e5efd"
+
 abbrev@1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.0.tgz#d0554c2256636e2f56e7c2e5ad183f859428d81f"
@@ -385,6 +401,34 @@ core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
 
+"craft-anchor@https://github.com/mijewe/craft-anchor.git":
+  version "0.0.0"
+  resolved "https://github.com/mijewe/craft-anchor.git#3e2ff5a826bc588dc567eb3f42c8446843be4287"
+
+"craft-cachey@https://github.com/dustcollective/craft-cachey.git":
+  version "0.0.0"
+  resolved "https://github.com/dustcollective/craft-cachey.git#6f92d82fb7741776259be84a29cb020b34e2473d"
+
+"craft-emailwrap@https://github.com/mijewe/craft-emailwrap.git":
+  version "0.0.0"
+  resolved "https://github.com/mijewe/craft-emailwrap.git#9b02d54f4b9fcc213300d456f4fccb134d27580c"
+
+"craft-jsonreader@https://github.com/mijewe/craft-jsonreader.git":
+  version "0.0.0"
+  resolved "https://github.com/mijewe/craft-jsonreader.git#67d67d02abbc44f194be34923bd707ff38c36686"
+
+"craft-jsontransforms@https://github.com/mijewe/craft-jsontransforms.git":
+  version "0.0.0"
+  resolved "https://github.com/mijewe/craft-jsontransforms.git#ee2bac6c7ac958fa4af5b543b189451918c0393f"
+
+"craft-refreshstring@https://github.com/mijewe/craft-refreshstring.git":
+  version "0.0.0"
+  resolved "https://github.com/mijewe/craft-refreshstring.git#f1de911646b6ecb77ca0967ab53e32c3d3c05d52"
+
+"craft-typogrify@https://github.com/jamiepittock/craft-typogrify.git":
+  version "0.0.0"
+  resolved "https://github.com/jamiepittock/craft-typogrify.git#1e02b8dc1e276093164607e0803b59b1fdefb859"
+
 criticalcss@2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/criticalcss/-/criticalcss-2.1.0.tgz#9e3becb2a6aa93eb1506b552bb9f3bea54225915"
@@ -674,6 +718,10 @@ fd-slicer@~1.0.1:
   dependencies:
     pend "~1.2.0"
 
+fg-loadcss@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/fg-loadcss/-/fg-loadcss-1.3.1.tgz#8930e820959faafbb242850eeec4f2d0259430cb"
+
 file-type@^3.1.0, file-type@^3.8.0:
   version "3.9.0"
   resolved "https://registry.yarnpkg.com/file-type/-/file-type-3.9.0.tgz#257a078384d1db8087bc449d107d52a52672b9e9"
@@ -737,6 +785,10 @@ first-chunk-stream@^1.0.0:
 flagged-respawn@^0.3.2:
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/flagged-respawn/-/flagged-respawn-0.3.2.tgz#ff191eddcd7088a675b2610fffc976be9b8074b5"
+
+fontfaceobserver@^2.0.13:
+  version "2.0.13"
+  resolved "https://registry.yarnpkg.com/fontfaceobserver/-/fontfaceobserver-2.0.13.tgz#47adbb343261eda98cb44db2152196ff124d3221"
 
 for-each@^0.3.2:
   version "0.3.2"
@@ -1598,6 +1650,10 @@ lazy-cache@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/lazy-cache/-/lazy-cache-1.0.4.tgz#a1d78fc3a50474cb80845d3b3b6e1da49a446e8e"
 
+lazysizes@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/lazysizes/-/lazysizes-4.0.1.tgz#428fe9561d7ff5c3b2b2787b78ed54080986420b"
+
 lcid@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/lcid/-/lcid-1.0.0.tgz#308accafa0bc483a3867b4b6f2b9506251d1b835"
@@ -2025,6 +2081,10 @@ normalize-range@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/normalize-range/-/normalize-range-0.1.2.tgz#2d10c06bdfd312ea9777695a4d28439456b75942"
 
+normalize-scss@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/normalize-scss/-/normalize-scss-7.0.0.tgz#92eaac6554cc376336c06682a0d6a2099bbb0889"
+
 "npmlog@0 || 1 || 2 || 3 || 4", npmlog@^4.0.0:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/npmlog/-/npmlog-4.0.2.tgz#d03950e0e78ce1527ba26d2a7592e9348ac3e75f"
@@ -2210,6 +2270,10 @@ phantomjs-prebuilt@^2.1.10, phantomjs-prebuilt@^2.1.3:
     request "~2.79.0"
     request-progress "~2.0.1"
     which "~1.2.10"
+
+picturefill@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/picturefill/-/picturefill-3.0.2.tgz#fa3d35fffbef5ab5300fe2ad9dca8f2e36cba27b"
 
 pify@^2.0.0:
   version "2.3.0"
@@ -2742,6 +2806,10 @@ supports-color@^3.2.3:
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-3.2.3.tgz#65ac0504b3954171d8a64946b2ae3cbb8a5f54f6"
   dependencies:
     has-flag "^1.0.0"
+
+susy@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/susy/-/susy-3.0.1.tgz#d8f7942911a1e16ef84dfae2db296cd2058e8b26"
 
 svg2png@~3.0.1:
   version "3.0.1"

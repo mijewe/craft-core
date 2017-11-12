@@ -26,7 +26,7 @@ gulp.task("init:env", function () {
 
 // copies the loadCSS snippet to templates.
 gulp.task("init:loadcss", function () {
-  return gulp.src("bower_components/loadcss/loadCSS.js")
+  return gulp.src("node_modules/fg-loadcss/src/loadCSS.js")
   .pipe(uglify())
   .pipe(rename('loadcss.js'))
   .pipe(gulp.dest("craft/templates/_partials/snippets/"));
@@ -34,7 +34,7 @@ gulp.task("init:loadcss", function () {
 
 // copies the onLoadCSS snippet to templates.
 gulp.task("init:onloadcss", function () {
-  return gulp.src("bower_components/loadcss/onloadcss.js")
+  return gulp.src("node_modules/fg-loadcss/src/onloadCSS.js")
   .pipe(uglify())
   .pipe(rename('onloadcss.js'))
   .pipe(gulp.dest("craft/templates/_partials/snippets/"));
@@ -42,7 +42,7 @@ gulp.task("init:onloadcss", function () {
 
 // copies the fontfaceobserver snippet to templates.
 gulp.task("init:fontfaceobserver", function () {
-  return gulp.src("bower_components/fontfaceobserver/fontfaceobserver.js")
+  return gulp.src("node_modules/fontfaceobserver/fontfaceobserver.js")
   .pipe(uglify())
   .pipe(rename('fontfaceobserver.js'))
   .pipe(gulp.dest("craft/templates/_partials/snippets/"));
