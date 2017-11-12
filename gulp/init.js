@@ -7,7 +7,7 @@ var run = require('gulp-run');
 
 // pulls down the latest craft build and unzips it.
 gulp.task("init:app", function () {
-    return run("wget -O craft-latest.zip https://craftcms.com/latest.zip?accept_license=yes && unzip -q craft-latest.zip -d craft-latest && rm -R craft/app && mv -f craft-latest/craft/app craft/app && mkdir -p craft/plugins craft/storage && rm -R craft-latest && rm craft-latest.zip").exec()
+    return run("rm -f craft-latest.zip && rm -R -f craft-latest && rm -R -f craft/app && wget -O craft-latest.zip https://craftcms.com/latest.zip?accept_license=yes && unzip -q craft-latest.zip -d craft-latest && mv -f craft-latest/craft/app craft/app && mkdir -p craft/plugins craft/storage && rm -R craft-latest && rm craft-latest.zip").exec()
 });
 
 // copies our example env config to a useful place.
