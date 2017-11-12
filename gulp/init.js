@@ -3,18 +3,11 @@ var gulpCopy = require('gulp-copy');
 var mkdirp = require('mkdirp');
 var rename = require("gulp-rename");
 var uglify = require('gulp-uglify');
+var run = require('gulp-run');
 
-// copies the Craft app directory to the right place.
+// pulls down the latest craft build and unzips it.
 gulp.task("init:app", function () {
-    return gulp.src("./bower_components/craft/craft/app/**/*")
-    .pipe(gulpCopy('./craft', { prefix: 3 }))
-});
-
-// creates an empty storage folder
-gulp.task("init:storage", function () {
-  mkdirp('./craft/storage', function (err) {
-    if (err) console.error(err)
-  });
+    return run("wget -O craft-latest.zip https://craftcms.com/latest.zip?accept_license=yes && unzip -q craft-latest.zip -d craft-latest && rm -R craft/app && mv -f craft-latest/craft/app craft/app && mkdir -p craft/plugins craft/storage && rm -R craft-latest && rm craft-latest.zip").exec()
 });
 
 // copies our example env config to a useful place.
@@ -50,4 +43,4 @@ gulp.task("init:fontfaceobserver", function () {
 
 gulp.task('init:js', ['init:loadcss', 'init:onloadcss', 'init:fontfaceobserver']);
 
-gulp.task('init', ['init:app', 'init:storage', 'init:env', 'plugins', 'init:js']);
+gulp.task('init', ['init:app', 'init:env', 'plugins', 'init:js']);

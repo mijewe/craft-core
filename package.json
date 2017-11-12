@@ -28,6 +28,7 @@
         "gulp-copy": "^1.0.0",
         "gulp-favicons": "^2.2.7",
         "gulp-rename": "^1.2.2",
+        "gulp-run": "^1.7.1",
         "gulp-sass": "^3.1.0",
         "gulp-svgmin": "^1.2.3",
         "gulp-uglify": "^2.1.2",
@@ -35,6 +36,6 @@
         "normalize-scss": "^7.0.0",
         "picturefill": "^3.0.2",
         "require-dir": "^0.3.1",
-        "susy": "^3.0.1"
+        "susy": "^2.2.12"
     }
 }
