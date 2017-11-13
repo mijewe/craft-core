@@ -9,11 +9,10 @@ Craft Core is a sort of boilerplate for new Craft projects. Unlike the old Craft
 ## Getting Started
 
 ### Things you need to have.
-This Core uses NPM, Bower, Grunt, and SASS. So make sure you have them
+This Core is Nodey, Gulpy, and SASSy. So make sure you have them
 ```
-brew install node
-npm install -g bower
-npm install -g grunt-cli
+brew install yarn
+yarn global add gulp-cli
 sudo gem install sass
 ```
 
@@ -33,12 +32,12 @@ git remote set-url --push core no_push
 ```
 
 ### Setting Up
-Your site is built with [Craft](http://craftcms.com), but the Craft source files are not included with this repo. That would be ridiculous. Don't worry about installing Craft though, as that's done for you with the ```grunt init``` task.
+Your site is built with [Craft](http://craftcms.com), but the Craft source files are not included with this repo. That would be ridiculous. Don't worry about installing Craft though, as that's done for you with the ```gulp init:app``` task.
 
-We compile all our assets using Grunt. So first run ```npm i``` to install the node modules, ```bower update``` to install the bower components, ```grunt init``` to install Craft, and then ```grunt build``` to generate all the assets.
+We compile all our assets using Gulp. So first run ```yarn && yarn upgrade``` to install the node modules, ```gulp init``` to install Craft, and then ```gulp build``` to generate all the assets.
 
 ```
-npm i ; bower update ; grunt init build
+yarn && yarn upgrade && gulp init && gulp build
 ```
 
 ## Plugins we use in this project

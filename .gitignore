@@ -58,6 +58,3 @@ log/
 nocommit/
 local.nginx.conf
 .env.php
-
-# oh, and the readme.
-README.md
