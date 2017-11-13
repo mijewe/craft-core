@@ -6,11 +6,6 @@ gulp.task("plugin:anchor", function () {
     .pipe(gulpCopy('./craft/plugins/', { prefix: 2 }))
 });
 
-gulp.task("plugin:cachey", function () {
-    return gulp.src("./node_modules/craft-cachey/cachey/**/*")
-    .pipe(gulpCopy('./craft/plugins/', { prefix: 2 }))
-});
-
 gulp.task("plugin:emailwrap", function () {
     return gulp.src("./node_modules/craft-emailwrap/emailwrap/**/*")
     .pipe(gulpCopy('./craft/plugins/', { prefix: 2 }))
@@ -21,18 +16,8 @@ gulp.task("plugin:refreshstring", function () {
     .pipe(gulpCopy('./craft/plugins/', { prefix: 2 }))
 });
 
-gulp.task("plugin:typogrify", function () {
-    return gulp.src("./node_modules/craft-typogrify/typogrify/**/*")
-    .pipe(gulpCopy('./craft/plugins/', { prefix: 2 }))
-});
-
 gulp.task("plugin:contactform", function () {
     return gulp.src("./node_modules/ContactForm/contactform/**/*")
-    .pipe(gulpCopy('./craft/plugins/', { prefix: 2 }))
-});
-
-gulp.task("plugin:redirectmanager", function () {
-    return gulp.src("./node_modules/Craft-Plugin--Redirect-Manager/redirectmanager/**/*")
     .pipe(gulpCopy('./craft/plugins/', { prefix: 2 }))
 });
 
@@ -51,4 +36,4 @@ gulp.task("plugin:imager", function () {
     .pipe(gulpCopy('./craft/plugins/', { prefix: 2 }))
 });
 
-gulp.task('plugins', ["plugin:anchor", "plugin:cachey", "plugin:emailwrap", "plugin:refreshstring", "plugin:typogrify", "plugin:contactform", "plugin:redirectmanager", "plugin:jsontransforms", "plugin:jsonreader", "plugin:imager"]);
+gulp.task('plugins', ["plugin:anchor", "plugin:emailwrap", "plugin:refreshstring", "plugin:contactform", "plugin:jsontransforms", "plugin:jsonreader", "plugin:imager"]);
