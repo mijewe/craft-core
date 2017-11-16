@@ -46,7 +46,7 @@
 			onloadCSS(fontStyles, function() {
 
 				{% for font in fonts %}
-				var observer{{ loop.index }} = new FontFaceObserver("{{ font }}");
+					var observer{{ loop.index }} = new FontFaceObserver("{{ font }}");
 				{% endfor %}
 
 				Promise.all([{% for i in 1..fonts|length %}observer{{ i }}.check(){% if not loop.last %}, {% endif %}{% endfor %}]).then(function () {
