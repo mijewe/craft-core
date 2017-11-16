@@ -31,7 +31,7 @@ $craftEnvVars = array(
     'DB_HOST' => 'localhost',
 
     // The name of the database to select.
-    'DB_NAME' => 'craft_',
+    'DB_NAME' => 'local_',
 
     // The database username to connect with.
     'DB_USER' => 'root',
