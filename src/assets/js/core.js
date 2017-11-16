@@ -108,7 +108,7 @@ function ajax(data, callback) {
 
 
 /*
-Cross browser way of getting a data- attribute from an element.
+Cross browser way of getting and setting a data- attribute for an element.
 */
 function getData(el, data) {
 	if (el.dataset) {
@@ -117,6 +117,15 @@ function getData(el, data) {
 		return el.getAttribute("data-" + data);
 	}
 }
+
+function setData(el, data, value) {
+	if (el.dataset) {
+		el.dataset[data] = value;
+	} else {
+		return el.setAttribute("data-" + data, value);
+	}
+}
+
 
 
 
