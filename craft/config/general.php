@@ -22,7 +22,6 @@ return array(
     'maxUploadFileSize' => 40000000,
     'omitScriptNameInUrls' => true,
     'overridePhpSessionLocation' => true,
-    // 'defaultCookieDomain' => '.example.com',
     'defaultWeekStartDay' => 1,
     'preserveImageColorProfiles' => true,
     'usePathInfo' => true,
@@ -62,7 +61,6 @@ return array(
   'local'  => array(
     'devMode' => true,
     'trackUsers' => false,
-    'omitScriptNameInUrls' => false,
     'defaultCookieDomain' => ''
   ),
 );
