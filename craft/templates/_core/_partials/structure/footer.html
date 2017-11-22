@@ -49,7 +49,7 @@
 					var observer{{ loop.index }} = new FontFaceObserver("{{ font }}");
 				{% endfor %}
 
-				Promise.all([{% for i in 1..fonts|length %}observer{{ i }}.check(){% if not loop.last %}, {% endif %}{% endfor %}]).then(function () {
+				Promise.all([{% for i in 1..fonts|length %}observer{{ i }}.load(){% if not loop.last %}, {% endif %}{% endfor %}]).then(function () {
 					onFontsLoaded();
 				});
 
