@@ -16,6 +16,8 @@
 
 {% set placeholderColor = placeholderColor ?? defaultPlaceholderColor %}
 
+{% set originalImage = image %}
+
 {% if image %}
 	<picture class="{{ pictureClass }}">{% spaceless %}
 		<!--[if IE 9]><video style="display: none;"><![endif]-->
@@ -57,7 +59,10 @@
 		{% endfor %}
 
 		<!--[if IE 9]></video><![endif]-->
-		<img {{ srcAttr }}="{{ core.getTransform(image, transform, 'mouse') }}" src="" alt="{{ alt }}" class="{% if lazyLoad %}js-lazyLoad{% endif %}{% if imgClass %} {{ imgClass }}{% endif %}">
+
+		{% set fallbackTransform = craft.JsonTransforms.getTransform(transform, 'mouse') %}
+
+		<img {{ srcAttr }}="{{ craft.imager.transformImage(originalImage, fallbackTransform) }}" src="" alt="{{ alt }}" class="{% if lazyLoad %}js-lazyLoad{% endif %}{% if imgClass %} {{ imgClass }}{% endif %}">
 	{% endspaceless %}</picture>
 	{% if lazyLoad %}<span class="u_visuallyhidden" href="{{ image.getUrl() }}"></span>{% endif %}
 {% endif %}
