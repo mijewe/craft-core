@@ -148,14 +148,19 @@ Generates all the font sizes for the different breakpoints.
         $prevSize: nth($sizes, $i - 1);
       }
 
-      // if it's not the same (or it's the first one)...
-      @if ( ($prevSize == null) or ($thisSize != $prevSize) ) {
+      // if it's the first breakpoint...
+      @if ($prevSize == null) {
 
-        // ... then let's create a new rule!
+        // ...then create a new rule without a media query.
+        @include font-size($thisSize);
+
+      // if it's not the first breakpoint, but we've got a new size...
+      } @elseif ($thisSize != $prevSize) {
+
+        // ...then create a new rule with a media query.
         @include at($thisBp) {
           @include font-size($thisSize);
         }
-
       }
     }
   }
