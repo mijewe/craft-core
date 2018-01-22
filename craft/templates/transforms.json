@@ -21,5 +21,26 @@
 		"mouse" : {
 			"width" : 480
 		}
+	},
+	"seo-google" : {
+		"default" : {},
+		"_seo" : {
+			"width" : 600,
+			"height" : 600
+		}
+	},
+	"seo-facebook" : {
+		"default" : {},
+		"_seo" : {
+			"width" : 1200,
+			"height" : 630
+		}
+	},
+	"seo-twitter" : {
+		"default" : {},
+		"_seo" : {
+			"width" : 280,
+			"height" : 150
+		}
 	}
 }

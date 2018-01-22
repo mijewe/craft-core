@@ -1,22 +1,56 @@
+{# === parameters === #}
+
+{# the image you want to display from the CMS. So something like entry.leadImage.first() #}
 {% set image = image ?? null %}
+
+{# the key of the transform you want to use, specified in templates/transforms.json #}
+{% set transform = transform ?? null %}
+
+{# alt text, if different from the image title. #}
 {% set alt = alt ?? image.title ?? '' %}
+
+{# whether or not you want to lazy load the image. Uses the JS plugin lazysizes. #}
 {% set lazyLoad = lazyLoad ?? true %}
-{% set srcAttr = lazyLoad ? 'data-srcset' : 'srcset' %}
+
+{# basically a class to throw in. In the form image--{type} #}
 {% set type = type ?? 'fluid' %}
+
+{# whether you want to generate retina images or not. #}
 {% set retina = retina ?? false %}
+
+{# any additional classes you need adding to the <picture> element. #}
+{% set pictureClass = pictureClass ?? '' %}
+
+{# any additional classes you need adding to the <img> element. #}
+{% set imgClass = imgClass ?? null %}
+
+{# === /parameters === #}
+
+
+{# === calculated settings === #}
+
+{# if we're lazyloading, we need to set the srcset as a data attribute instead. #}
+{% set srcAttr = lazyLoad ? 'data-srcset' : 'srcset' %}
+
+{# if we want retina, set what retina sizes we want according to the pixelRatios #}
 {% set pixelRatios = retina ? (pixelRatios ?? defaultPixelRatios) : [1] %}
 
+{# determine what breakpoints we're generating images for #}
 {% set breakpoints = breakpoints ?? defaultBreakpoints %}
 
-{% set pictureClass = pictureClass ?? '' %}
+{# add the image type class to the picture element. #}
 {% set pictureClass = pictureClass ~ ' image--' ~ type %}
 {% set pictureClass = pictureClass|trim %}
 
-{% set imgClass = imgClass ?? null %}
-
+{# determine the placeholder colour for the image while it's loading. #}
 {% set placeholderColor = placeholderColor ?? defaultPlaceholderColor %}
 
+{# === /calculated settings === #}
+
+
+{# === misc === #}
 {% set originalImage = image %}
+{# === /misc === #}
 
 {% if image %}
 	<picture class="{{ pictureClass }}">{% spaceless %}
@@ -61,7 +95,6 @@
 		<!--[if IE 9]></video><![endif]-->
 
 		{% set fallbackTransform = craft.JsonTransforms.getTransform(transform, 'mouse') %}
-
 		<img {{ srcAttr }}="{{ craft.imager.transformImage(originalImage, fallbackTransform) }}" src="" alt="{{ alt }}" class="{% if lazyLoad %}js-lazyLoad{% endif %}{% if imgClass %} {{ imgClass }}{% endif %}">
 	{% endspaceless %}</picture>
 	{% if lazyLoad %}<span class="u_visuallyhidden" href="{{ image.getUrl() }}"></span>{% endif %}

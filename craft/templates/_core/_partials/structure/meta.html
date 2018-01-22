@@ -1,37 +1,79 @@
-{% set description = description ?? '' %}
+{# === parameters === #}
+{% set title = title ?? null %}
+{% set description = description ?? seo.defaultSeoDescription ?? null %}
 {% set url = url ?? siteUrl %}
-{% set title = title ?? siteName %}
-{% set image = image ?? null %}
+{% set image = image ?? seo.defaultSeoImage.first() ?? null %}
 {% set type = type ?? 'website' %}
 
-<meta charset="utf-8" />
-<title>{% if (title is defined) and (not isHomepage) %}{{ title }} - {% endif %}{{ siteName }}</title>
+{% set twitterHandle = seo.social.first().twitterHandle ?? null %}
+{% set facebookId = seo.social.first().facebookId ?? null %}
+{% set geo = seo.geo.first() %}
+{# === /parameters === #}
+
+{# === calculated settings === #}
+{% set fullTitle = (title ? title ~ ' - ' : '') ~ siteName %}
+
+{% set seoGoogleImage = null %}
+{% set seoFacebookImage = null %}
+{% set seoTwitterImage = null %}
+{% if image %}
+	{% set seoGoogleImage = craft.imager.transformImage(image, craft.JsonTransforms.getTransform('seo-google', '_seo')) %}
+	{% set seoFacebookImage = craft.imager.transformImage(image, craft.JsonTransforms.getTransform('seo-facebook', '_seo')) %}
+	{% set seoTwitterImage = craft.imager.transformImage(image, craft.JsonTransforms.getTransform('seo-twitter', '_seo')) %}
+{% endif %}
+{# === /calculated settings === #}
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>{{ fullTitle }}</title>
 <meta name="description" content="{{ description }}" />
-
-<link rel="canonical" href="{{ url }}" />
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="home" href="{{ siteUrl }}" />
 
-{# Open Graph stuff. #}
+{# Schema.org markup for Google+ #}
+<meta itemprop="name" content="{{ fullTitle }}">
+<meta itemprop="description" content="{{ description }}">
+{% if seoGoogleImage %}<meta itemprop="image" content="{{ siteUrl }}{{ seoGoogleImage.url }}">{% endif %}
+
+{# Twitter Card data #}
+<meta name="twitter:card" content="summary_large_image">
+{% if twitterHandle %}<meta name="twitter:site" content="{{ twitterHandle }}">{% endif %}
+<meta name="twitter:title" content="{{ fullTitle }}">
+<meta name="twitter:description" content="{{ description }}">
+<meta name="twitter:creator" content="@honchoagency">
+{% if seoTwitterImage %}<meta name="twitter:image:src" content="{{ siteUrl }}{{ seoTwitterImage }}">{% endif %}
+
+{# Open Graph data #}
+<meta property="og:title" content="{{ fullTitle }}" />
+<meta property="og:type" content="{{ type }}" />
 <meta property="og:url" content="{{ url }}" />
-<meta property="og:title" content="{{ title }}" />
+{% if seoFacebookImage %}
+	<meta property="og:image" content="{{ siteUrl }}{{ seoFacebookImage.url }}" />
+	<meta property="og:image:width" content="{{ seoFacebookImage.width }}" />
+	<meta property="og:image:height" content="{{ seoFacebookImage.height }}" />
+{% endif %}
 <meta property="og:description" content="{{ description }}" />
 <meta property="og:site_name" content="{{ siteName }}" />
-{% if image %}<meta property="og:image" content="{{ image }}" />{% endif %}
-<meta property="og:type" content="{{ type }}" />
-<meta property="og:locale" content="en_GB" />
+{% if facebookId %}<meta property="fb:admins" content="{{ facebookId }}" />{% endif %}
 
-{# language stuff. #}
+{# Geo data #}
+{% if geo %}
+	{% if geo.latitude and geo.longitude %}<meta name="geo.position" content="{{ geo.latitude }}; {{ geo.longitude }}">{% endif %}
+	{% if geo.placename %}<meta name="geo.placename" content="{{ geo.placename }}">{% endif %}
+	{% if geo.region %}<meta name="geo.region" content="{{ geo.region }}">{% endif %}
+{% endif %}
+
+{# Localisation stuff #}
 {% if entry is defined %}
-    {% set otherLocales = craft.i18n.getSiteLocaleIds()|without(craft.config.mainLocale) %}
-    {% for locale in otherLocales %}
+	<meta http-equiv="content-language" content="{{ craft.locale }}">
 
-        {% set localeEntry = craft.entries.id(entry.id).locale(locale).first %}
+	{% set otherLocales = craft.i18n.getSiteLocaleIds()|without(craft.locale) %}
+	{% for locale in otherLocales %}
 
-        {% if (localeEntry) and (localeEntry.locale == locale) %}
-            <link rel="alternate" hreflang="{{ craft.config.locales[locale].languageCode }}" href="{{ localeEntry.getUrl() }}" />
-        {% endif %}
+		{% set localeEntry = craft.entries.id(entry.id).locale(locale).first %}
 
-    {% endfor %}
+		{% if (localeEntry) and (localeEntry.locale == locale) %}
+			<link rel="alternate" hreflang="{{ craft.config.locales[locale].languageCode }}" href="{{ localeEntry.getUrl() }}" />
+		{% endif %}
+
+	{% endfor %}
 {% endif %}

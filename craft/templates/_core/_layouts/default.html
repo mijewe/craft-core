@@ -1,6 +1,11 @@
+{# import the core macros. #}
 {% import '_core/_macros/general' as core %}
+
+{# import the project macros. #}
 {% import '_macros/general' as macros %}
 
+{# set the default breakpoints. These can be overwritten by creating a breakpoints
+variable in _layouts/default #}
 {% set defaultBreakpoints = {
 	"bear" : (1041 / 16) ~ "em",
 	"wolf" : (801 / 16) ~ "em",
@@ -9,15 +14,27 @@
 	"mouse" : 0
 } %}
 
+{# you can set images to be lazyloaded in. While they load, a coloured rectangle
+will stand in its place. This is the default colour of that rectangle. You can
+override this on a per transform basis. #}
 {% set defaultPlaceholderColor = '#f1f1f1' %}
 
+{# images are generated in all shapes and sizes, including versions for retina
+screens. This is where you define what retina multiples you want by default. You
+can override this by creating a pixelRatios variable in _layouts/default #}
 {% set defaultPixelRatios = [1, 2] %}
 
+{# comes in handy sometimes. #}
 {% set isHomepage = (entry is defined ? entry.section.isHomepage() : false) %}
 
+{# For ajax requests you generally only want the content, and not the header and
+footer. #}
 {% if not craft.request.isAjax %}
 
+	{# structural header is stuff like your meta tags and critical css. #}
 	{% include '_partials/structure/header' %}
+
+	{# header is just your normal page header. #}
 	{% include '_partials/header' %}
 
 	<section class="page-wrapper js-page-wrapper">
