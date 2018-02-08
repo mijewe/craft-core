@@ -47,37 +47,17 @@ $craftEnvVars = array(
 
     // The base path environmentVariable for Assets; it can be hard-coded as well
     'BASE_PATH' => realpath(dirname(__FILE__)) . '/public/',
+
+    'IMGIX_ENABLED' => false,
+    'IMGIX_DOMAINS' => null,
+
+    'JPEGOPTIM' => true,
+    'OPTIPNG' => true,
+    'CWEBP' => true,
+    'WEBP_PATH' => '/usr/local/bin/cwebp',
 );
 
 // Set all of the .env values, auto-prefixed with `CRAFTENV_`
 foreach ($craftEnvVars as $key => $value) {
     putenv("CRAFTENV_{$key}={$value}");
 }
-
-/**
- * For production environments, this .env.php file can be used, or preferably,
- * (for security & speed), set the $_ENV variables directly from the server config.
- *
- * Apache - inside the <VirtualHost> block:
-
-SetEnv CRAFTENV_CRAFT_ENVIRONMENT "REPLACE_ME"
-SetEnv CRAFTENV_DB_HOST "REPLACE_ME"
-SetEnv CRAFTENV_DB_NAME "REPLACE_ME"
-SetEnv CRAFTENV_DB_USER "REPLACE_ME"
-SetEnv CRAFTENV_DB_PASS "REPLACE_ME"
-SetEnv CRAFTENV_SITE_URL "REPLACE_ME"
-SetEnv CRAFTENV_BASE_URL "REPLACE_ME"
-SetEnv CRAFTENV_BASE_PATH "REPLACE_ME"
-
- * Nginx - inside the server {} or location ~ \.php$ {} block:
-
-fastcgi_param CRAFTENV_CRAFT_ENVIRONMENT "REPLACE_ME";
-fastcgi_param CRAFTENV_DB_HOST "REPLACE_ME";
-fastcgi_param CRAFTENV_DB_NAME "REPLACE_ME";
-fastcgi_param CRAFTENV_DB_USER "REPLACE_ME";
-fastcgi_param CRAFTENV_DB_PASS "REPLACE_ME";
-fastcgi_param CRAFTENV_SITE_URL "REPLACE_ME";
-fastcgi_param CRAFTENV_BASE_URL "REPLACE_ME";
-fastcgi_param CRAFTENV_BASE_PATH "REPLACE_ME";
-
- */

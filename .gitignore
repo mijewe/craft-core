@@ -37,9 +37,6 @@ public/assets/js/
 public/assets/img/
 public/assets/fonts/
 
-# ...or uploaded.
-public/assets/uploads/
-
 # Ignore dev stuff.
 dev/
 
