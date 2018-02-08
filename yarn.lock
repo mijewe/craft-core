@@ -857,6 +857,10 @@ fast-json-stable-stringify@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/fast-json-stable-stringify/-/fast-json-stable-stringify-2.0.0.tgz#d5142c0caee6b1189f87d3a76111064f86c8bbf2"
 
+"fastcgicachebust@https://github.com/nystudio107/fastcgicachebust.git":
+  version "0.0.0"
+  resolved "https://github.com/nystudio107/fastcgicachebust.git#9132fdd1af8553c855bbd29f6ab834b49bd67cd3"
+
 favicons@^4.6.1:
   version "4.8.6"
   resolved "https://registry.yarnpkg.com/favicons/-/favicons-4.8.6.tgz#a2b13800ab3fec2715bc8f27fa841d038d4761e2"

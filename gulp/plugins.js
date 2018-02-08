@@ -36,4 +36,9 @@ gulp.task("plugin:imager", function () {
     .pipe(gulpCopy('./craft/plugins/', { prefix: 2 }))
 });
 
-gulp.task('plugins', ["plugin:anchor", "plugin:emailwrap", "plugin:refreshstring", "plugin:contactform", "plugin:jsontransforms", "plugin:jsonreader", "plugin:imager"]);
+gulp.task("plugin:fastcgicachebust", function () {
+    return gulp.src("./node_modules/fastcgicachebust/**/*")
+    .pipe(gulpCopy('./craft/plugins/', { prefix: 1 }))
+});
+
+gulp.task('plugins', ["plugin:anchor", "plugin:emailwrap", "plugin:refreshstring", "plugin:contactform", "plugin:jsontransforms", "plugin:jsonreader", "plugin:imager", "plugin:fastcgicachebust"]);
