@@ -6,8 +6,8 @@
 Fonts.
 Here's where you declare font families, weights etc.
 */
-$font-sans: sans-serif;
-$font-serif: serif;
+$font-sans: 'Noto Sans', sans-serif;
+$font-serif: 'Noto Serif', serif;
 
 /*
 An object of type properties, for use with the type() mixin.
