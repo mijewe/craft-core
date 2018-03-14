@@ -17,19 +17,10 @@ gulp.task("init:env", function () {
   .pipe(gulp.dest("."));
 });
 
-// copies the loadCSS snippet to templates.
-gulp.task("init:loadcss", function () {
-  return gulp.src("node_modules/fg-loadcss/src/loadCSS.js")
-  .pipe(uglify())
-  .pipe(rename('loadcss.js'))
-  .pipe(gulp.dest("craft/templates/_partials/snippets/"));
-});
-
-// copies the onLoadCSS snippet to templates.
-gulp.task("init:onloadcss", function () {
-  return gulp.src("node_modules/fg-loadcss/src/onloadCSS.js")
-  .pipe(uglify())
-  .pipe(rename('onloadcss.js'))
+// copies the cssrelpreload snippet to templates.
+gulp.task("init:cssrelpreload", function () {
+  return gulp.src("node_modules/fg-loadcss/src/cssrelpreload.js")
+  .pipe(rename('cssrelpreload.js'))
   .pipe(gulp.dest("craft/templates/_partials/snippets/"));
 });
 
@@ -41,6 +32,6 @@ gulp.task("init:fontfaceobserver", function () {
   .pipe(gulp.dest("craft/templates/_partials/snippets/"));
 });
 
-gulp.task('init:js', ['init:loadcss', 'init:onloadcss', 'init:fontfaceobserver']);
+gulp.task('init:js', ['init:cssrelpreload', 'init:fontfaceobserver']);
 
 gulp.task('init', ['init:app', 'init:env', 'plugins', 'init:js']);

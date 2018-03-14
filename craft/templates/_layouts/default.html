@@ -2,7 +2,13 @@
 
 {% set fonts = ['Noto Sans', 'Noto Serif'] %}
 
-{% set stylesheets = {
-	'mainStyles' : '/assets/css/main.css',
-	'fontStyles' : 'https://fonts.googleapis.com/css?family=Noto+Sans|Noto+Serif'
-} %}
+{% set stylesheets = [
+	{
+		'path' : '/assets/css/main.css',
+		'callback' : 'onMainCssLoad'
+	},
+	{
+		'path' : 'https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700',
+		'callback' : 'onFontsCssLoad'
+	}
+] %}
