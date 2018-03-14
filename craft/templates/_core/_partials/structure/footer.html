@@ -1,60 +1,53 @@
 		{#
-		Load in css in a non-blocking way. Remove the critical css when the main
-		css is loaded to avoid conflicts.
+		Allows js to easily identify which breakpoint we're on.
 		#}
-		<span class="visuallyhidden loadcss-check js-loadcss-check">main.css loaded.</span>
 		<span class="u_visuallyhidden which-breakpoint"></span>
+
+		{#
+		Callbacks for when CSS is loaded.
+		#}
 		<script>
-			{% include '_partials/snippets/fontfaceobserver.js' %}
-			{% include '_partials/snippets/loadcss.js' %}
-			{% include '_partials/snippets/onloadcss.js' %}
 
-			{% for stylevar,stylepath in stylesheets %}
-				var {{ stylevar }} = loadCSS("{{ stylepath|refreshString }}");
-			{% endfor %}
-
-			onloadCSS(mainStyles, function() {
-
-				// once the styles are loaded, check that they've actually been
-				// applied before removing the critical. This avoids a flash.
-				var elem = document.getElementsByClassName('js-loadcss-check')[0];
-				var loadcsstimer = setInterval(function() {
-
-					if ( window.getComputedStyle(elem)['backgroundColor'] == 'rgb(255, 192, 203)' ) {
-						var element = document.getElementById("js-critical-css");
-						element.parentNode.removeChild(element);
-						elem.parentNode.removeChild(elem);
-						window.clearInterval(loadcsstimer);
-					}
-
-				}, 100);
-			});
-
-			function onFontsLoaded() {
-				if (!document.documentElement.classList.contains('webfonts-loaded')) {
-					document.documentElement.className = document.documentElement.className.replace( /(?:^|\s)no-webfonts(?!\S)/g , '' );
-					document.documentElement.className += " webfonts-loaded";
-					sessionStorage.foutFontsLoaded = true;
-				}
-			}
-
-			// load in the fonts once fonts.css is in.
+			// if we've already got the fonts cached, skip the Promise bit.
 			if (sessionStorage.foutFontsLoaded) {
 				onFontsLoaded();
 			}
 
-			onloadCSS(fontStyles, function() {
+			function onMainCssLoad() {
+				// once the main css is loaded ...
 
+				// ... remove the critical css to avoid conflicts.
+				var criticalCssElement = document.getElementById("js_critical-css");
+				criticalCssElement.parentNode.removeChild(criticalCssElement);
+			};
+
+			function onFontsCssLoad() {
+				// once the font css is loaded ...
+
+				// ... create an fontfaceobserver for each one ...
 				{% for font in fonts %}
 					var observer{{ loop.index }} = new FontFaceObserver("{{ font }}");
 				{% endfor %}
 
+				// ... and when all the fonts are loaded ...
 				Promise.all([{% for i in 1..fonts|length %}observer{{ i }}.load(){% if not loop.last %}, {% endif %}{% endfor %}]).then(function () {
 					onFontsLoaded();
 				});
+			}
 
-			});
+			function onFontsLoaded() {
+				// once the fonts are loaded ...
 
+				if (!document.documentElement.classList.contains('webfonts-loaded')) {
+
+					// ... swap the HTML class ...
+					document.documentElement.className = document.documentElement.className.replace( /(?:^|\s)no-webfonts(?!\S)/g , '' );
+					document.documentElement.className += " webfonts-loaded";
+
+					// ... and let the session know we've got the fonts.
+					sessionStorage.foutFontsLoaded = true;
+				}
+			}
 		</script>
 
 		{#
@@ -63,7 +56,7 @@
 		#}
 		<script>
 			!function(e,t,r){function n(){for(;d[0]&&"loaded"==d[0][f];)c=d.shift(),c[o]=!i.parentNode.insertBefore(c,i)}for(var s,a,c,d=[],i=e.scripts[0],o="onreadystatechange",f="readyState";s=r.shift();)a=e.createElement(t),"async"in i?(a.async=!1,e.head.appendChild(a)):i[f]?(d.push(a),a[o]=n):e.write("<"+t+' src="'+s+'" defer></'+t+">"),a.src=s}(document,"script",[
-			"/assets/js/main.js"{% spaceless %}
+			"{{ '/assets/js/main.js'|refreshString }}"{% spaceless %}
 			{% if (pageJsFiles is defined) and (pageJsFiles is not empty) %},
 				{% for file in pageJsFiles %}
 					"/assets/js/{{ file }}"{% if not loop.last %}, {% endif %}

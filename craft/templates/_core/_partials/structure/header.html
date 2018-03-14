@@ -55,5 +55,10 @@
 			{% include ['_partials/snippets/' ~ (entry is defined ? entry.slug : 'critical') ~ '.css', '_partials/snippets/critical.css'] ignore missing %}
 		</style>
 
+		{% for sheet in stylesheets %}
+			<link rel="preload" href="{{ sheet.path|refreshString }}" as="style" onload="this.onload=null;this.rel='stylesheet';{% if sheet.callback %}{{ sheet.callback }}(this);{% endif %}">
+			<noscript><link rel="stylesheet" href="{{ sheet.path }}"></noscript>
+		{% endfor %}
+
 	</head>
 	<body>
