@@ -50,14 +50,25 @@
 
 		{% include '_partials/snippets/favicons' ignore missing %}
 
-		<style id="js-critical-css">
-			svg { opacity: 0; }
-			{% include ['_partials/snippets/' ~ (entry is defined ? entry.slug : 'critical') ~ '.css', '_partials/snippets/critical.css'] ignore missing %}
-		</style>
+		{#
+		Inline main styles if <=16kb.
+		Otherwise include criticalcss and defer loading of main styles.
+		#}
+		{% set inlineStyles = stylesheets[0].path|filesize <= (16 * 1024) %}
+		{% if inlineStyles %}
+			<style>{% include '_partials/snippets/main.css' ignore missing %}</style>
+		{% else %}
+			<style id="js_critical-css">
+				svg { opacity: 0; }
+				{% include ['_partials/snippets/' ~ (entry is defined ? entry.slug : 'critical') ~ '.css', '_partials/snippets/critical.css'] ignore missing %}
+			</style>
+		{% endif %}
 
 		{% for sheet in stylesheets %}
-			<link rel="preload" href="{{ sheet.path|refreshString }}" as="style" onload="this.onload=null;this.rel='stylesheet';{% if sheet.callback %}{{ sheet.callback }}(this);{% endif %}">
-			<noscript><link rel="stylesheet" href="{{ sheet.path }}"></noscript>
+			{% if not (loop.first and inlineStyles) %}
+				<link rel="preload" href="{{ sheet.path|refreshString }}" as="style" onload="this.onload=null;this.rel='stylesheet';{% if sheet.callback %}{{ sheet.callback }}(this);{% endif %}">
+				<noscript><link rel="stylesheet" href="{{ sheet.path }}"></noscript>
+			{% endif %}
 		{% endfor %}
 
 	</head>
