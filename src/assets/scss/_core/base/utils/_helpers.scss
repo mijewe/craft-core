@@ -5,15 +5,15 @@
 /*
 Clearfix
 */
-.u_clearfix {
-	&:before, &:after {
-		content: "";
-		display: table;
-	}
-	&:after {
-		clear: both;
-	}
-}
+// .u_clearfix {
+// 	&:before, &:after {
+// 		content: "";
+// 		display: table;
+// 	}
+// 	&:after {
+// 		clear: both;
+// 	}
+// }
 
 
 
@@ -68,64 +68,14 @@ Accessiblity-friendlier way to hide text from h5b
 
 
 
-.u_cover-object {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-}
-
-.u_v-centred {
-	top: 50%;
-	transform: translateY(-50%);
-
-	&--abs {
-		position: absolute;
-	}
-	&--rel {
-		position: relative;
-	}
-}
-
-.u_h-centred {
-	left: 50%;
-	transform: translateX(-50%);
-
-	&--abs {
-		position: absolute;
-	}
-	&--rel {
-		position: relative;
-	}
-}
-
-.u_hv-centred {
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	transform: translate3d(-50%, -50%, 0);
-
-	&--abs {
-		position: absolute;
-	}
-	&--rel {
-		position: relative;
-	}
-}
-
-
-
-
-
-
-
-
-
 .u_block {
 	display: block;
 }
 
 .u_no-dec {
 	text-decoration: none;
+}
+
+.u_ov-hid {
+	overflow: hidden;
 }
