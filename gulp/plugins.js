@@ -41,4 +41,9 @@ gulp.task("plugin:fastcgicachebust", function () {
     .pipe(gulpCopy('./craft/plugins/', { prefix: 1 }))
 });
 
-gulp.task('plugins', ["plugin:anchor", "plugin:emailwrap", "plugin:refreshstring", "plugin:contactform", "plugin:jsontransforms", "plugin:jsonreader", "plugin:imager", "plugin:fastcgicachebust"]);
+gulp.task("plugin:redirectmanager", function () {
+    return gulp.src("./node_modules/Craft-Plugin--Redirect-Manager/redirectmanager/**/*")
+    .pipe(gulpCopy('./craft/plugins/', { prefix: 2 }))
+});
+
+gulp.task('plugins', ["plugin:anchor", "plugin:emailwrap", "plugin:refreshstring", "plugin:contactform", "plugin:jsontransforms", "plugin:jsonreader", "plugin:imager", "plugin:fastcgicachebust", "plugin:redirectmanager"]);

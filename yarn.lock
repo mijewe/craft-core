@@ -6,6 +6,10 @@
   version "0.0.0"
   resolved "https://github.com/pixelandtonic/ContactForm.git#8672f1204ee2d3e58f75f29a1246b0e36f2abf8f"
 
+"Craft-Plugin--Redirect-Manager@https://github.com/rkingon/Craft-Plugin--Redirect-Manager.git":
+  version "0.0.0"
+  resolved "https://github.com/rkingon/Craft-Plugin--Redirect-Manager.git#f19188c21e19a1f574c3a6bfb78178d850f1ef34"
+
 "Imager-Craft@https://github.com/aelvan/Imager-Craft.git#v1.6.4":
   version "0.0.0"
   resolved "https://github.com/aelvan/Imager-Craft.git#9827355470d3e587ff8799b45cb6b4f5f49e5efd"
