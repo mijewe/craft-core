@@ -1,0 +1,32 @@
+<nav class="nav">
+	<div class="nav__left">
+		<a class="nav__logo u_block u_no-dec" href="{{ siteUrl }}">
+			{% include '_partials/snippets/svg/logo.svg' ignore missing %}
+		</a>
+	</div>
+
+	<div class="nav__right">
+		{% set pages = craft.JsonReader.get('nav') %}
+
+		{% if pages is not empty %}
+
+			<ul class="nav__list u_list-reset">
+
+				{% for page in pages %}
+
+					{% set thisEntry = craft.entries.slug(page.slug).first() ?? null %}
+					{% set active = (entry.slug == page.slug) or (entry.section.handle ~ '-index' == page.slug) %}
+
+					{% if thisEntry %}
+						<li class="nav__item{% if active %} nav__item--active{% endif %}">
+							<a class="u_no-dec" href="{{ thisEntry.url }}">{{ thisEntry.title }}</a>
+						</li>
+					{% endif %}
+				{% endfor %}
+
+			</ul>
+
+		{% endif %}
+
+	</div>
+</nav>
