@@ -106,7 +106,7 @@ Produces rem font sizes from px.
 http://guyroutledge.co.uk/blog/simplify-font-size-with-rems/
 */
 @mixin font-size($font-size) {
-  font-size: $font-size * 1px;
+  // font-size: $font-size * 1px;
   font-size: $font-size / 16 * 1rem;
 }
 
