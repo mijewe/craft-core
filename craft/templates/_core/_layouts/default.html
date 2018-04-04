@@ -28,6 +28,8 @@ can override this by creating a pixelRatios variable in _layouts/default #}
 {# comes in handy sometimes. #}
 {% set isHomepage = (entry is defined ? entry.section.isHomepage() : false) %}
 
+{% set inlineStyles = stylesheets[0].path|getfilesize <= (16 * 1024) %}
+
 {# For ajax requests you generally only want the content, and not the header and
 footer. #}
 {% if not craft.request.isAjax %}

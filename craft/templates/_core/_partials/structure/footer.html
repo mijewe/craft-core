@@ -55,6 +55,13 @@ Callbacks for when CSS is loaded.
 	}
 </script>
 
+{% for sheet in stylesheets %}
+	{% if not (loop.first and inlineStyles) %}
+		<link rel="preload" href="{{ sheet.path|refreshString }}" as="style" onload="this.onload=null;this.rel='stylesheet';{% if sheet.callback %}{{ sheet.callback }}(this);{% endif %}">
+		<noscript><link rel="stylesheet" href="{{ sheet.path }}"></noscript>
+	{% endif %}
+{% endfor %}
+
 {#
 Non-blocking, order-preserving method of loading Javascript files, from
 http://www.html5rocks.com/en/tutorials/speed/script-loading/

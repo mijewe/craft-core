@@ -55,7 +55,6 @@
 		Inline main styles if <=16kb.
 		Otherwise include criticalcss and defer loading of main styles.
 		#}
-		{% set inlineStyles = stylesheets[0].path|filesize <= (16 * 1024) %}
 		{% if inlineStyles %}
 			<style>{% include '_partials/snippets/main.css' ignore missing %}</style>
 		{% else %}
@@ -64,13 +63,6 @@
 				{% include ['_partials/snippets/' ~ (entry is defined ? entry.slug : 'critical') ~ '.css', '_partials/snippets/critical.css'] ignore missing %}
 			</style>
 		{% endif %}
-
-		{% for sheet in stylesheets %}
-			{% if not (loop.first and inlineStyles) %}
-				<link rel="preload" href="{{ sheet.path|refreshString }}" as="style" onload="this.onload=null;this.rel='stylesheet';{% if sheet.callback %}{{ sheet.callback }}(this);{% endif %}">
-				<noscript><link rel="stylesheet" href="{{ sheet.path }}"></noscript>
-			{% endif %}
-		{% endfor %}
 
 	</head>
 	<body>
