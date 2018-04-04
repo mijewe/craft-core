@@ -3,5 +3,8 @@
 */
 
 .container {
-	@include container($width-page);
+	position: relative;
+	max-width: $width-page;
+	margin-left: auto;
+	margin-right: auto;
 }

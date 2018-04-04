@@ -210,12 +210,9 @@ Breakpoints.
 */
 @mixin at($bp) {
 
-  $thisBp: map-get($breakpoints, $bp);
+  $breakpoint: map-get($breakpoints, $bp);
 
-  $breakpoint: map-get($thisBp, 'breakpoint');
-  $susy: map-get($thisBp, 'susy');
-
-  @include susy-breakpoint(max-width $breakpoint, $susy) {
+  @media (max-width: $breakpoint) {
     @content;
   }
 }
