@@ -6,11 +6,12 @@
 			{% if seo is not defined %}
 				<h1>Site SEO stuff isn't done.</h1>
 				<ol>
-					<li>Make a Global Set called "SEO" (seo).</li>
+					<li>Make a new asset source for images called Images with path "{basePath}uploads/img/" and url "{baseUrl}uploads/img/"</li>
 					<li>Make a plain text field called "Default SEO Description" (defaultSeoDescription). Give it a max length of 160 characters.</li>
 					<li>Make an asset field called "Default SEO Image" (defaultSeoImage).</li>
 					<li>Make a matrix field called "Social" (social). Give it plain text fields of "Twitter Handle" (twitterHandle) and Facebook ID (facebookId). Set max blocks to 1.</li>
 					<li>Make a matrix field called "Geo". Give it plain text fields of "Latitude", "Longitude", "Placename", and "Region". Max blocks 1.</li>
+					<li>Make a Global Set called "SEO" (seo).</li>
 					<li>Add those fields to the "SEO" global set.</li>
 				</ol>
 				{% exit %}
