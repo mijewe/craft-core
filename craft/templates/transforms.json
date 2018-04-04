@@ -6,6 +6,9 @@
 	},
 	"example" : {
 		"default" : {},
+		"bison" : {
+			"width" : 1440
+		},
 		"bear" : {
 			"width" : 1440
 		},
