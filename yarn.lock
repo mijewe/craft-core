@@ -545,7 +545,7 @@ core-util-is@1.0.2, core-util-is@~1.0.0:
 
 "craft-filesize@https://github.com/mijewe/craft-filesize.git":
   version "0.0.0"
-  resolved "https://github.com/mijewe/craft-filesize.git#b09f6fa6d0444a35b7c1edae123cb6d472219ae1"
+  resolved "https://github.com/mijewe/craft-filesize.git#4b4aacdf13aad27f73b1dad54622cb1d8f1f01d0"
 
 "craft-jsonreader@https://github.com/mijewe/craft-jsonreader.git":
   version "0.0.0"
