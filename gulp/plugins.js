@@ -11,6 +11,12 @@ gulp.task("plugin:emailwrap", function () {
     .pipe(gulpCopy('./craft/plugins/', { prefix: 2 }))
 });
 
+
+gulp.task("plugin:filesize", function () {
+    return gulp.src("./node_modules/craft-filesize/filesize/**/*")
+    .pipe(gulpCopy('./craft/plugins/', { prefix: 2 }))
+});
+
 gulp.task("plugin:refreshstring", function () {
     return gulp.src("./node_modules/craft-refreshstring/refreshstring/**/*")
     .pipe(gulpCopy('./craft/plugins/', { prefix: 2 }))
@@ -46,4 +52,4 @@ gulp.task("plugin:redirectmanager", function () {
     .pipe(gulpCopy('./craft/plugins/', { prefix: 2 }))
 });
 
-gulp.task('plugins', ["plugin:anchor", "plugin:emailwrap", "plugin:refreshstring", "plugin:contactform", "plugin:jsontransforms", "plugin:jsonreader", "plugin:imager", "plugin:fastcgicachebust", "plugin:redirectmanager"]);
+gulp.task('plugins', ["plugin:anchor", "plugin:emailwrap", "plugin:refreshstring", "plugin:contactform", "plugin:jsontransforms", "plugin:jsonreader", "plugin:imager", "plugin:fastcgicachebust", "plugin:redirectmanager", "plugin:filesize"]);

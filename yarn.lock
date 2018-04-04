@@ -570,6 +570,10 @@ core-util-is@1.0.2, core-util-is@~1.0.0:
   version "0.0.0"
   resolved "https://github.com/mijewe/craft-emailwrap.git#9b02d54f4b9fcc213300d456f4fccb134d27580c"
 
+"craft-filesize@https://github.com/mijewe/craft-filesize.git":
+  version "0.0.0"
+  resolved "https://github.com/mijewe/craft-filesize.git#b09f6fa6d0444a35b7c1edae123cb6d472219ae1"
+
 "craft-jsonreader@https://github.com/mijewe/craft-jsonreader.git":
   version "0.0.0"
   resolved "https://github.com/mijewe/craft-jsonreader.git#67d67d02abbc44f194be34923bd707ff38c36686"

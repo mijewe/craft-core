@@ -12,6 +12,7 @@
         "Imager-Craft": "https://github.com/aelvan/Imager-Craft.git#v1.6.4",
         "craft-anchor": "https://github.com/mijewe/craft-anchor.git",
         "craft-emailwrap": "https://github.com/mijewe/craft-emailwrap.git",
+        "craft-filesize": "https://github.com/mijewe/craft-filesize.git",
         "craft-jsonreader": "https://github.com/mijewe/craft-jsonreader.git",
         "craft-jsontransforms": "https://github.com/mijewe/craft-jsontransforms.git",
         "craft-refreshstring": "https://github.com/mijewe/craft-refreshstring.git",
