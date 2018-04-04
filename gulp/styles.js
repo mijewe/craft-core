@@ -10,7 +10,8 @@ gulp.task('styles', function () {
   return gulp.src('./src/assets/scss/main.scss')
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(autoprefixer(autoprefixerOptions))
-    .pipe(gulp.dest('./public/assets/css'));
+    .pipe(gulp.dest('./public/assets/css'))
+    .pipe(gulp.dest('./craft/templates/_partials/snippets/'));
 });
 
 gulp.task('styles:watch', function () {
