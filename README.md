@@ -1,55 +1,27 @@
-# Craft Core
-A starting point for creating new Craft projects.
+<p align="center"><a href="https://craftcms.com/" target="_blank"><img width="312" height="90" src="https://craftcms.com/craftcms.svg" alt="Craft CMS"></a></p>
 
-## What is this?
-Craft Core is a sort of boilerplate for new Craft projects. Unlike the old Craft Boilerplate, here the core templates and styles are separate from the rest of the templates and styles. This should reduce the amount of horrible conflicts you've got to deal with when pulling the latest changes from Craft Core into your project.
+## About Craft CMS
 
-## What's in the box?
+Craft is a content-first CMS that aims to make life enjoyable for developers and content managers alike. It is optimized for bespoke web and application development, offering developers a clean slate to build out exactly what they want, rather than wrestling with a theme.
 
-## Getting Started
+Learn more about Craft at [craftcms.com](https://craftcms.com).
 
-### Things you need to have.
-This Core is Nodey, Gulpy, and SASSy. So make sure you have them
-```
-brew install yarn
-yarn global add gulp-cli
-sudo gem install sass
-```
+## How to Install Craft 3
 
-### Using this Core
+See the Craft 3 documentation for [installation](https://docs.craftcms.com/v3/installation.html) and [updating](https://docs.craftcms.com/v3/updating.html) instructions.
 
-To create a new Craft project based on this Core, create your repo and add Craft Core as a remote,
-```
-git remote add core https://github.com/mijewe/craft-core.git
-```
-pull in the contents,
-```
-git pull core master
-```
-and then make sure you can't push up to the core, as that may well break everything.
-```
-git remote set-url --push core no_push
-```
+## Resources
 
-### Setting Up
-Your site is built with [Craft](http://craftcms.com), but the Craft source files are not included with this repo. That would be ridiculous. Don't worry about installing Craft though, as that's done for you with the ```gulp init:app``` task.
+#### Official Resources
+- [Craft 3 Documentation](https://docs.craftcms.com/v3/)
+- [Craft 3 Class Reference](https://docs.craftcms.com/api/v3/)
+- [Craft 3 Plugins](https://plugins.craftcms.com)
+- [Demo site](https://demo.craftcms.com/)
+- [Craft Slack](https://craftcms.com/community#slack)
+- [Craft CMS Stack Exchange](http://craftcms.stackexchange.com/)
 
-We compile all our assets using Gulp. So first run ```yarn && yarn upgrade``` to install the node modules, ```gulp init``` to install Craft, and then ```gulp build``` to generate all the assets.
-
-```
-yarn && yarn upgrade && gulp init && gulp build
-```
-
-## Plugins we use in this project
-We don't include plugin files in the repo. That would also be ridiculous. So here is a list of the plugins used:
-* [Anchor](https://github.com/mijewe/craft-anchor)
-* [Cachey](https://github.com/dustcollective/craft-cachey), by Dust
-* [Contact Form](https://github.com/pixelandtonic/ContactForm), by Pixel & Tonic
-* [Email Wrap](https://github.com/mijewe/craft-emailwrap)
-* [Field Manager](https://github.com/engram-design/FieldManager), by Engram Design
-* [JSON Reader](https://github.com/mijewe/craft-jsonreader)
-* [JSON Transforms](https://github.com/mijewe/craft-jsontransforms)
-* [Redirect Manager](https://github.com/rkingon/Craft-Plugin--Redirect-Manager), by Roi Kingon
-* [Refresh String](https://github.com/mijewe/craft-refreshstring.git)
-* [Sprout Fields](http://sprout.barrelstrengthdesign.com/craft-plugins/fields), by Barrel Strength Design
-* [Typogrify](https://github.com/jamiepittock/craft-typogrify), by Jamie Pittock
+#### Community Resources
+- [Mijingo](https://mijingo.com/craft) – Video courses and other learning resources
+- [Envato Tuts+](https://webdesign.tutsplus.com/categories/craft-cms/courses) – Video courses
+- [Straight Up Craft](http://straightupcraft.com/) – Articles, tutorials, and more
+- [pluginfactory.io](https://pluginfactory.io/) – Craft plugin scaffold generator

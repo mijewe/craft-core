@@ -11,7 +11,15 @@ gulp.task('scripts', function() {
     ])
     .pipe(concat('main.js'))
     .pipe(uglify())
-    .pipe(gulp.dest('./public/assets/js/'));
+    .pipe(gulp.dest('./web/assets/js/'));
+});
+
+gulp.task('scripts:snippets', function() {
+  return gulp.src([
+      'node_modules/fg-loadcss/src/cssrelpreload.js',
+      'node_modules/fontfaceobserver/fontfaceobserver.js'
+    ])
+    .pipe(gulp.dest('templates/_snippets/js/'));
 });
 
 gulp.task('scripts:watch', function () {

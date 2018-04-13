@@ -4,8 +4,8 @@ var favicons = require('gulp-favicons');
 gulp.task("favicons", function () {
     return gulp.src("./src/assets/img/favicon.png")
     .pipe(favicons({
-      path: "{{ craft.config.rootUrl }}/assets/img/favicons",
-      html: "craft/templates/_partials/snippets/favicons.html"
+      path: "{{ siteUrl }}/assets/img/favicons",
+      html: "templates/_partials/favicons.html"
     }))
-    .pipe(gulp.dest("./public/assets/img/favicons/"));
+    .pipe(gulp.dest("./web/assets/img/favicons/"));
 });

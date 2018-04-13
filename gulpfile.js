@@ -11,6 +11,11 @@ gulp.task('default', [
   'images:watch'
 ]);
 
+gulp.task('init', [
+  'init:env',
+  'scripts:snippets'
+]);
+
 gulp.task('build', [
   'styles',
   'scripts',

@@ -4,8 +4,8 @@ var svgmin = require('gulp-svgmin');
 gulp.task('svgmin', function() {
   return gulp.src('./src/assets/img/svg/**/*.svg')
     .pipe(svgmin())
-    .pipe(gulp.dest('./craft/templates/_partials/snippets/svg/'))
-    .pipe(gulp.dest('./public/assets/img/svg/'));
+    .pipe(gulp.dest('./templates/_snippets/svg/'))
+    .pipe(gulp.dest('./web/assets/img/svg/'));
 });
 
 gulp.task('images', ['svgmin']);

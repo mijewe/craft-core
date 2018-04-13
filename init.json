@@ -1,0 +1,266 @@
+{
+    "fieldGroups": [
+        "Globals",
+        "Common"
+    ],
+    "volumes": [
+        {
+            "name": "Images",
+            "handle": "images",
+            "type": "craft\\volumes\\Local",
+            "hasUrls": true,
+            "url": "@web\/uploads\/img\/",
+            "settings": {
+                "path": "@webroot\/uploads\/img\/"
+            },
+            "fieldLayout": []
+        }
+    ],
+    "fields": [
+        {
+            "group": "Globals",
+            "name": "Default SEO Description",
+            "handle": "defaultSeoDescription",
+            "instructions": "",
+            "type": "craft\\fields\\PlainText",
+            "placeholder": "",
+            "code": "",
+            "multiline": "",
+            "initialRows": "4",
+            "charLimit": "160",
+            "columnType": "text"
+        },
+        {
+            "group": "Globals",
+            "name": "Default SEO Image",
+            "handle": "defaultSeoImage",
+            "instructions": "",
+            "type": "craft\\fields\\Assets",
+            "useSingleFolder": "",
+            "defaultUploadLocationSource": "images",
+            "defaultUploadLocationSubpath": "",
+            "singleUploadLocationSource": "images",
+            "singleUploadLocationSubpath": "",
+            "restrictFiles": "1",
+            "allowedKinds": [
+                "image"
+            ],
+            "sources": "*",
+            "viewMode": "large",
+            "limit": "1",
+            "selectionLabel": "",
+            "localizeRelations": false
+        },
+        {
+            "group": "Globals",
+            "name": "Geo",
+            "handle": "geo",
+            "instructions": "",
+            "type": "craft\\fields\\Matrix",
+            "minBlocks": "",
+            "maxBlocks": "1",
+            "localizeBlocks": false,
+            "blockTypes": [
+                {
+                    "name": "Geo",
+                    "handle": "geo",
+                    "fields": [
+                        {
+                            "required": false,
+                            "name": "Latitude",
+                            "handle": "latitude",
+                            "instructions": "",
+                            "type": "craft\\fields\\PlainText",
+                            "typesettings": {
+                                "placeholder": "",
+                                "code": "",
+                                "multiline": "",
+                                "initialRows": "4",
+                                "charLimit": "",
+                                "columnType": "text"
+                            }
+                        },
+                        {
+                            "required": false,
+                            "name": "Longitude",
+                            "handle": "longitude",
+                            "instructions": "",
+                            "type": "craft\\fields\\PlainText",
+                            "typesettings": {
+                                "placeholder": "",
+                                "code": "",
+                                "multiline": "",
+                                "initialRows": "4",
+                                "charLimit": "",
+                                "columnType": "text"
+                            }
+                        },
+                        {
+                            "required": false,
+                            "name": "Placename",
+                            "handle": "placename",
+                            "instructions": "",
+                            "type": "craft\\fields\\PlainText",
+                            "typesettings": {
+                                "placeholder": "",
+                                "code": "",
+                                "multiline": "",
+                                "initialRows": "4",
+                                "charLimit": "",
+                                "columnType": "text"
+                            }
+                        },
+                        {
+                            "required": false,
+                            "name": "Region",
+                            "handle": "region",
+                            "instructions": "",
+                            "type": "craft\\fields\\PlainText",
+                            "typesettings": {
+                                "placeholder": "",
+                                "code": "",
+                                "multiline": "",
+                                "initialRows": "4",
+                                "charLimit": "",
+                                "columnType": "text"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "group": "Common",
+            "name": "SEO",
+            "handle": "seo",
+            "instructions": "",
+            "type": "craft\\fields\\Matrix",
+            "minBlocks": "",
+            "maxBlocks": "1",
+            "localizeBlocks": false,
+            "blockTypes": [
+                {
+                    "name": "SEO",
+                    "handle": "seo",
+                    "fields": [
+                        {
+                            "required": false,
+                            "name": "Page Title",
+                            "handle": "pageTitle",
+                            "instructions": "",
+                            "type": "craft\\fields\\PlainText",
+                            "typesettings": {
+                                "placeholder": "",
+                                "code": "",
+                                "multiline": "",
+                                "initialRows": "4",
+                                "charLimit": "",
+                                "columnType": "text"
+                            }
+                        },
+                        {
+                            "required": false,
+                            "name": "Description",
+                            "handle": "description",
+                            "instructions": "",
+                            "type": "craft\\fields\\PlainText",
+                            "typesettings": {
+                                "placeholder": "",
+                                "code": "",
+                                "multiline": "",
+                                "initialRows": "4",
+                                "charLimit": "",
+                                "columnType": "text"
+                            }
+                        },
+                        {
+                            "required": false,
+                            "name": "Image",
+                            "handle": "image",
+                            "instructions": "",
+                            "type": "craft\\fields\\Assets",
+                            "typesettings": {
+                                "useSingleFolder": "",
+                                "defaultUploadLocationSource": "images",
+                                "defaultUploadLocationSubpath": "",
+                                "singleUploadLocationSource": "images",
+                                "singleUploadLocationSubpath": "",
+                                "restrictFiles": "1",
+                                "allowedKinds": [
+                                    "image"
+                                ],
+                                "sources": "*",
+                                "viewMode": "large",
+                                "limit": "1",
+                                "selectionLabel": "",
+                                "localizeRelations": false
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "group": "Globals",
+            "name": "Social",
+            "handle": "social",
+            "instructions": "",
+            "type": "craft\\fields\\Matrix",
+            "minBlocks": "",
+            "maxBlocks": "1",
+            "localizeBlocks": false,
+            "blockTypes": [
+                {
+                    "name": "Social",
+                    "handle": "social",
+                    "fields": [
+                        {
+                            "required": false,
+                            "name": "Twitter Handle",
+                            "handle": "twitterHandle",
+                            "instructions": "",
+                            "type": "craft\\fields\\PlainText",
+                            "typesettings": {
+                                "placeholder": "",
+                                "code": "",
+                                "multiline": "",
+                                "initialRows": "4",
+                                "charLimit": "",
+                                "columnType": "text"
+                            }
+                        },
+                        {
+                            "required": false,
+                            "name": "Facebook ID",
+                            "handle": "facebookId",
+                            "instructions": "",
+                            "type": "craft\\fields\\PlainText",
+                            "typesettings": {
+                                "placeholder": "",
+                                "code": "",
+                                "multiline": "",
+                                "initialRows": "4",
+                                "charLimit": "",
+                                "columnType": "text"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "globalSets": [
+        {
+            "name": "SEO",
+            "handle": "seo",
+            "fieldLayout": {
+                "SEO": [
+                    "defaultSeoDescription",
+                    "defaultSeoImage",
+                    "geo",
+                    "social"
+                ]
+            }
+        }
+    ]
+}

@@ -1,57 +1,20 @@
-# Ignore everthing in craft...
-craft/*
+/vendor
+/web/cpresources
+license.key
 
-# ...except specified plugins...
-!craft/plugins/
-craft/plugins/*
+templates/_snippets/css/
+templates/_snippets/js/
+templates/_snippets/svg/
+templates/_partials/favicons.html
 
-# ...translations...
-!craft/translations/
+web/assets/
 
-# ...the custom admin logo...
-!craft/storage/logo/
+node_modules
 
-# ...non-sensitive configuration...
-!craft/config/
-craft/config/license.key
-
-# ...and your templates...
-!/craft/templates/
-
-# ...except templates generated from src.
-/craft/templates/_partials/snippets/
-
-# Now ignore everything in public...
-public/*
-
-# ...except indexes...
-!public/index.php
-#!public/en/
-
-# ...and assets...
-!public/assets/
-
-# ...but do ignore assets generated from src...
-public/assets/css/
-public/assets/js/
-public/assets/img/
-public/assets/fonts/
-
-# Ignore dev stuff.
-dev/
-
-# Now ignore dependencies...
-bower_components/
-node_modules/
-
-# ...debris...
-.sass-cache/
-*.css.map
+/.env
+/.idea
 .DS_Store
-npm-debug.log
-
-# ...and local development stuff.
-log/
-nocommit/
-local.nginx.conf
-.env.php
+.htaccess
+web.config
+craft
+craft.bat
