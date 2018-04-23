@@ -17,9 +17,9 @@
 {% set seoFacebookImage = null %}
 {% set seoTwitterImage = null %}
 {% if image %}
-	{% set seoGoogleImage = craft.imager.transformImage(image, craft.JsonTransforms.getTransform('seo-google', '_seo')) %}
-	{% set seoFacebookImage = craft.imager.transformImage(image, craft.JsonTransforms.getTransform('seo-facebook', '_seo')) %}
-	{% set seoTwitterImage = craft.imager.transformImage(image, craft.JsonTransforms.getTransform('seo-twitter', '_seo')) %}
+	{% set seoGoogleImage = craft.imager.transformImage(image, craft.jsonTransformsModule.getTransform('seo-google', '_seo')) %}
+	{% set seoFacebookImage = craft.imager.transformImage(image, craft.jsonTransformsModule.getTransform('seo-facebook', '_seo')) %}
+	{% set seoTwitterImage = craft.imager.transformImage(image, craft.jsonTransformsModule.getTransform('seo-twitter', '_seo')) %}
 {% endif %}
 {# === /calculated settings === #}
 

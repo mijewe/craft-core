@@ -26,13 +26,13 @@ can override this by creating a pixelRatios variable in _layouts/default #}
 {% set defaultPixelRatios = [1, 2] %}
 
 {# comes in handy sometimes. #}
-{% set isHomepage = (entry is defined ? entry.section.isHomepage() : false) %}
+{% set isHomepage = (entry is defined ? entry.section.handle == '' : false) %}
 
 {% set inlineStyles = getFileSize(stylesheets[0].path) <= (16 * 1024) %}
 
 {# For ajax requests you generally only want the content, and not the header and
 footer. #}
-{% if not craft.request.isAjax %}
+{% if not craft.app.request.isAjax %}
 
 	{# structural header is stuff like your meta tags and critical css. #}
 	{% include '_partials/structure/header' %}
@@ -48,7 +48,7 @@ footer. #}
 {% block content %}
 {% endblock %}
 
-{% if not craft.request.isAjax %}
+{% if not craft.app.request.isAjax %}
 
 		</main>
 		{% include '_partials/footer' %}

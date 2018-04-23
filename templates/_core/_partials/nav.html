@@ -6,7 +6,7 @@
 	</div>
 
 	<div class="nav__right">
-		{% set pages = craft.JsonReader.get('nav') %}
+		{% set pages = craft.jsonReaderModule.get('nav') %}
 
 		{% if pages is not empty %}
 

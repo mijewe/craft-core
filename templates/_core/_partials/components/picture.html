@@ -78,7 +78,7 @@
 		{% for key,value in breakpoints %}
 			{% set image = imageMap[key] ?? image %}
 
-			{% set thisTransform = craft.JsonTransforms.getTransform(transform, key) %}
+			{% set thisTransform = craft.jsonTransformsModule.getTransform(transform, key) %}
 			{% set width = image.getWidth(thisTransform) %}
 			{% set height = image.getHeight(thisTransform) %}
 
@@ -88,7 +88,7 @@
 				<source
 				{{ srcAttr }}="{% spaceless %}
 					{% for pixelRatio in pixelRatios|sort|reverse %}
-						{% set thisPRTransform = craft.JsonTransforms.getTransform(transform, key, pixelRatio) %}
+						{% set thisPRTransform = craft.jsonTransformsModule.getTransform(transform, key, pixelRatio) %}
 						{{ craft.imager.transformImage(image, thisPRTransform, overrides) }}{% if pixelRatio != 1 %} {{ pixelRatio }}x{% endif %}{% if not loop.last %}, {% endif %}
 					{% endfor %}"{% endspaceless %}
 
@@ -100,7 +100,7 @@
 
 		<!--[if IE 9]></video><![endif]-->
 
-		{% set fallbackTransform = craft.JsonTransforms.getTransform(transform, 'mouse') %}
+		{% set fallbackTransform = craft.jsonTransformsModule.getTransform(transform, 'mouse') %}
 		<img {{ srcAttr }}="{{ craft.imager.transformImage(originalImage, fallbackTransform) }}" src="" alt="{{ alt }}" class="{% if lazyLoad %}js-lazyLoad{% endif %}{% if imgClass %} {{ imgClass }}{% endif %}">
 	{% endspaceless %}</picture>
 	{% if lazyLoad %}<span class="u_visuallyhidden" href="{{ image.getUrl() }}"></span>{% endif %}

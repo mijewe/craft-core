@@ -29,7 +29,7 @@ transforms.json.
 #}
 {% macro getTransform(image, transform, size) %}{% spaceless %}
 
-	{% set thisTransform = craft.JsonTransforms.getTransform(transform, size) %}
+	{% set thisTransform = craft.jsonTransformsModule.getTransform(transform, size) %}
 
 	{{ image.getUrl(thisTransform) }}
 
