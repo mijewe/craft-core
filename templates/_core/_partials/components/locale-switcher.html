@@ -9,11 +9,11 @@
     {% if (localeEntry) and (localeEntry.locale == locale) %}
 
         {# Output a link to it #}
-        <a rel="alternate" hreflang="{{ craft.config.locales[locale].languageCode }}" href="{{ localeEntry.getUrl() }}">{{ "View this page in"|t(language=locale) }} {{ craft.config.locales[locale].niceLanguage }}</a>
+        <a rel="alternate" hreflang="{{ craft.app.config.general.locales[locale].languageCode }}" href="{{ localeEntry.getUrl() }}">{{ "View this page in"|t(language=locale) }} {{ craft.app.config.general.locales[locale].niceLanguage }}</a>
     {% else %}
 
         {# Output a link to the hompage #}
-        <a href="{{ craft.config.siteUrl[locale] }}">{{ "View this website in"|t(language=locale) }} {{ craft.config.locales[locale].niceLanguage }}</a>
+        <a href="{{ craft.app.config.general.siteUrl[locale] }}">{{ "View this website in"|t(language=locale) }} {{ craft.app.config.general.locales[locale].niceLanguage }}</a>
     {% endif %}
 
 {% endfor %}

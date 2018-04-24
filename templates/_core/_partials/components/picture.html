@@ -1,6 +1,6 @@
 {# === parameters === #}
 
-{# the image you want to display from the CMS. So something like entry.leadImage.first() #}
+{# the image you want to display from the CMS. So something like entry.leadImage.one() #}
 {% set image = image ?? null %}
 
 {# the key of the transform you want to use, specified in templates/transforms.json #}
@@ -66,7 +66,7 @@
 		{% for key,value in breakpoints %}
 			{% for altImage in altImages %}
 				{% if altImage.context.value == key %}
-					{% set currentImage = altImage.image.first() ?? currentImage %}
+					{% set currentImage = altImage.image.one() ?? currentImage %}
 				{% endif %}
 			{% endfor %}
 			{% set map = {(''~key) : currentImage} %}

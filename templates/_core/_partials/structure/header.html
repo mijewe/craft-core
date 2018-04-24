@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="{{ craft.locale }}" class="no-webfonts">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="{{ craft.app.language }}" class="no-webfonts">
 	<head>
 
 		{% block meta %}
 			{% if seo is not defined %}
-				<p>Go over to <a href="/admin/settings/plugins" target="_blank">Admin > Plugins</a> and enable install Architect.</p>
+				<p>Go over to <a href="/admin/settings/plugins" target="_blank">Admin > Plugins</a> and install Architect.</p>
 				<p>Then go to the <a href="/admin/architect/import" target="_blank">import page</a> and import in the contents of init.json (in the project root).</p>
 				<p>Then come back here and refresh.</p>
 				{% exit %}
@@ -15,14 +15,14 @@
 
 				{% set pageSEO = null %}
 				{% if page.seo is not empty %}
-					{% set pageSEO = page.seo.first() %}
+					{% set pageSEO = page.seo.one() %}
 				{% endif %}
 
 				{% include '_partials/structure/meta' with {
 					'title' : isHomepage ? (pageSEO.pageTitle ?? null) : (pageSEO.pageTitle ?? page.title ?? null),
 					'description' : pageSEO.description ?? null,
 					'url' : page.url,
-					'image' : pageSEO.image.first() ?? page.leadImage.first() ?? null
+					'image' : pageSEO.image.one() ?? page.leadImage.one() ?? null
 				} %}
 
 			{% else %}

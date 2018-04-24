@@ -14,7 +14,7 @@
 
 				{% for page in pages %}
 
-					{% set thisEntry = craft.entries.slug(page.slug).first() ?? null %}
+					{% set thisEntry = craft.entries.slug(page.slug).one() ?? null %}
 					{% set active = (entry.slug == page.slug) or (entry.section.handle ~ '-index' == page.slug) %}
 
 					{% if thisEntry %}

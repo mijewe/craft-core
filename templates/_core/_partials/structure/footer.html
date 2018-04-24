@@ -80,19 +80,9 @@ http://www.html5rocks.com/en/tutorials/speed/script-loading/
 {#
 Google Anaytics tracking.
 #}
-{% block trackingCode %}
-	{% if craft.config.trackUsers and craft.config.gaCode %}
-		<script>
-			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-			ga('create', '{{ craft.config.gaCode }}', 'auto');
-			{% if alternativeTracking is defined %}{{ alternativeTracking }}{% else %}ga('send', 'pageview');{% endif %}
-		</script>
-	{% endif %}
-{% endblock %}
+{% if craft.app.config.general.trackUsers %}
+	{% include '_snippets/tracking-code' %}
+{% endif %}
 
 </body>
 </html>

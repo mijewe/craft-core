@@ -2,12 +2,12 @@
 {% set title = title ?? null %}
 {% set description = description ?? seo.defaultSeoDescription ?? null %}
 {% set url = url ?? siteUrl %}
-{% set image = image ?? seo.defaultSeoImage.first() ?? null %}
+{% set image = image ?? seo.defaultSeoImage.one() ?? null %}
 {% set type = type ?? 'website' %}
 
-{% set twitterHandle = seo.social.first().twitterHandle ?? null %}
-{% set facebookId = seo.social.first().facebookId ?? null %}
-{% set geo = seo.geo.first() %}
+{% set twitterHandle = seo.social.one().twitterHandle ?? null %}
+{% set facebookId = seo.social.one().facebookId ?? null %}
+{% set geo = seo.geo.one() %}
 {# === /parameters === #}
 
 {# === calculated settings === #}
@@ -72,7 +72,7 @@
 		{% set localeEntry = craft.entries.id(entry.id).locale(locale).first %}
 
 		{% if (localeEntry) and (localeEntry.locale == locale) %}
-			<link rel="alternate" hreflang="{{ craft.config.locales[locale].languageCode }}" href="{{ localeEntry.getUrl() }}" />
+			<link rel="alternate" hreflang="{{ craft.app.config.general.locales[locale].languageCode }}" href="{{ localeEntry.getUrl() }}" />
 		{% endif %}
 
 	{% endfor %}

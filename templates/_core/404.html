@@ -1,5 +1,5 @@
 {% if entry is not defined %}
-    {% set entry = craft.entries.uri('404').first() %}
+    {% set entry = craft.entries.uri('404').one() %}
 {% endif %}
 
 {% embed "_layouts/default" %}

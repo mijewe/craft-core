@@ -130,6 +130,19 @@
             ]
         },
         {
+            "group": "Globals",
+            "name": "Google Analytics ID",
+            "handle": "googleAnalyticsId",
+            "instructions": "",
+            "type": "craft\\fields\\PlainText",
+            "placeholder": "",
+            "code": "",
+            "multiline": "",
+            "initialRows": "4",
+            "charLimit": "",
+            "columnType": "text"
+        },
+        {
             "group": "Common",
             "name": "SEO",
             "handle": "seo",
@@ -250,6 +263,15 @@
         }
     ],
     "globalSets": [
+        {
+            "name": "Misc",
+            "handle": "misc",
+            "fieldLayout": {
+                "Misc": [
+                    "googleAnalyticsId"
+                ]
+            }
+        },
         {
             "name": "SEO",
             "handle": "seo",
