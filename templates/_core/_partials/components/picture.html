@@ -84,7 +84,8 @@
 
 			{% set formats = craft.imager.serverSupportsWebp() ? ['webp', '_default'] : ['_default'] %}
 			{% for f in formats %}
-				{% set overrides = (f != '_default') ? { 'format' : f } : null %}
+				{% set overrides = (f != '_default') ? { 'format' : f } : {} %}
+
 				<source
 				{{ srcAttr }}="{% spaceless %}
 					{% for pixelRatio in pixelRatios|sort|reverse %}

@@ -8,8 +8,11 @@ templates/_snippets/svg/
 templates/_partials/favicons.html
 
 web/assets/
+web/uploads/
+web/imager/
 
 node_modules
+nocommit
 
 /.env
 /.idea

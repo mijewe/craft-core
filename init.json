@@ -1,5 +1,6 @@
 {
     "fieldGroups": [
+        "Misc",
         "Globals",
         "Common"
     ],
@@ -13,10 +14,112 @@
             "settings": {
                 "path": "@webroot\/uploads\/img\/"
             },
-            "fieldLayout": []
+            "fieldLayout": {
+                "Content": [
+                    "alternativeImages"
+                ]
+            }
+        }
+    ],
+    "sections": [
+        {
+            "name": "Homepage",
+            "handle": "homepage",
+            "type": "single",
+            "enableVersioning": true,
+            "siteSettings": [
+                {
+                    "hasUrls": "1",
+                    "uriFormat": "__home__",
+                    "template": "index",
+                    "enabledByDefault": true
+                }
+            ]
         }
     ],
     "fields": [
+        {
+            "group": "Misc",
+            "name": "Alternative Images",
+            "handle": "alternativeImages",
+            "instructions": "",
+            "type": "craft\\fields\\Matrix",
+            "minBlocks": "",
+            "maxBlocks": "",
+            "localizeBlocks": false,
+            "blockTypes": [
+                {
+                    "name": "Image",
+                    "handle": "image",
+                    "fields": [
+                        {
+                            "required": true,
+                            "name": "Context",
+                            "handle": "context",
+                            "instructions": "",
+                            "type": "craft\\fields\\Dropdown",
+                            "typesettings": {
+                                "options": [
+                                    {
+                                        "label": "> 1440px",
+                                        "value": "bison",
+                                        "default": ""
+                                    },
+                                    {
+                                        "label": "<= 1440px",
+                                        "value": "bear",
+                                        "default": ""
+                                    },
+                                    {
+                                        "label": "<= 1040px",
+                                        "value": "wolf",
+                                        "default": ""
+                                    },
+                                    {
+                                        "label": "<= 800px",
+                                        "value": "fox",
+                                        "default": ""
+                                    },
+                                    {
+                                        "label": "<= 600px",
+                                        "value": "rabbit",
+                                        "default": ""
+                                    },
+                                    {
+                                        "label": "<= 480px",
+                                        "value": "mouse",
+                                        "default": ""
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "required": true,
+                            "name": "Image",
+                            "handle": "image",
+                            "instructions": "",
+                            "type": "craft\\fields\\Assets",
+                            "typesettings": {
+                                "useSingleFolder": "1",
+                                "defaultUploadLocationSource": "images",
+                                "defaultUploadLocationSubpath": "",
+                                "singleUploadLocationSource": "images",
+                                "singleUploadLocationSubpath": "alternatives",
+                                "restrictFiles": "1",
+                                "allowedKinds": [
+                                    "image"
+                                ],
+                                "sources": "*",
+                                "viewMode": "large",
+                                "limit": "1",
+                                "selectionLabel": "",
+                                "localizeRelations": false
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
         {
             "group": "Globals",
             "name": "Default SEO Description",
@@ -144,6 +247,27 @@
         },
         {
             "group": "Common",
+            "name": "Lead Image",
+            "handle": "leadImage",
+            "instructions": "",
+            "type": "craft\\fields\\Assets",
+            "useSingleFolder": "",
+            "defaultUploadLocationSource": "images",
+            "defaultUploadLocationSubpath": "",
+            "singleUploadLocationSource": "images",
+            "singleUploadLocationSubpath": "",
+            "restrictFiles": "1",
+            "allowedKinds": [
+                "image"
+            ],
+            "sources": "*",
+            "viewMode": "large",
+            "limit": "1",
+            "selectionLabel": "",
+            "localizeRelations": false
+        },
+        {
+            "group": "Common",
             "name": "SEO",
             "handle": "seo",
             "instructions": "",
@@ -260,6 +384,24 @@
                     ]
                 }
             ]
+        }
+    ],
+    "entryTypes": [
+        {
+            "sectionHandle": "homepage",
+            "name": "Homepage",
+            "handle": "homepage",
+            "hasTitleField": false,
+            "titleLabel": "",
+            "titleFormat": "{section.name|raw}",
+            "fieldLayout": {
+                "Content": [
+                    "leadImage"
+                ],
+                "SEO": [
+                    "seo"
+                ]
+            }
         }
     ],
     "globalSets": [

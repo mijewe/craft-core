@@ -21,7 +21,9 @@ return [
     'omitScriptNameInUrls' => true,
     'overridePhpSessionLocation' => true,
     'defaultWeekStartDay' => 1,
-    'trackUsers' => getenv('ENVIRONMENT') == 'live'
+    'trackUsers' => getenv('ENVIRONMENT') == 'live',
+    'allowRobots' => getenv('ENVIRONMENT') == 'live',
+    'dateFormat' => 'jS F Y'
   ],
 
   // Dev environment settings

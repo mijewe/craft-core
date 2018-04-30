@@ -37,10 +37,11 @@
 		Otherwise include criticalcss and defer loading of main styles.
 		#}
 		{% if inlineStyles %}
-			<style>{% include '_partials/snippets/main.css' ignore missing %}</style>
+			<style>{% include '_snippets/css/main.css' ignore missing %}</style>
+			{% if craft.app.config.general.devMode %}<script>console.log('_snippets/css/main.css inlined');</script>{% endif %}
 		{% else %}
 			<style id="js_critical-css">
-				{% include ['_partials/snippets/' ~ (entry is defined ? entry.slug : 'critical') ~ '.css', '_partials/snippets/critical.css'] ignore missing %}
+				{% include ['_snippets/css/' ~ (entry is defined ? entry.slug : 'critical') ~ '.css', '_snippets/css/critical.css'] ignore missing %}
 			</style>
 		{% endif %}
 

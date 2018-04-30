@@ -1,0 +1,21 @@
+{% spaceless %}
+{% set excludeSections = (misc is defined) and (misc['sitemapExcludeSections'] is defined) and (misc.sitemapExcludeSections is not empty) ? misc.sitemapExcludeSections|nl2br|split('<br />') : ['fourohfour'] %}
+
+{% set sections = ' and' %}
+{% for s in excludeSections %}
+	{% set sections = sections ~ ', not ' ~ s %}
+{% endfor %}
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+	{% for entry in craft.entries.section(sections).order('title').status('live').limit(null) %}
+
+	  <url>
+	    <loc>{{ entry.url }}</loc>
+	    <lastmod>{{ entry.postDate.w3cDate }}</lastmod>
+	  </url>
+
+	{% endfor %}
+</urlset>
+{% endspaceless %}

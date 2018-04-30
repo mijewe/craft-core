@@ -6,22 +6,28 @@
 	"example" : {
 		"default" : {},
 		"bison" : {
-			"width" : 1440
+			"width" : 500,
+			"height" : 500
 		},
 		"bear" : {
-			"width" : 1440
+			"width" : 500,
+			"height" : 500
 		},
 		"wolf" : {
-			"width" : 1040
+			"width" : 500,
+			"height" : 500
 		},
 		"fox" : {
-			"width" : 800
+			"width" : 500,
+			"height" : 500
 		},
 		"rabbit" : {
-			"width" : 600
+			"width" : 500,
+			"height" : 500
 		},
 		"mouse" : {
-			"width" : 480
+			"width" : 500,
+			"height" : 500
 		}
 	},
 	"seo-google" : {
